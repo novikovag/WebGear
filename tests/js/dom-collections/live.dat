@@ -1,0 +1,165 @@
+@===============================================================================
+@           Обновление HTMLCollection и NodeList
+@===============================================================================
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");  
+    var e3 = document.createElement("c");  
+    
+    var e4 = document.createElement("a");
+    var e5 = document.createElement("b");
+    var e6 = document.createElement("c");       
+        
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+   
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc1 = e1.getElementsByTagName("*");
+    var hc2 = e4.getElementsByTagName("*");
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+
+    e1.insertBefore(e5, e2);
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+#document
+2
+2
+4
+0
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");  
+    var e3 = document.createElement("c");  
+    
+    var e4 = document.createElement("a");
+    var e5 = document.createElement("b");
+    var e6 = document.createElement("c");       
+        
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+   
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc1 = e1.getElementsByTagName("*");
+    var hc2 = e4.getElementsByTagName("*");
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+
+    e4.appendChild(e3);
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+#document
+2
+2
+1
+3
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");  
+    var e3 = document.createElement("c");  
+    
+    var e4 = document.createElement("a");
+    var e5 = document.createElement("b");
+    var e6 = document.createElement("c");       
+        
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+   
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc1 = e1.getElementsByTagName("*");
+    var hc2 = e4.getElementsByTagName("*");
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+
+    e1.replaceChild(e5, e2);
+
+    console.log(hc1.length);
+    console.log(hc2.length);
+#document
+2
+2
+2
+0
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");  
+    var e3 = document.createElement("c");  
+    var e4 = document.createElement("a");
+    var e5 = document.createElement("b");
+    var e6 = document.createElement("c");       
+        
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc = e1.getElementsByTagName("*");
+
+    console.log(hc.length);
+
+    e3.removeChild(e4);
+
+    console.log(hc.length);
+#document
+5
+2
+
+@---
+
+#data
+    var e1 = document.createElement("div");
+    var e2 = document.createElement("div");
+    var e3 = document.createElement("div");
+    var t1 = document.createTextNode("Text1");
+    var t2 = document.createTextNode("Text2");
+    var t3 = document.createTextNode("Text3");
+    var c1 = document.createComment("Comment1");
+    var c2 = document.createComment("Comment1");
+    
+    e1.appendChild(c1);
+    e1.appendChild(t1);
+    e1.appendChild(e2);
+    e2.appendChild(t2);
+    e2.appendChild(c2);
+    e1.appendChild(t3);
+    
+    var lt = e1.childNodes;
+
+    console.log(lt.length);
+
+    t1.splitText(2);
+    t2.splitText(2);
+
+    console.log(lt.length);
+    
+    e1.appendChild(e3);
+    
+    console.log(lt.length);
+#document
+4
+5
+6
+
+@---

@@ -1,0 +1,111 @@
+@===============================================================================
+@           Десятичные символьные ссылки.
+@===============================================================================
+
+#data
+&#38;
+#document
+|T| &
+|*| .
+
+#data
+&#0123;
+#document
+|T| {
+|*| .
+
+#data
+&#126;
+#document
+|T| ~
+|*| .
+
+#data
+abc&#38;def
+#document
+|T| abc&def
+|*| .
+
+#data
+&#38
+#document
+|T| &
+|*| .
+
+#data
+&#38abc
+#document
+|T| &abc
+|*| .
+
+#data
+abc&#38def
+#document
+|T| abc&def
+|*| .
+
+#data
+one two &#123; three
+#document
+|T| one two { three
+|*| .
+
+#data
+one two&#123;three
+#document
+|T| one two{three
+|*| .
+
+#data
+one two &#123 three
+#document
+|T| one two { three
+|*| .
+
+#data
+one two&#123three
+#document
+|T| one two{three
+|*| .
+
+@ Ведущие нули.
+#data
+&#000000000000000000000000000000000000000000000000000000000000000000000000000038
+#document
+|T| &
+|*| .
+
+@ Максимальное значение.
+#data
+&#999999999999999999999999999999999999999999999999999999999999999999999999999999
+#document
+|T| �
+|*| .
+
+@ Максимальное значение.
+#data
+&#01233333333333333333333333333333333333333333333333333333333333333333333333333;
+#document
+|T| �
+|*| .
+
+@ Подстановочный символ 0x80 U+20AC EURO SIGN (€).
+#data
+&#128;
+#document
+|T| €
+|*| .
+
+@ Подстановочный символ 0x88 U+02C6 MODIFIER LETTER CIRCUMFLEX ACCENT (ˆ).
+#data
+&#136;
+#document
+|T| ˆ
+|*| .
+
+@ Подстановочный символ 0x9C U+0153 LATIN SMALL LIGATURE OE (œ).
+#data
+&#156;
+#document
+|T| œ
+|*| .

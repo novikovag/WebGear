@@ -1,0 +1,309 @@
+#data
+<!doctype html><p><button><button>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+      BUTTON
+
+#data
+<!doctype html><p><button><address>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        ADDRESS
+
+#data
+<!doctype html><p><button><blockquote>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        BLOCKQUOTE
+
+#data
+<!doctype html><p><button><menu>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        MENU
+
+#data
+<!doctype html><p><button><p>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        P
+
+#data
+<!doctype html><p><button><ul>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        UL
+
+#data
+<!doctype html><p><button><h1>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        H1
+
+#data
+<!doctype html><p><button><h6>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        H6
+
+#data
+<!doctype html><p><button><listing>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        LISTING
+
+#data
+<!doctype html><p><button><pre>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        PRE
+
+#data
+<!doctype html><p><button><form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        FORM
+
+#data
+<!doctype html><p><button><li>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        LI
+
+#data
+<!doctype html><p><button><dd>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        DD
+
+#data
+<!doctype html><p><button><dt>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        DT
+
+#data
+<!doctype html><p><button><plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        PLAINTEXT
+
+#data
+<!doctype html><p><button><table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        TABLE
+
+#data
+<!doctype html><p><button><hr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        HR
+
+#data
+<!doctype html><p><button><xmp>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        XMP
+
+#data
+<!doctype html><p><button></p>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      BUTTON
+        P
+
+#data
+<!doctype html><address><button></address>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    ADDRESS
+      BUTTON
+    "a"
+
+#data
+<!doctype html><address><button></address>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    ADDRESS
+      BUTTON
+    "a"
+
+#data
+<p><table></p>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      P
+      TABLE
+
+#data
+<!doctype html><p><figcaption>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    FIGCAPTION
+
+#data
+<!doctype html><p><summary>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    SUMMARY
+
+#data
+<!doctype html><form><table><form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FORM
+      TABLE
+
+#data
+<!doctype html><table><form><form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      FORM
+
+#data
+<!doctype html><table><form></table><form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      FORM
+
+#data
+<option><span><option>
+#document
+HTML
+  HEAD
+  BODY
+    OPTION
+      SPAN
+        OPTION
+
+#data
+<option><option>
+#document
+HTML
+  HEAD
+  BODY
+    OPTION
+    OPTION

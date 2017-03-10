@@ -1,0 +1,17 @@
+@===============================================================================
+@           SCRIPT
+@===============================================================================
+
+#data, script
+var example = 'Consider this string: <!-- <script>';   console.log(example); </script> <!-- despite appearances, this is actually part of the script still! --> <script>  ... // this is the same script block still... </script>
+#document
+|T| var example = 'Consider this string: <!-- <script>';   console.log(example); </script> <!-- despite appearances, this is actually part of the script still! --> <script>  ... // this is the same script block still... 
+|>| SCRIPT
+|*| .
+
+#data, script
+var example = 'Consider this string: <\!-- <\script>';   console.log(example); </script>
+#document
+|T| var example = 'Consider this string: <\!-- <\script>';   console.log(example); 
+|>| SCRIPT
+|*| .

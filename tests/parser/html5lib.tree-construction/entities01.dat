@@ -1,0 +1,585 @@
+#data
+FOO&gt;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO>BAR"
+
+#data
+FOO&gtBAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO>BAR"
+
+#data
+FOO&gt BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO> BAR"
+
+#data
+FOO&gt;;;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO>;;BAR"
+
+#data
+I'm &notit; I tell you
+#document
+HTML
+  HEAD
+  BODY
+    "I'm ¬it; I tell you"
+
+#data
+I'm &notin; I tell you
+#document
+HTML
+  HEAD
+  BODY
+    "I'm ∉ I tell you"
+
+#data
+FOO& BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO& BAR"
+
+#data
+FOO&<BAR>
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&"
+    BAR
+
+#data
+FOO&&&&gt;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&&&>BAR"
+
+#data
+FOO&#41;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO)BAR"
+
+#data
+FOO&#x41;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOOABAR"
+
+#data
+FOO&#X41;BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOOABAR"
+
+#data
+FOO&#BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&#BAR"
+
+#data
+FOO&#ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&#ZOO"
+
+#data
+FOO&#xBAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOOºR"
+
+#data
+FOO&#xZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&#xZOO"
+
+#data
+FOO&#XZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO&#XZOO"
+
+#data
+FOO&#41BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO)BAR"
+
+#data
+FOO&#x41BAR
+#document
+HTML
+  HEAD
+  BODY
+    "FOO䆺R"
+
+#data
+FOO&#x41ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOAZOO"
+
+#data
+FOO&#x0000;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#x0078;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOxZOO"
+
+#data
+FOO&#x0079;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOyZOO"
+
+#data
+FOO&#x0080;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO€ZOO"
+
+#data
+FOO&#x0081;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x0082;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO‚ZOO"
+
+#data
+FOO&#x0083;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOƒZOO"
+
+#data
+FOO&#x0084;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO„ZOO"
+
+#data
+FOO&#x0085;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO…ZOO"
+
+#data
+FOO&#x0086;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO†ZOO"
+
+#data
+FOO&#x0087;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO‡ZOO"
+
+#data
+FOO&#x0088;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOˆZOO"
+
+#data
+FOO&#x0089;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO‰ZOO"
+
+#data
+FOO&#x008A;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOŠZOO"
+
+#data
+FOO&#x008B;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO‹ZOO"
+
+#data
+FOO&#x008C;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOŒZOO"
+
+#data
+FOO&#x008D;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x008E;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOŽZOO"
+
+#data
+FOO&#x008F;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x0090;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x0091;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO‘ZOO"
+
+#data
+FOO&#x0092;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO’ZOO"
+
+#data
+FOO&#x0093;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO“ZOO"
+
+#data
+FOO&#x0094;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO”ZOO"
+
+#data
+FOO&#x0095;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO•ZOO"
+
+#data
+FOO&#x0096;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO–ZOO"
+
+#data
+FOO&#x0097;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO—ZOO"
+
+#data
+FOO&#x0098;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO˜ZOO"
+
+#data
+FOO&#x0099;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO™ZOO"
+
+#data
+FOO&#x009A;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOšZOO"
+
+#data
+FOO&#x009B;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO›ZOO"
+
+#data
+FOO&#x009C;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOœZOO"
+
+#data
+FOO&#x009D;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x009E;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOžZOO"
+
+#data
+FOO&#x009F;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOŸZOO"
+
+#data
+FOO&#x00A0;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO ZOO"
+
+#data
+FOO&#xD7FF;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO퟿ZOO"
+
+#data
+FOO&#xD800;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#xD801;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#xDFFE;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#xDFFF;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#xE000;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOOZOO"
+
+#data
+FOO&#x10FFFE;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO􏿾ZOO"
+
+#data
+FOO&#x1087D4;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO􈟔ZOO"
+
+#data
+FOO&#x10FFFF;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO􏿿ZOO"
+
+#data
+FOO&#x110000;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#xFFFFFF;ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#11111111111
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�"
+
+#data
+FOO&#1111111111
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�"
+
+#data
+FOO&#111111111111
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�"
+
+#data
+FOO&#11111111111ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#1111111111ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+
+#data
+FOO&#111111111111ZOO
+#document
+HTML
+  HEAD
+  BODY
+    "FOO�ZOO"
+

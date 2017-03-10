@@ -1,0 +1,65 @@
+@===============================================================================
+@           SCRIPT
+@===============================================================================
+
+#data, script
+<!--<script></script><script></script></script>
+#document
+|T| <!--<script></script><script></script>
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--<script></script><script></script>--><!--</script>
+#document
+|T| <!--<script></script><script></script>--><!--
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--<script></script><script></script>-- ></script>
+#document
+|T| <!--<script></script><script></script>-- >
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--<script></script><script></script>- -></script>
+#document
+|T| <!--<script></script><script></script>- ->
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--<script></script><script></script>-></script>
+#document
+|T| <!--<script></script><script></script>->
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--<script></scr'+'ipt></script>X
+#document
+|T| <!--<script></scr'+'ipt></script>X
+|*| .
+
+#data, script
+<!--<script></script><script></script>- - ></script>
+#document
+|T| <!--<script></script><script></script>- - >
+|>| SCRIPT
+|*| .
+
+
+
+
+
+
+
+
+
+
+
+
+
+

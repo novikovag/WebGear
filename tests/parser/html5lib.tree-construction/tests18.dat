@@ -1,0 +1,221 @@
+#data
+<!doctype html><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "</plaintext>"
+
+#data
+<!doctype html><table><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "</plaintext>"
+    TABLE
+
+#data
+<!doctype html><table><tbody><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "</plaintext>"
+    TABLE
+      TBODY
+
+#data
+<!doctype html><table><tbody><tr><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "</plaintext>"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><table><td><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            PLAINTEXT
+              "</plaintext>"
+
+#data
+<!doctype html><table><caption><plaintext></plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        PLAINTEXT
+          "</plaintext>"
+
+#data
+<!doctype html><table><tr><style></script></style>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "abc"
+    TABLE
+      TBODY
+        TR
+          STYLE
+            "</script>"
+
+#data
+<!doctype html><table><tr><script></style></script>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "abc"
+    TABLE
+      TBODY
+        TR
+          SCRIPT
+            "</style>"
+
+#data
+<!doctype html><table><caption><style></script></style>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        STYLE
+          "</script>"
+        "abc"
+
+#data
+<!doctype html><table><td><style></script></style>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            STYLE
+              "</script>"
+            "abc"
+
+#data
+<!doctype html><select><script></style></script>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      SCRIPT
+        "</style>"
+      "abc"
+
+#data
+<!doctype html><table><select><script></style></script>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      SCRIPT
+        "</style>"
+      "abc"
+    TABLE
+
+#data
+<!doctype html><table><tr><select><script></style></script>abc
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      SCRIPT
+        "</style>"
+      "abc"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><frameset></frameset><noframes>abc
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+  NOFRAMES
+    "abc"
+
+#data
+<!doctype html><frameset></frameset><noframes>abc</noframes><!--abc-->
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+  NOFRAMES
+    "abc"
+  !abc!
+
+#data
+<!doctype html><frameset></frameset></html><noframes>abc
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+  NOFRAMES
+    "abc"
+
+#data
+<!doctype html><frameset></frameset></html><noframes>abc</noframes><!--abc-->
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+  NOFRAMES
+    "abc"
+!abc!
+
+#data
+<!doctype html><table><tr></tbody><tfoot>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+      TFOOT

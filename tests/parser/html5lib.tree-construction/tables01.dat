@@ -1,0 +1,180 @@
+#data
+<table><th>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TH
+
+#data
+<table><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<table><col foo='bar'>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+        COL, foo='bar'
+
+#data
+<table><colgroup></html>foo
+#document
+HTML
+  HEAD
+  BODY
+    "foo"
+    TABLE
+      COLGROUP
+
+#data
+<table></table><p>foo
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+    P
+      "foo"
+
+#data
+<table></body></caption></col></colgroup></html></tbody></td></tfoot></th></thead></tr><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<table><select><option>3</select></table>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+        "3"
+    TABLE
+
+#data
+<table><select><table></table></select></table>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+    TABLE
+    TABLE
+
+#data
+<table><select></table>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+    TABLE
+
+#data
+<table><select><option>A<tr><td>B</td></tr></table>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+        "A"
+    TABLE
+      TBODY
+        TR
+          TD
+            "B"
+
+#data
+<table><td></body></caption></col></colgroup></html>foo
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "foo"
+
+#data
+<table><td>A</table>B
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "A"
+    "B"
+
+#data
+<table><tr><caption>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+      CAPTION
+
+#data
+<table><tr></body></caption></col></colgroup></html></td></th><td>foo
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "foo"
+
+#data
+<table><td><tr>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+        TR
+
+#data
+<table><td><button><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            BUTTON
+          TD

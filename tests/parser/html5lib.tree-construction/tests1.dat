@@ -1,0 +1,1322 @@
+#data
+Test
+#document
+HTML
+  HEAD
+  BODY
+    "Test"
+
+#data
+<p>One<p>Two
+#document
+HTML
+  HEAD
+  BODY
+    P
+      "One"
+    P
+      "Two"
+
+#data
+Line1<br>Line2<br>Line3<br>Line4
+#document
+HTML
+  HEAD
+  BODY
+    "Line1"
+    BR
+    "Line2"
+    BR
+    "Line3"
+    BR
+    "Line4"
+
+#data
+<html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<head>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<body>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head></head>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head></head><body>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head></head><body></body>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head><body></body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head></body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><head><body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<head></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+</head>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+</body>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+</html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<b><table><td><i></table>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      TABLE
+        TBODY
+          TR
+            TD
+              I
+
+#data
+<b><table><td></b><i></table>X
+#document
+HTML
+  HEAD
+  BODY
+    B
+      TABLE
+        TBODY
+          TR
+            TD
+              I
+      "X"
+
+#data
+<h1>Hello<h2>World
+#document
+HTML
+  HEAD
+  BODY
+    H1
+      "Hello"
+    H2
+      "World"
+
+#data
+<a><p>X<a>Y</a>Z</p></a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    P
+      A
+        "X"
+      A
+        "Y"
+      "Z"
+
+#data
+<b><button>foo</b>bar
+#document
+HTML
+  HEAD
+  BODY
+    B
+    BUTTON
+      B
+        "foo"
+      "bar"
+
+#data
+<!DOCTYPE html><span><button>foo</span>bar
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SPAN
+      BUTTON
+        "foo"
+        "bar"
+
+#data
+<p><b><div><marquee></p></b></div>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      B
+    DIV
+      B
+        MARQUEE
+          P
+          "X"
+
+#data
+<script><div></script></div><title><p></title><p><p>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<div>"
+    TITLE
+      "<p>"
+  BODY
+    P
+    P
+
+#data
+<!--><div>--<!-->
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "--"
+
+#data
+<p><hr></p>
+#document
+HTML
+  HEAD
+  BODY
+    P
+    HR
+    P
+
+#data
+<select><b><option><select><option></b></select>X
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+    OPTION
+      "X"
+
+#data
+<a><table><td><a><table></table><a></tr><a></table><b>X</b>C<a>Y
+#document
+HTML
+  HEAD
+  BODY
+    A
+      A
+      TABLE
+        TBODY
+          TR
+            TD
+              A
+                TABLE
+              A
+    A
+      B
+        "X"
+      "C"
+    A
+      "Y"
+
+#data
+<a X>0<b>1<a Y>2
+#document
+HTML
+  HEAD
+  BODY
+    A, x
+      "0"
+      B
+        "1"
+    B
+      A, y
+        "2"
+
+#data
+<!-----><font><div>hello<table>excite!<b>me!<th><i>please!</tr><!--X-->
+#document
+!-!
+HTML
+  HEAD
+  BODY
+    FONT
+      DIV
+        "hello"
+        "excite!"
+        B
+          "me!"
+        TABLE
+          TBODY
+            TR
+              TH
+                I
+                  "please!"
+            !X!
+
+#data
+<!DOCTYPE html><li>hello<li>world<ul>how<li>do</ul>you</body><!--do-->
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LI
+      "hello"
+    LI
+      "world"
+      UL
+        "how"
+        LI
+          "do"
+      "you"
+  !do!
+
+#data
+<!DOCTYPE html>A<option>B<optgroup>C<select>D</option>E
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "A"
+    OPTION
+      "B"
+    OPTGROUP
+      "C"
+      SELECT
+        "D"
+        "E"
+
+#data
+<
+#document
+HTML
+  HEAD
+  BODY
+    "<"
+
+#data
+<#
+#document
+HTML
+  HEAD
+  BODY
+    "<#"
+
+#data
+</
+#document
+HTML
+  HEAD
+  BODY
+    "</"
+
+#data
+</#
+#document
+!#!
+HTML
+  HEAD
+  BODY
+
+#data
+<?
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<?#
+#document
+!#!
+HTML
+  HEAD
+  BODY
+
+#data
+<!
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<!#
+#document
+!#!
+HTML
+  HEAD
+  BODY
+
+#data
+<?COMMENT?>
+#document
+!COMMENT?!
+HTML
+  HEAD
+  BODY
+
+#data
+<!COMMENT>
+#document
+!COMMENT!
+HTML
+  HEAD
+  BODY
+
+#data
+</ COMMENT >
+#document
+! COMMENT !
+HTML
+  HEAD
+  BODY
+
+#data
+<?COM--MENT?>
+#document
+!COM--MENT?!
+HTML
+  HEAD
+  BODY
+
+#data
+<!COM--MENT>
+#document
+!COM--MENT!
+HTML
+  HEAD
+  BODY
+
+#data
+</ COM--MENT >
+#document
+! COM--MENT !
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><style> EOF
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      " EOF"
+  BODY
+
+#data
+<!DOCTYPE html><script> <!-- </script> --> </script> EOF
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      " <!-- "
+  BODY
+    " --> "
+    " EOF"
+
+#data
+<b><p></b>TEST
+#document
+HTML
+  HEAD
+  BODY
+    B
+    P
+      B
+      "TEST"
+
+#data
+<p id=a><b><p id=b></b>TEST
+#document
+HTML
+  HEAD
+  BODY
+    P, id='a'
+      B
+    P, id='b'
+      "TEST"
+
+#data
+<b id=a><p><b id=b></p></b>TEST
+#document
+HTML
+  HEAD
+  BODY
+    B, id='a'
+      P
+        B, id='b'
+      "TEST"
+
+#data
+<!DOCTYPE html><title>U-test</title><body><div><p>Test<u></p></div></body>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "U-test"
+  BODY
+    DIV
+      P
+        "Test"
+        U
+
+#data
+<!DOCTYPE html><font><table></font></table></font>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FONT
+      TABLE
+
+#data
+<font><p>hello<b>cruel</font>world
+#document
+HTML
+  HEAD
+  BODY
+    FONT
+    P
+      FONT
+        "hello"
+        B
+          "cruel"
+      B
+        "world"
+
+#data
+<b>Test</i>Test
+#document
+HTML
+  HEAD
+  BODY
+    B
+      "Test"
+      "Test"
+
+#data
+<b>A<cite>B<div>C
+#document
+HTML
+  HEAD
+  BODY
+    B
+      "A"
+      CITE
+        "B"
+        DIV
+          "C"
+
+#data
+<b>A<cite>B<div>C</cite>D
+#document
+HTML
+  HEAD
+  BODY
+    B
+      "A"
+      CITE
+        "B"
+        DIV
+          "C"
+          "D"
+
+#data
+<b>A<cite>B<div>C</b>D
+#document
+HTML
+  HEAD
+  BODY
+    B
+      "A"
+      CITE
+        "B"
+    DIV
+      B
+        "C"
+      "D"
+
+#data
+
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<DIV>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+
+#data
+<DIV> abc
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc"
+
+#data
+<DIV> abc <B>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+
+#data
+<DIV> abc <B> def
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def"
+
+#data
+<DIV> abc <B> def <I>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+
+#data
+<DIV> abc <B> def <I> ghi
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi"
+
+#data
+<DIV> abc <B> def <I> ghi <P>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+          P
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+          P
+            " jkl"
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+        P
+          B
+            " jkl "
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B> mno
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+        P
+          B
+            " jkl "
+          " mno"
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B> mno </I>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+      P
+        I
+          B
+            " jkl "
+          " mno "
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B> mno </I> pqr
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+      P
+        I
+          B
+            " jkl "
+          " mno "
+        " pqr"
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B> mno </I> pqr </P>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+      P
+        I
+          B
+            " jkl "
+          " mno "
+        " pqr "
+
+#data
+<DIV> abc <B> def <I> ghi <P> jkl </B> mno </I> pqr </P> stu
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " abc "
+      B
+        " def "
+        I
+          " ghi "
+      I
+      P
+        I
+          B
+            " jkl "
+          " mno "
+        " pqr "
+      " stu"
+
+#data
+<test attribute---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+#document
+HTML
+  HEAD
+  BODY
+    TEST, attribute----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#data
+<a href="blah">aba<table><a href="foo">br<tr><td></td></tr>x</table>aoe
+#document
+HTML
+  HEAD
+  BODY
+    A, href='blah'
+      "aba"
+      A, href='foo'
+        "br"
+      A, href='foo'
+        "x"
+      TABLE
+        TBODY
+          TR
+            TD
+    A, href='foo'
+      "aoe"
+
+#data
+<a href="blah">aba<table><tr><td><a href="foo">br</td></tr>x</table>aoe
+#document
+HTML
+  HEAD
+  BODY
+    A, href='blah'
+      "aba"
+      "x"
+      TABLE
+        TBODY
+          TR
+            TD
+              A, href='foo'
+                "br"
+      "aoe"
+
+#data
+<table><a href="blah">aba<tr><td><a href="foo">br</td></tr>x</table>aoe
+#document
+HTML
+  HEAD
+  BODY
+    A, href='blah'
+      "aba"
+    A, href='blah'
+      "x"
+    TABLE
+      TBODY
+        TR
+          TD
+            A, href='foo'
+              "br"
+    A, href='blah'
+      "aoe"
+
+#data
+<a href=a>aa<marquee>aa<a href=b>bb</marquee>aa
+#document
+HTML
+  HEAD
+  BODY
+    A, href='a'
+      "aa"
+      MARQUEE
+        "aa"
+        A, href='b'
+          "bb"
+      "aa"
+
+#data
+<wbr><strike><code></strike><code><strike></code>
+#document
+HTML
+  HEAD
+  BODY
+    WBR
+    STRIKE
+      CODE
+    CODE
+      CODE
+        STRIKE
+
+#data
+<!DOCTYPE html><spacer>foo
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SPACER
+      "foo"
+
+#data
+<title><meta></title><link><title><meta></title>
+#document
+HTML
+  HEAD
+    TITLE
+      "<meta>"
+    LINK
+    TITLE
+      "<meta>"
+  BODY
+
+#data
+<style><!--</style><meta><script>--><link></script>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--"
+    META
+    SCRIPT
+      "--><link>"
+  BODY
+
+#data
+<head><meta></head><link>
+#document
+HTML
+  HEAD
+    META
+    LINK
+  BODY
+
+#data
+<table><tr><tr><td><td><span><th><span>X</table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+        TR
+          TD
+          TD
+            SPAN
+          TH
+            SPAN
+              "X"
+
+#data
+<body><body><base><link><meta><title><p></title><body><p></body>
+#document
+HTML
+  HEAD
+  BODY
+    BASE
+    LINK
+    META
+    TITLE
+      "<p>"
+    P
+
+#data
+<textarea><p></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<p>"
+
+#data
+<p><image></p>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      IMG
+
+#data
+<a><table><a></table><p><a><div><a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      A
+      TABLE
+    P
+      A
+    DIV
+      A
+
+#data
+<head></p><meta><p>
+#document
+HTML
+  HEAD
+    META
+  BODY
+    P
+
+#data
+<head></html><meta><p>
+#document
+HTML
+  HEAD
+  BODY
+    META
+    P
+
+#data
+<b><table><td><i></table>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      TABLE
+        TBODY
+          TR
+            TD
+              I
+
+#data
+<b><table><td></b><i></table>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      TABLE
+        TBODY
+          TR
+            TD
+              I
+
+#data
+<h1><h2>
+#document
+HTML
+  HEAD
+  BODY
+    H1
+    H2
+
+#data
+<a><p><a></a></p></a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    P
+      A
+      A
+
+#data
+<b><button></b></button></b>
+#document
+HTML
+  HEAD
+  BODY
+    B
+    BUTTON
+      B
+
+#data
+<p><b><div><marquee></p></b></div>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      B
+    DIV
+      B
+        MARQUEE
+          P
+
+#data
+<script></script></div><title></title><p><p>
+#document
+HTML
+  HEAD
+    SCRIPT
+    TITLE
+  BODY
+    P
+    P
+
+#data
+<p><hr></p>
+#document
+HTML
+  HEAD
+  BODY
+    P
+    HR
+    P
+
+#data
+<select><b><option><select><option></b></select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+    OPTION
+
+#data
+<html><head><title></title><body></body></html>
+#document
+HTML
+  HEAD
+    TITLE
+  BODY
+
+#data
+<a><table><td><a><table></table><a></tr><a></table><a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      A
+      TABLE
+        TBODY
+          TR
+            TD
+              A
+                TABLE
+              A
+    A
+
+#data
+<ul><li></li><div><li></div><li><li><div><li><address><li><b><em></b><li></ul>
+#document
+HTML
+  HEAD
+  BODY
+    UL
+      LI
+      DIV
+        LI
+      LI
+      LI
+        DIV
+      LI
+        ADDRESS
+      LI
+        B
+          EM
+      LI
+
+#data
+<ul><li><ul></li><li>a</li></ul></li></ul>
+#document
+HTML
+  HEAD
+  BODY
+    UL
+      LI
+        UL
+          LI
+            "a"
+
+#data
+<frameset><frame><frameset><frame></frameset><noframes></noframes></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+    FRAMESET
+      FRAME
+    NOFRAMES
+
+#data
+<h1><table><td><h3></table><h3></h1>
+#document
+HTML
+  HEAD
+  BODY
+    H1
+      TABLE
+        TBODY
+          TR
+            TD
+              H3
+    H3
+
+#data
+<table><colgroup><col><colgroup><col><col><col><colgroup><col><col><thead><tr><td></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+        COL
+      COLGROUP
+        COL
+        COL
+        COL
+      COLGROUP
+        COL
+        COL
+      THEAD
+        TR
+          TD
+
+#data
+<table><col><tbody><col><tr><col><td><col></table><col>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+        COL
+      TBODY
+      COLGROUP
+        COL
+      TBODY
+        TR
+      COLGROUP
+        COL
+      TBODY
+        TR
+          TD
+      COLGROUP
+        COL
+
+#data
+<table><colgroup><tbody><colgroup><tr><colgroup><td><colgroup></table><colgroup>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+      TBODY
+      COLGROUP
+      TBODY
+        TR
+      COLGROUP
+      TBODY
+        TR
+          TD
+      COLGROUP
+
+#data
+</strong></b></em></i></u></strike></s></blink></tt></pre></big></small></font></select></h1></h2></h3></h4></h5></h6></body></br></a></img></title></span></style></script></table></th></td></tr></frame></area></link></param></hr></input></col></base></meta></basefont></bgsound></embed></spacer></p></dd></dt></caption></colgroup></tbody></tfoot></thead></address></blockquote></center></dir></div></dl></fieldset></listing></menu></ol></ul></li></nobr></wbr></form></button></marquee></object></html></frameset></head></iframe></image></isindex></noembed></noframes></noscript></optgroup></option></plaintext></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    BR
+    P
+
+#data
+<table><tr></strong></b></em></i></u></strike></s></blink></tt></pre></big></small></font></select></h1></h2></h3></h4></h5></h6></body></br></a></img></title></span></style></script></table></th></td></tr></frame></area></link></param></hr></input></col></base></meta></basefont></bgsound></embed></spacer></p></dd></dt></caption></colgroup></tbody></tfoot></thead></address></blockquote></center></dir></div></dl></fieldset></listing></menu></ol></ul></li></nobr></wbr></form></button></marquee></object></html></frameset></head></iframe></image></isindex></noembed></noframes></noscript></optgroup></option></plaintext></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    BR
+    TABLE
+      TBODY
+        TR
+    P
+
+#data
+<frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="id1"></div>
+
+    <script>
+        console.log("Preved");
+        var e1 = document.getElementById("id1");
+        
+        var e2 = document.createElement("b");
+        var e3 = document.createElement("a");
+        
+        e1.appendChild(e2);
+        e2.appendChild(e3);
+        
+        var d = document.doctype;
+        
+        console.log(d.nodeType);
+        
+        try {
+            e1.appendChild(d); // InvalidNodeTypeError
+        } catch (e) {
+            console.log(e);
+            console.log("code   : " + e.code);
+            console.log("name   : " + e.name);
+            console.log("message: " + e.message);
+        }
+    </script>    
+</body>
+</html>

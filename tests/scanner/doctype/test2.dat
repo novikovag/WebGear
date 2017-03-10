@@ -1,0 +1,67 @@
+@===============================================================================
+@           DOCTYPE
+@===============================================================================
+
+@ DOCTYPE без имени.
+#data
+<!DOCTYPE>
+#document
+|D| , , 
+|*| .
+
+@ DOCTYPE без пробела перед именем.
+#data
+<!DOCTYPEhtml>
+#document
+|D| html, , 
+|*| .
+
+@ DOCTYPE пробелы перед именем.
+#data
+<!DOCTYPE                    html>
+#document
+|D| html, , 
+|*| .
+
+@ HTML 4.01 
+@ Строгий синтаксис HTML, дополнительные пробелы.
+#data
+<!DOCTYPE     HTML     PUBLIC     "-//w3c//dtd html 4.01//en"     "http://www.w3.org/tr/html4/strict.dtd">
+#document
+|D| html, -//w3c//dtd html 4.01//en, http://www.w3.org/tr/html4/strict.dtd
+|*| .
+
+@ DOCTYPE неверный ID.
+#data
+<!DOCTYPE HTML PREVED>
+#document
+|D| html, , 
+|*| .
+
+@ DOCTYPE ошибка ID.
+#data
+<!DOCTYPE html PUBLIC>
+#document
+|D| html, , 
+|*| .
+
+@ DOCTYPE ошибка ID.
+#data
+<!DOCTYPE html PUBLIC text1 text2>
+#document
+|D| html, , 
+|*| .
+
+@ DOCTYPE ошибка ID.
+#data
+<!DOCTYPE html PUBLIC "text1" text2>
+#document
+|D| html, text1, 
+|*| .
+
+@ DOCTYPE ошибка ID.
+#data
+<!DOCTYPE html PUBLIC text1 "text2">
+#document
+|D| html, , 
+|*| .

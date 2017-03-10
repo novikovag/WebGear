@@ -1,0 +1,40 @@
+@===============================================================================
+@           DOM
+@===============================================================================
+
+#data
+    console.log("DOMException: "      + DOMException.__proto__);
+    console.log("DOMImplementation: " + DOMImplementation.__proto__);
+    console.log("Event: "             + Event.__proto__.__proto__);
+    console.log("EventTarget: "       + EventTarget.__proto__);
+    console.log("Node: "              + Node.__proto__);
+    console.log("Attr: "              + Attr.__proto__);
+    console.log("CharacterData: "     + CharacterData.__proto__);
+    console.log("Text: "              + Text.prototype.__proto__);
+    console.log("CDATASection: "      + CDATASection.__proto__);
+    console.log("Comment: "           + Comment.prototype.__proto__);
+    console.log("Document: "          + Document.__proto__);
+    console.log("DocumentType: "      + DocumentType.__proto__);
+    console.log("Element: "           + Element.__proto__);
+    console.log("Window: "            + Window.__proto__);
+    console.log("HTMLCollection: "    + HTMLCollection.__proto__);
+    console.log("NodeList: "          + NodeList.__proto__);
+#document
+DOMException: [object Object]
+DOMImplementation: [object Node]
+Event: [object Object]
+EventTarget: [object Object]
+Node: [object EventTarget]
+Attr: [object Node]
+CharacterData: [object Node]
+Text: [object CharacterData]
+CDATASection: [object Text]
+Comment: [object CharacterData]
+Document: [object Node]
+DocumentType: [object Node]
+Element: [object Node]
+Window: [object EventTarget]
+HTMLCollection: [object Object]
+NodeList: [object Object]
+
+@---

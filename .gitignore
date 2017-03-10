@@ -1,0 +1,20 @@
+# Ошибки тестирования
+/tests/**/error(*.txt
+
+# SpiderMonkey
+/js/engines/spidermonkey-1.7/linux/*
+!/js/engines/spidermonkey-1.7/linux/Makefile
+
+/js/engines/spidermonkey-1.7/mingw64/*
+!/js/engines/spidermonkey-1.7/mingw64/Makefile
+
+# ExtUitls::MakeMaker
+/js/xs/linux/*
+!/js/xs/linux/Makefile.PL
+!/js/xs/linux/SpiderMonkey.pm
+!/js/xs/linux/SpiderMonkey.xs
+
+/js/xs/mingw64/*
+!/js/xs/mingw64/Makefile.PL
+!/js/xs/mingw64/SpiderMonkey.pm
+!/js/xs/mingw64/SpiderMonkey.xs

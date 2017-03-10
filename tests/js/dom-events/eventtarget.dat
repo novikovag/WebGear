@@ -1,0 +1,125 @@
+@===============================================================================
+@           Interface EventTarget
+@===============================================================================
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener("click", function(event) { });
+    e.addEventListener("click", function(event) { });
+    
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, false);
+
+    e.addEventListener("click2", function(event) { });
+    e.addEventListener('click2', callback, true);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':0, 'onclick':0, 'onclick':1, 'onclick':0, 'onclick2':0, 'onclick2':1
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, false);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':1, 'onclick':0
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, true);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':1
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, false);
+    e.removeEventListener('click', callback, true);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':0
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, false);
+    e.removeEventListener('click', callback, false);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':1
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback = function(event) {
+    }; 
+
+    e.addEventListener('click', callback, true);
+    e.addEventListener('click', callback, false);
+    e.removeEventListener('click', callback, false);
+    e.removeEventListener('click', callback, true);
+    
+    console.tree(e);
+#document
+DIV
+
+@---
+
+#data
+    var e = document.createElement('div');
+
+    var callback1 = function(event) {
+    }; 
+
+    var callback2 = function(event) {
+    }; 
+    
+    e.addEventListener('click', callback1, true);
+    e.addEventListener('click', callback1, false);
+    e.removeEventListener('click', callback2, false);
+    e.removeEventListener('click', callback2, true);
+    
+    console.tree(e);
+#document
+DIV, 'onclick':1, 'onclick':0
+
+@---

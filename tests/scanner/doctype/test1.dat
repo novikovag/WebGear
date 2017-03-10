@@ -1,0 +1,81 @@
+@===============================================================================
+@           DOCTYPE
+@===============================================================================
+
+@ HTML 4.01 
+@ Строгий синтаксис HTML.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd">
+#document
+|D| html, -//w3c//dtd html 4.01//en, http://www.w3.org/TR/html4/strict.dtd
+|*| .
+
+@ HTML 4.01 
+@ Переходный синтаксис HTML.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 transitional//en" "http://www.w3.org/TR/html4/loose.dtd">
+#document
+|D| html, -//w3c//dtd html 4.01 transitional//, http://www.w3.org/TR/html4/loose.dtd
+|*| .
+
+@ HTML 4.01 
+@ В HTML-документе применяются фреймы.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01 frameset//en" "http://www.w3.org/tr/html4/frameset.dtd">
+#document
+|D| html, -//w3c//dtd html 4.01 frameset//, http://www.w3.org/tr/html4/frameset.dtd
+|*| .
+
+@ HTML 5 
+@ Для всех документов.
+#data
+<!DOCTYPE html>
+#document
+|D| html, , 
+|*| .
+
+@ XHTML 1.0 
+@ Строгий синтаксис XHTML.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd">
+#document
+|D| html, -//w3c//dtd xhtml 1.0 strict//en, http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd
+|*| .
+
+@ XHTML 1.0 
+@ Переходный синтаксис XHTML.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+#document
+|D| html, -//w3c//dtd xhtml 1.0 transitional//, http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd
+|*| .
+
+@ XHTML 1.0 
+@ Документ написан на XHTML и содержит фреймы.
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd xhtml 1.0 frameset//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-frameset.dtd">
+#document
+|D| html, -//w3c//dtd xhtml 1.0 frameset//, http://www.w3.org/tr/xhtml1/dtd/xhtml1-frameset.dtd
+|*| .
+
+@ XHTML 1.1 
+@ Синтаксис не отличается от XHTML 1.0
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd xhtml 1.1//en" "http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd">
+#document
+|D| html, -//w3c//dtd xhtml 1.1//en, http://www.w3.org/tr/xhtml11/dtd/xhtml11.dtd
+|*| .
+
+@ PUBLIC
+#data
+<!DOCTYPE html PUBLIC "-//w3c//dtd html transitional 4.01//en">
+#document
+|D| html, -//w3c//dtd html transitional 4.01//en, 
+|*| .
+
+@ SYSTEM
+#data
+<!DOCTYPE html SYSTEM "-//w3c//dtd html transitional 4.01//en">
+#document
+|D| html, , -//w3c//dtd html transitional 4.01//en
+|*| .

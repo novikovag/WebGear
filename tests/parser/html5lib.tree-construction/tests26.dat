@@ -1,0 +1,214 @@
+#data
+<!DOCTYPE html><body><a href='#1'><nobr>1<nobr></a><br><a href='#2'><nobr>2<nobr></a><br><a href='#3'><nobr>3<nobr></a>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    A, href='#1'
+      NOBR
+        "1"
+      NOBR
+    NOBR
+      BR
+      A, href='#2'
+    A, href='#2'
+      NOBR
+        "2"
+      NOBR
+    NOBR
+      BR
+      A, href='#3'
+    A, href='#3'
+      NOBR
+        "3"
+      NOBR
+
+#data
+<!DOCTYPE html><body><b><nobr>1<nobr></b><i><nobr>2<nobr></i>3
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+      NOBR
+    NOBR
+      I
+    I
+      NOBR
+        "2"
+      NOBR
+    NOBR
+      "3"
+
+#data
+<!DOCTYPE html><body><b><nobr>1<table><nobr></b><i><nobr>2<nobr></i>3
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+        NOBR
+          I
+        I
+          NOBR
+            "2"
+          NOBR
+        NOBR
+          "3"
+        TABLE
+
+#data
+<!DOCTYPE html><body><b><nobr>1<table><tr><td><nobr></b><i><nobr>2<nobr></i>3
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+        TABLE
+          TBODY
+            TR
+              TD
+                NOBR
+                  I
+                I
+                  NOBR
+                    "2"
+                  NOBR
+                NOBR
+                  "3"
+
+#data
+<!DOCTYPE html><body><b><nobr>1<div><nobr></b><i><nobr>2<nobr></i>3
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+    DIV
+      B
+        NOBR
+        NOBR
+      NOBR
+        I
+      I
+        NOBR
+          "2"
+        NOBR
+      NOBR
+        "3"
+
+#data
+<!DOCTYPE html><body><b><nobr>1<nobr></b><div><i><nobr>2<nobr></i>3
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+      NOBR
+    DIV
+      NOBR
+        I
+      I
+        NOBR
+          "2"
+        NOBR
+      NOBR
+        "3"
+
+#data
+<!DOCTYPE html><body><b><nobr>1<nobr><ins></b><i><nobr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+      NOBR
+        INS
+    NOBR
+      I
+    I
+      NOBR
+
+#data
+<!DOCTYPE html><body><b><nobr>1<ins><nobr></b><i>2
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      NOBR
+        "1"
+        INS
+      NOBR
+    NOBR
+      I
+        "2"
+
+#data
+<!DOCTYPE html><body><b>1<nobr></b><i><nobr>2</i>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    B
+      "1"
+      NOBR
+    NOBR
+      I
+    I
+      NOBR
+        "2"
+
+#data
+<p><code x</code></p> 
+#document
+HTML
+  HEAD
+  BODY
+    P
+      CODE, code, x<
+    CODE, code, x<
+      " "
+
+#data
+<!DOCTYPE html><body><div><!/div>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+      !/div!
+      "a"
+
+#data
+<button><p><button>
+#document
+HTML
+  HEAD
+  BODY
+    BUTTON
+      P
+    BUTTON
+

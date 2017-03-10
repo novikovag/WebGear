@@ -1,0 +1,341 @@
+#data
+<!doctype html><body><title>X</title>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TITLE
+      "X"
+
+#data
+<!doctype html><table><title>X</title></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TITLE
+      "X"
+    TABLE
+
+#data
+<!doctype html><head></head><title>X</title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "X"
+  BODY
+
+#data
+<!doctype html></head><title>X</title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "X"
+  BODY
+
+#data
+<!doctype html><table><meta></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    META
+    TABLE
+
+#data
+<!doctype html><table>X<tr><td><table> <meta></table></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    TABLE
+      TBODY
+        TR
+          TD
+            META
+            TABLE
+              " "
+
+#data
+<!doctype html><html> <head>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!doctype html> <head>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!doctype html><table><style> <tr>x </style> </table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      STYLE
+        " <tr>x "
+      " "
+
+#data
+<!doctype html><table><TBODY><script> <tr>x </script> </table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        SCRIPT
+          " <tr>x "
+        " "
+
+#data
+<!doctype html><p><applet><p>X</p></applet>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      APPLET
+        P
+          "X"
+
+#data
+<!doctype html><p><object type="application/x-non-existant-plugin"><p>X</p></object>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      OBJECT, type='application/x-non-existant-plugin'
+        P
+          "X"
+
+#data
+<!doctype html><listing> X</listing>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LISTING
+      " X"
+
+#data
+<!doctype html><select><input>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+    INPUT
+    "X"
+
+#data
+<!doctype html><select><select>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+    "X"
+
+#data
+<!doctype html><table><input type=hidDEN></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      INPUT, type='hidDEN'
+
+#data
+<!doctype html><table>X<input type=hidDEN></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    TABLE
+      INPUT, type='hidDEN'
+
+#data
+<!doctype html><table>  <input type=hidDEN></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      "  "
+      INPUT, type='hidDEN'
+
+#data
+<!doctype html><table>  <input type='hidDEN'></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      "  "
+      INPUT, type='hidDEN'
+
+#data
+<!doctype html><table><input type=" hidden"><input type=hidDEN></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    INPUT, type=' hidden'
+    TABLE
+      INPUT, type='hidDEN'
+
+#data
+<!doctype html><table><select>X<tr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      "X"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><select>X</select>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      "X"
+
+#data
+<!DOCTYPE hTmL><html></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE HTML><html></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data, fragment html
+<body>X</body></body>
+#document
+HTML
+  HEAD
+  BODY
+    "X"
+
+#data
+<div><p>a</x> b
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      P
+        "a"
+        " b"
+
+#data
+<table><tr><td><code></code> </table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            CODE
+            " "
+
+#data
+<table><b><tr><td>aaa</td></tr>bbb</table>ccc
+#document
+HTML
+  HEAD
+  BODY
+    B
+    B
+      "bbb"
+    TABLE
+      TBODY
+        TR
+          TD
+            "aaa"
+    B
+      "ccc"
+
+#data
+A<table><tr> B</tr> B</table>
+#document
+HTML
+  HEAD
+  BODY
+    "A"
+    " B"
+    " B"
+    TABLE
+      TBODY
+        TR
+
+#data
+A<table><tr> B</tr> </em>C</table>
+#document
+HTML
+  HEAD
+  BODY
+    "A"
+    " B"
+    "C"
+    TABLE
+      TBODY
+        TR
+        " "
+
+#data
+<select><keygen>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+    KEYGEN
+

@@ -1,0 +1,40 @@
+#data
+<button>1</foo>
+#document
+HTML
+  HEAD
+  BODY
+    BUTTON
+      "1"
+
+#data
+<foo>1<p>2</foo>
+#document
+HTML
+  HEAD
+  BODY
+    FOO
+      "1"
+      P
+        "2"
+
+#data
+<dd>1</foo>
+#document
+HTML
+  HEAD
+  BODY
+    DD
+      "1"
+
+#data
+<foo>1<dd>2</foo>
+#document
+HTML
+  HEAD
+  BODY
+    FOO
+      "1"
+      DD
+        "2"
+

@@ -1,0 +1,23 @@
+@===============================================================================
+@           Interface NodeList
+@===============================================================================
+
+#data
+    var count = 10000;
+    var array = new Array(count);
+    var e1    = document.createElement("div");
+
+    for (var i = 0; i < count; i++) {
+        var e2 = document.createElement('div');
+        e1.appendChild(e2);
+    }
+    
+    for (var i = 0; i < count; i++) {
+        array[i] = e1.childNodes[count * 2 - i * 2 - 1];
+    }
+    
+    console.log(array.length);
+#document
+10000
+
+@---

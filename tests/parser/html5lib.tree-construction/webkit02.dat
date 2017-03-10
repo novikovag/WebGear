@@ -1,0 +1,228 @@
+#data
+<foo bar=qux/>
+#document
+HTML
+  HEAD
+  BODY
+    FOO, bar='qux'
+
+#data, script on
+<p id="status"><noscript><strong>A</strong></noscript><span>B</span></p>
+#document
+HTML
+  HEAD
+  BODY
+    P, id='status'
+      NOSCRIPT
+        "<strong>A</strong>"
+      SPAN
+        "B"
+
+#data
+<p id="status"><noscript><strong>A</strong></noscript><span>B</span></p>
+#document
+HTML
+  HEAD
+  BODY
+    P, id='status'
+      NOSCRIPT
+        STRONG
+          "A"
+      SPAN
+        "B"
+
+#data
+<div><sarcasm><div></div></sarcasm></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      SARCASM
+        DIV
+
+#data
+<html><body><img src="" border="0" alt="><div>A</div></body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<table><td></tbody>A
+#document
+HTML
+  HEAD
+  BODY
+    "A"
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<table><td></thead>A
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "A"
+
+#data
+<table><td></tfoot>A
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "A"
+
+#data
+<table><thead><td></tbody>A
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      THEAD
+        TR
+          TD
+            "A"
+
+#data
+<legend>test</legend>
+#document
+HTML
+  HEAD
+  BODY
+    LEGEND
+      "test"
+
+#data
+<table><input>
+#document
+HTML
+  HEAD
+  BODY
+    INPUT
+    TABLE
+
+#data
+<b><em><foo><foo><aside></b>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      EM
+        FOO
+          FOO
+    EM
+      ASIDE
+        B
+
+#data
+<b><em><foo><foo><aside></b></em>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      EM
+        FOO
+          FOO
+    EM
+    ASIDE
+      EM
+        B
+
+#data
+<b><em><foo><foo><foo><aside></b>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      EM
+        FOO
+          FOO
+            FOO
+    ASIDE
+      B
+
+#data
+<b><em><foo><foo><foo><aside></b></em>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      EM
+        FOO
+          FOO
+            FOO
+    ASIDE
+      B
+
+#data, fragment div
+<b><em><foo><foo><foo><foo><foo><foo><foo><foo><foo><foo><aside></b></em>
+#document
+HTML
+  DIV
+    B
+      EM
+        FOO
+          FOO
+            FOO
+              FOO
+                FOO
+                  FOO
+                    FOO
+                      FOO
+                        FOO
+                          FOO
+    ASIDE
+      B
+    
+#data, fragment div
+<b><em><foo><foob><foob><foob><foob><fooc><fooc><fooc><fooc><food><aside></b></em>
+#document
+HTML
+  DIV
+    B
+      EM
+        FOO
+          FOOB
+            FOOB
+              FOOB
+                FOOB
+                  FOOC
+                    FOOC
+                      FOOC
+                        FOOC
+                          FOOD
+    ASIDE
+      B
+
+#data, fragment select
+<option><XH<optgroup></optgroup>
+#document
+HTML
+  OPTION
+
+#data
+</foreignObject><plaintext><div>foo</div>
+#document
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "<div>foo</div>"
+

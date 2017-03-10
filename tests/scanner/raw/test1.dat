@@ -1,0 +1,45 @@
+@===============================================================================
+@           RCDATA
+@===============================================================================
+
+#data, textarea
+text1 text2 text3</textarea>
+#document
+|T| text1 text2 text3
+|>| TEXTAREA
+|*| .
+
+#data, textarea
+text1 text2 text3</textarea/>
+#document
+|T| text1 text2 text3
+|>| TEXTAREA
+|*| .
+
+#data, textarea
+text1 text2 text3</textarea >
+#document
+|T| text1 text2 text3
+|>| TEXTAREA
+|*| .
+
+#data, textarea
+text1 &amp; text2</textarea>
+#document
+|T| text1 & text2
+|>| TEXTAREA
+|*| .
+
+#data, title
+&#123; &amp; text</title>
+#document
+|T| { & text
+|>| TITLE
+|*| .
+
+#data, title
+text1 text2 text3</title*>
+#document
+|T| text1 text2 text3</title*>
+|*| .
+

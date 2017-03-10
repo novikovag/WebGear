@@ -1,0 +1,198 @@
+#data
+<!DOCTYPE html><body><foo>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FOO
+      "A"
+
+#data
+<!DOCTYPE html><body><area>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    AREA
+    "A"
+
+#data
+<!DOCTYPE html><body><base>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BASE
+    "A"
+
+#data
+<!DOCTYPE html><body><basefont>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BASEFONT
+    "A"
+
+#data
+<!DOCTYPE html><body><bgsound>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BGSOUND
+    "A"
+
+#data
+<!DOCTYPE html><body><br>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BR
+    "A"
+
+#data
+<!DOCTYPE html><body><col>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "A"
+
+#data
+<!DOCTYPE html><body><command>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    COMMAND
+      "A"
+
+#data
+<!DOCTYPE html><body><embed>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    EMBED
+    "A"
+
+#data
+<!DOCTYPE html><body><frame>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "A"
+
+#data
+<!DOCTYPE html><body><hr>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    HR
+    "A"
+
+#data
+<!DOCTYPE html><body><img>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IMG
+    "A"
+
+#data
+<!DOCTYPE html><body><input>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    INPUT
+    "A"
+
+#data
+<!DOCTYPE html><body><keygen>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    KEYGEN
+    "A"
+
+#data
+<!DOCTYPE html><body><link>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LINK
+    "A"
+
+#data
+<!DOCTYPE html><body><meta>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    META
+    "A"
+
+#data
+<!DOCTYPE html><body><param>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PARAM
+    "A"
+
+#data
+<!DOCTYPE html><body><source>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SOURCE
+    "A"
+
+#data
+<!DOCTYPE html><body><track>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TRACK
+    "A"
+
+#data
+<!DOCTYPE html><body><wbr>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    WBR
+    "A"
+

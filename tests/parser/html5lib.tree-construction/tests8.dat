@@ -1,0 +1,107 @@
+#data
+<div> <div></div> </span>x
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      " "
+      DIV
+      " "
+      "x"
+
+#data
+<div>x<div></div> </span>x
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "x"
+      DIV
+      " "
+      "x"
+
+#data
+<div>x<div></div>x</span>x
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "x"
+      DIV
+      "x"
+      "x"
+
+#data
+<div>x<div></div>y</span>z
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "x"
+      DIV
+      "y"
+      "z"
+
+#data
+<table><div>x<div></div>x</span>x
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "x"
+      DIV
+      "x"
+      "x"
+    TABLE
+
+#data
+x<table>x
+#document
+HTML
+  HEAD
+  BODY
+    "x"
+    "x"
+    TABLE
+
+#data
+x<table><table>x
+#document
+HTML
+  HEAD
+  BODY
+    "x"
+    TABLE
+    "x"
+    TABLE
+
+#data
+<b>a<div></div><div></b>y
+#document
+HTML
+  HEAD
+  BODY
+    B
+      "a"
+      DIV
+    DIV
+      B
+      "y"
+
+#data
+<a><div><p></a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    DIV
+      A
+      P
+        A
+

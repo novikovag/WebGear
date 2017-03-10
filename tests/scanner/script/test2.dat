@@ -1,0 +1,67 @@
+@===============================================================================
+@           SCRIPT
+@===============================================================================
+
+#data, script
+'<!-- <sCrIpt>'</script>
+#document
+|T| '<!-- <sCrIpt>'</script>
+|*| .
+
+#data, script
+'<!-- <sCrIpt> -'</script>
+#document
+|T| '<!-- <sCrIpt> -'</script>
+|*| .
+
+#data, script
+'<!-- <sCrIpt> --'</script>
+#document
+|T| '<!-- <sCrIpt> --'</script>
+|*| .
+
+#data, script
+<!-- <sCrIpt> --!></script>
+#document
+|T| <!-- <sCrIpt> --!></script>
+|*| .
+
+#data, script
+<!-- <sCrIpt> -- ></script>
+#document
+|T| <!-- <sCrIpt> -- ></script>
+|*| .
+
+#data, script
+<!-- <sCrIpt </script>
+#document
+|T| <!-- <sCrIpt </script>
+|*| .
+
+#data, script
+<!-- <sCrIpt/</script>
+#document
+|T| <!-- <sCrIpt/</script>
+|*| .
+
+#data, script
+document.write("<i>Hello World!</i>");</script
+#document
+|T| document.write("<i>Hello World!</i>");</script
+|*| .
+
+#data, script
+document.write("<i>Hello World!</i>");</scriptx
+#document
+|T| document.write("<i>Hello World!</i>");</scriptx
+|*| .
+
+#data, script
+ 123 <!-- </script> --> </script> 456
+#document
+|T|  123 <!-- 
+|>| SCRIPT
+|T|  --> 
+|>| SCRIPT
+|T|  456
+|*| .

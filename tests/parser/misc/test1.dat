@@ -1,0 +1,65 @@
+@===============================================================================
+@           Дополнительные тесты               
+@===============================================================================
+
+#data
+<!doctype html><form><table></form><form></table></form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FORM
+      TABLE
+        FORM
+
+#data
+<!doctype html><form><table></form><form></table></form><div><a>text</form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FORM
+      TABLE
+        FORM
+    DIV
+      A
+        "text"
+        
+@ Сравнение атрибутов в 'afe_push'.
+#data
+<p><font size=4><font size=4><font size=4><font size=4><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='4'
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            "X"
+            
+@ Сравнение атрибутов в 'afe_push'.
+#data
+<p><font size=4><font size=4><font size=4><font size=5><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='5'
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='5'
+              "X"

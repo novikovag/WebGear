@@ -1,0 +1,202 @@
+@===============================================================================
+@           Атрибуты
+@===============================================================================
+
+@ '/>' самозакрывающий тег.
+#data
+<tag src=https://resources.whatwg.org/dfn.js/>
+#document
+|<| TAG
+|A| src
+|V| https://resources.whatwg.org/dfn.js
+|*| .
+
+@ '/>' самозакрывающий тег.
+#data
+<tag a=val/>
+#document
+|<| TAG
+|A| a
+|V| val
+|*| .
+
+@ '/' в конце значения.
+#data
+<tag src=https://resources.whatwg.org/dfn.js/ >
+#document
+|<| TAG
+|A| src
+|V| https://resources.whatwg.org/dfn.js/
+|*| .
+
+@ '<' в имени атрибута.
+#data
+<z/0  <>
+#document
+|<| Z
+|A| 0
+|A| <
+|*| .
+
+@ '<' в значение атрибута.
+#data
+<z x=<>
+#document
+|<| Z
+|A| x
+|V| <
+|*| .
+
+@ '=' в значение атрибута.
+#data
+<z z=z=z>
+#document
+|<| Z
+|A| z
+|V| z=z
+|*| .
+
+@ '=' атрибут.
+#data
+<z =>
+#document
+|<| Z
+|A| =
+|*| .
+
+@ '=' атрибут.
+#data
+<z ==>
+#document
+|<| Z
+|A| =
+|*| .
+
+@ '=' атрибут.
+#data
+<z ===>
+#document
+|<| Z
+|A| =
+|V| =
+|*| .
+
+@ '=' атрибут.
+#data
+<z ====>
+#document
+|<| Z
+|A| =
+|V| ==
+|*| .
+
+@ Имя атрибута c '\'.
+#data
+<foo \"='bar'>
+#document
+|<| FOO
+|A| \"
+|V| bar
+|*| .
+
+@ Имя атрибута c '''.
+#data
+<foo '='bar'>
+#document
+|<| FOO
+|A| '
+|V| bar
+|*| .
+
+@ Имя атрибута '\'.
+#data
+<foo a\"b='bar'>
+#document
+|<| FOO
+|A| a\"b
+|V| bar
+|*| .
+
+@ Имя атрибута '''.
+#data
+<foo a'b='bar'>
+#document
+|<| FOO
+|A| a'b
+|V| bar
+|*| .
+
+@ Значение атрибута '''.
+#data
+<foo a=b'c>
+#document
+|<| FOO
+|A| a
+|V| b'c
+|*| .
+
+@ Значение атрибута '\'.
+#data
+<foo a=b\"c>
+#document
+|<| FOO
+|A| a
+|V| b\"c
+|*| .
+
+@ Значение атрибута '\'.
+#data
+<foo a=\"b\"c>
+#document
+|<| FOO
+|A| a
+|V| \"b\"c
+|*| .
+
+@ Имя атрибута без пробела.
+#data
+<foo a='b'c>
+#document
+|<| FOO
+|A| a
+|V| b
+|A| c
+|*| .
+
+@ Самозакрывающийся тег.
+#data
+<br a='b'/>
+#document
+|<| BR
+|A| a
+|V| b
+|*| .
+
+@ Дублирование атрибутов.
+#data
+<div x= x=2 x=3>
+#document
+|<| DIV
+|A| x
+|V| x=2
+|*| .
+
+@ Дублирование атрибутов.
+#data
+<div x=2 x=3>
+#document
+|<| DIV
+|A| x
+|V| 2
+|*| .
+
+@ Дублирование атрибутов.
+#data
+<div x="one" x=3 y=1 y="two">
+#document
+|<| DIV
+|A| x
+|V| one
+|A| y
+|V| 1
+|*| .

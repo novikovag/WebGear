@@ -1,0 +1,63 @@
+@===============================================================================
+@           DATA
+@===============================================================================
+
+#data
+test1&sum;text2&#8721;text3&amp;
+#document
+|T| test1∑text2∑text3&
+|*| .
+
+#data
+&
+#document
+|T| &
+|*| .
+
+#data
+&123
+#document
+|T| &123
+|*| .
+
+#data
+abc &*def
+#document
+|T| abc &*def
+|*| .
+
+#data
+abc &&&&&&&& def
+#document
+|T| abc &&&&&&&& def
+|*| .
+
+#data
+abc&;def
+#document
+|T| abc&;def
+|*| .
+
+#data
+&#
+#document
+|T| &#
+|*| .
+
+#data
+&#a
+#document
+|T| &#a
+|*| .
+
+#data
+&######
+#document
+|T| &######
+|*| .
+
+#data
+&##x123
+#document
+|T| &##x123
+|*| .

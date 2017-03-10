@@ -1,0 +1,28 @@
+@===============================================================================
+@           CDATA
+@===============================================================================
+
+#data
+<![CDATA[//><!--text text text//--><!]]></script>
+#document
+|!| //><!--text text text//--><!
+|>| SCRIPT
+|*| .
+
+#data
+<![CDATA[<!--text-->]]></script>
+#document
+|!| <!--text-->
+|>| SCRIPT
+|*| .
+
+#data
+<![CDATA[<b>Bender Rodriguez</b>]]>
+#document
+|!| <b>Bender Rodriguez</b>
+|*| .
+
+#data
+<![CDATA[]]>
+#document
+|*| .

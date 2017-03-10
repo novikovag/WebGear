@@ -1,0 +1,90 @@
+@===============================================================================
+@           Шестнадцатиричные символьные ссылки.
+@===============================================================================
+
+#data
+&#xA9;
+#document
+|T| ©
+|*| .
+
+#data
+&#XA9;
+#document
+|T| ©
+|*| .
+
+#data
+&#x7B;
+#document
+|T| {
+|*| .
+
+#data
+&#X7B;
+#document
+|T| {
+|*| .
+
+#data
+&#x7b;
+#document
+|T| {
+|*| .
+
+#data
+&#xb1;
+#document
+|T| ±
+|*| .
+
+#data
+abc&#xA9;def
+#document
+|T| abc©def
+|*| .
+
+#data
+&#xA9
+#document
+|T| ©
+|*| .
+
+#data
+abc&#xA9xyz
+#document
+|T| abc©xyz
+|*| .
+
+#data
+&#XA9;
+#document
+|T| ©
+|*| .
+
+#data
+&#x01aBc;
+#document
+|T| ᪼
+|*| .
+
+@ Ведущие нули.
+#data
+&#x000000000000000000000000000000000000000000000000000000000000000000000000000A9
+#document
+|T| ©
+|*| .
+
+@ Максимальное значение.
+#data
+&#xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+#document
+|T| �
+|*| .
+
+@ Максимальное значение.
+#data
+&#xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA;
+#document
+|T| �
+|*| .

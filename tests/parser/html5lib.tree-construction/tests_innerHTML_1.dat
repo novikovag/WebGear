@@ -1,0 +1,576 @@
+#data, fragment body
+<body><span>
+#document
+HTML
+  SPAN
+
+#data, fragment body
+<span><body>
+#document
+HTML
+  SPAN
+
+#data, fragment div
+<span><body>
+#document
+HTML
+  DIV
+    SPAN
+
+#data, fragment html
+<body><span>
+#document
+HTML
+  HEAD
+  BODY
+    SPAN
+
+#data, fragment body
+<frameset><span>
+#document
+HTML
+  SPAN
+
+#data, fragment body
+<span><frameset>
+#document
+HTML
+  SPAN
+
+#data, fragment div
+<span><frameset>
+#document
+HTML
+  DIV
+    SPAN
+
+#data, fragment html
+<frameset><span>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data, fragment table
+<table><tr>
+#document
+HTML
+  TBODY
+    TR
+
+#data, fragment table
+</table><tr>
+#document
+HTML
+  TBODY
+    TR
+
+#data, fragment table
+<a>
+#document
+HTML
+  A
+
+#data, fragment table
+<a>
+#document
+HTML
+  A
+
+#data, fragment table
+<a><caption>a
+#document
+HTML
+  A
+  CAPTION
+    "a"
+
+#data, fragment table
+<a><colgroup><col>
+#document
+HTML
+  A
+  COLGROUP
+    COL
+
+#data, fragment table
+<a><tbody><tr>
+#document
+HTML
+  A
+  TBODY
+    TR
+
+#data, fragment table
+<a><tfoot><tr>
+#document
+HTML
+  A
+  TFOOT
+    TR
+
+#data, fragment table
+<a><thead><tr>
+#document
+HTML
+  A
+  THEAD
+    TR
+
+#data, fragment table
+<a><tr>
+#document
+HTML
+  A
+  TBODY
+    TR
+
+#data, fragment table
+<a><th>
+#document
+HTML
+  A
+  TBODY
+    TR
+      TH
+
+#data, fragment table
+<a><td>
+#document
+HTML
+  A
+  TBODY
+    TR
+      TD
+
+#data, fragment caption
+<table></table><tbody>
+#document
+HTML
+  TABLE
+
+#data, fragment caption
+</table><span>
+#document
+HTML
+  SPAN
+
+#data, fragment caption
+<span></table>
+#document
+HTML
+  SPAN
+
+#data, fragment caption
+</caption><span>
+#document
+HTML
+  SPAN
+
+#data, fragment caption
+<span></caption><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><caption><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><col><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><colgroup><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><html><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><tbody><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><td><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><tfoot><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><thead><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><th><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span><tr><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment caption
+<span></table><span>
+#document
+HTML
+  SPAN
+    SPAN
+
+#data, fragment colgroup
+</colgroup><col>
+#document
+HTML
+  COL
+
+#data, fragment colgroup
+<a><col>
+#document
+HTML
+  COL
+
+#data, fragment tbody
+<caption><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<col><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<colgroup><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<tbody><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<tfoot><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<thead><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+</table><a>
+#document
+HTML
+  A
+
+#data, fragment tbody
+<a><tr>
+#document
+HTML
+  A
+  TR
+
+#data, fragment tbody
+<a><td>
+#document
+HTML
+  A
+  TR
+    TD
+
+#data, fragment tbody
+<a><td>
+#document
+HTML
+  A
+  TR
+    TD
+
+#data, fragment tbody
+<a><td>
+#document
+HTML
+  A
+  TR
+    TD
+
+#data, fragment tbody
+<td><table><tbody><a><tr>
+#document
+HTML
+  TR
+    TD
+      A
+      TABLE
+        TBODY
+          TR
+
+#data, fragment tr
+</tr><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<td><table><a><tr></tr><tr>
+#document
+HTML
+  TD
+    A
+    TABLE
+      TBODY
+        TR
+        TR
+
+#data, fragment tr
+<caption><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<col><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<colgroup><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<tbody><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<tfoot><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<thead><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<tr><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+</table><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+<td><table></table><td>
+#document
+HTML
+  TD
+    TABLE
+  TD
+
+#data, fragment tr
+<td><table></table><td>
+#document
+HTML
+  TD
+    TABLE
+  TD
+
+#data, fragment td
+<caption><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<col><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<colgroup><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<tbody><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<tfoot><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<th><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<thead><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<tr><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</table><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</tbody><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</td><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</tfoot><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</thead><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</th><a>
+#document
+HTML
+  A
+
+#data, fragment td
+</tr><a>
+#document
+HTML
+  A
+
+#data, fragment td
+<table><td><td>
+#document
+HTML
+  TABLE
+    TBODY
+      TR
+        TD
+        TD
+
+#data, fragment select
+</select><option>
+#document
+HTML
+  OPTION
+
+#data, fragment select
+<input><option>
+#document
+HTML
+  OPTION
+
+#data, fragment select
+<keygen><option>
+#document
+HTML
+  OPTION
+
+#data, fragment select
+<textarea><option>
+#document
+HTML
+  OPTION
+
+#data, fragment html
+</html><!--abc-->
+#document
+HTML
+  HEAD
+  BODY
+  !abc!
+
+#data, fragment frameset
+</frameset><frame>
+#document
+HTML
+  FRAMESET
+  FRAME
+
+#data, fragment html
+
+#document
+HTML
+  HEAD
+  BODY
+

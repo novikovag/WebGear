@@ -1,0 +1,106 @@
+@===============================================================================
+@           Interface WindowOrWorkerGlobalScope
+@===============================================================================
+
+#data
+    setTimeout(function(a, b, c) {console.log(this + " " + a + " " + b + " " + c)}, 50, "1", "2", "3");
+    setTimeout(function() {console.log("Привет!")}, 100);
+    
+    var ms = 150 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+[object Window] 1 2 3
+Привет!
+
+@---
+
+#data
+    var callback1 = function(a, b) { 
+        console.log("Привет1! " + this); 
+    }
+    
+    var callback2 = function(a, b) { 
+        console.log("Привет2! " + a + " " + b); 
+    }
+
+    setTimeout(callback1, 90);
+    setTimeout(callback2, 100, "a", "b");
+    setTimeout("console.log('Привет3')", 10);
+
+    var id = setTimeout("console.log('Привет4')", 10);
+    clearTimeout(id);
+    
+    var ms = 500 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+Привет3
+Привет1! [object Window]
+Привет2! a b
+
+@---
+
+#data
+    var callback1 = function() { 
+        console.log("Привет1!"); 
+    }
+    
+    var callback2 = function() { 
+        console.log("Привет2!"); 
+    }
+  
+    var callback3 = function() { 
+        console.log("Привет3!"); 
+    }
+
+    var callback4 = function() { 
+        console.log("Привет4!"); 
+    }
+
+
+    setTimeout(callback1, 100);
+    setTimeout(callback2, 100);
+    setTimeout(callback3, 100);
+    setTimeout(callback4, 100);
+ 
+    var ms = 500 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+Привет1!
+Привет2!
+Привет3!
+Привет4!
+
+@---
+
+#data
+    var callback1 = function() { 
+        console.log("Привет1!"); 
+    }
+    
+    var callback2 = function() { 
+        console.log("Привет2!"); 
+    }
+  
+    var callback3 = function() { 
+        console.log("Привет3!"); 
+    }
+
+    var callback4 = function() { 
+        console.log("Привет4!"); 
+    }
+
+
+    setTimeout(callback1, 400);
+    setTimeout(callback2, 300);
+    setTimeout(callback3, 200);
+    setTimeout(callback4, 100);
+ 
+    var ms = 500 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+Привет4!
+Привет3!
+Привет2!
+Привет1!
+
+@---

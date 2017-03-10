@@ -1,0 +1,976 @@
+#data
+<!doctype html><html></p><!--foo-->
+#document
+!HTML
+HTML
+  !foo!
+  HEAD
+  BODY
+
+#data
+<!doctype html><head></head></p><!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  !foo!
+  BODY
+
+#data
+<!doctype html><body><p><pre>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    PRE
+
+#data
+<!doctype html><body><p><listing>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    LISTING
+
+#data
+<!doctype html><p><plaintext>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    PLAINTEXT
+
+#data
+<!doctype html><p><h1>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    H1
+
+#data
+<!doctype html><isindex type="hidden">
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    ISINDEX, type='hidden'
+
+#data
+<!doctype html><ruby><p><rp>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      P
+      RP
+
+#data
+<!doctype html><ruby><div><span><rp>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        SPAN
+          RP
+
+#data
+<!doctype html><ruby><div><p><rp>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        P
+        RP
+
+#data
+<!doctype html><ruby><p><rt>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      P
+      RT
+
+#data
+<!doctype html><ruby><div><span><rt>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        SPAN
+          RT
+
+#data
+<!doctype html><ruby><div><p><rt>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        P
+        RT
+
+#data
+<html><ruby>a<rb>b<rt></ruby></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      "a"
+      RB
+        "b"
+      RT
+
+#data
+<html><ruby>a<rp>b<rt></ruby></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      "a"
+      RP
+        "b"
+      RT
+
+#data
+<html><ruby>a<rt>b<rt></ruby></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      "a"
+      RT
+        "b"
+      RT
+
+#data
+<html><ruby>a<rtc>b<rt>c<rb>d</ruby></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      "a"
+      RTC
+        "b"
+        RT
+          "c"
+      RB
+        "d"
+
+#data
+<!doctype html><div></body><!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+  !foo!
+
+#data
+<!doctype html><h1><div><h3><span></h1>foo
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    H1
+      DIV
+        H3
+          SPAN
+        "foo"
+
+#data
+<!doctype html><p></h3>foo
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      "foo"
+
+#data
+<!doctype html><h3><li>abc</h2>foo
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    H3
+      LI
+        "abc"
+    "foo"
+
+#data
+<!doctype html><table>abc<!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "abc"
+    TABLE
+      !foo!
+
+#data
+<!doctype html><table>  <!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      "  "
+      !foo!
+
+#data
+<!doctype html><table> b <!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " b "
+    TABLE
+      !foo!
+
+#data
+<!doctype html><select><option><option>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+      OPTION
+
+#data
+<!doctype html><select><option></optgroup>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+
+#data
+<!doctype html><select><option></optgroup>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+
+#data
+<!doctype html><dd><optgroup><dd>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DD
+      OPTGROUP
+    DD
+
+#data
+<!doctype html><frameset></noframes>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><html c=d><body></html><html a=b>
+#document
+!HTML
+HTML, a='b', c='d'
+  HEAD
+  BODY
+
+#data
+<!doctype html><html c=d><frameset></frameset></html><html a=b>
+#document
+!HTML
+HTML, a='b', c='d'
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><html><frameset></frameset></html><!--foo-->
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+!foo!
+
+#data
+<!doctype html><html><frameset></frameset></html>  
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+  "  "
+
+#data
+<!doctype html><html><frameset></frameset></html>abc
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><html><frameset></frameset></html><p>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><html><frameset></frameset></html></p>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<html><frameset></frameset></html><!doctype html>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><body><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!doctype html><p><frameset><frame>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<!doctype html><p>a<frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      "a"
+
+#data
+<!doctype html><p> <frameset><frame>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<!doctype html><pre><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+
+#data
+<!doctype html><listing><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LISTING
+
+#data
+<!doctype html><li><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LI
+
+#data
+<!doctype html><dd><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DD
+
+#data
+<!doctype html><dt><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DT
+
+#data
+<!doctype html><button><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BUTTON
+
+#data
+<!doctype html><applet><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    APPLET
+
+#data
+<!doctype html><marquee><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MARQUEE
+
+#data
+<!doctype html><object><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    OBJECT
+
+#data
+<!doctype html><table><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+
+#data
+<!doctype html><area><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    AREA
+
+#data
+<!doctype html><basefont><frameset>
+#document
+!HTML
+HTML
+  HEAD
+    BASEFONT
+  FRAMESET
+
+#data
+<!doctype html><bgsound><frameset>
+#document
+!HTML
+HTML
+  HEAD
+    BGSOUND
+  FRAMESET
+
+#data
+<!doctype html><br><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BR
+
+#data
+<!doctype html><embed><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    EMBED
+
+#data
+<!doctype html><img><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IMG
+
+#data
+<!doctype html><input><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    INPUT
+
+#data
+<!doctype html><keygen><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    KEYGEN
+
+#data
+<!doctype html><wbr><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    WBR
+
+#data
+<!doctype html><hr><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    HR
+
+#data
+<!doctype html><textarea></textarea><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+
+#data
+<!doctype html><xmp></xmp><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    XMP
+
+#data
+<!doctype html><iframe></iframe><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IFRAME
+
+#data
+<!doctype html><select></select><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><svg></svg><frameset><frame>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<!doctype html><math></math><frameset><frame>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<!doctype html><svg> </svg><frameset><frame>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<html>aaa<frameset></frameset>
+#document
+HTML
+  HEAD
+  BODY
+    "aaa"
+
+#data
+<html> a <frameset></frameset>
+#document
+HTML
+  HEAD
+  BODY
+    " a "
+
+#data
+<!doctype html><div><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><div><body><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+
+#data
+<!doctype html><meta charset="ascii">
+#document
+!HTML
+HTML
+  HEAD
+    META, charset='ascii'
+  BODY
+
+#data
+<!doctype html><meta http-equiv="content-type" content="text/html;charset=ascii">
+#document
+!HTML
+HTML
+  HEAD
+    META, content='text/html;charset=ascii', http-equiv='content-type'
+  BODY
+
+#data
+<!doctype html><head><!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--><meta charset="utf8">
+#document
+!HTML
+HTML
+  HEAD
+    !aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!
+    META, charset='utf8'
+  BODY
+
+#data
+<!doctype html><html a=b><head></head><html c=d>
+#document
+!HTML
+HTML, a='b', c='d'
+  HEAD
+  BODY
+
+#data
+<!doctype html><image/>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IMG
+
+#data
+<!doctype html>a<i>b<table>c<b>d</i>e</b>f
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "a"
+    I
+      "b"
+      "c"
+      B
+        "d"
+        "e"
+      "f"
+      TABLE
+
+#data
+<!doctype html><table><i>a<b>b<div>c<a>d</i>e</b>f
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    I
+      "a"
+      B
+        "b"
+    B
+    DIV
+      B
+        I
+          "c"
+          A
+            "d"
+        A
+          "e"
+      A
+        "f"
+    TABLE
+
+#data
+<!doctype html><i>a<b>b<div>c<a>d</i>e</b>f
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    I
+      "a"
+      B
+        "b"
+    B
+    DIV
+      B
+        I
+          "c"
+          A
+            "d"
+        A
+          "e"
+      A
+        "f"
+
+#data
+<!doctype html><table><i>a<b>b<div>c</i>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    I
+      "a"
+      B
+        "b"
+    B
+      DIV
+        I
+          "c"
+    TABLE
+
+#data
+<!doctype html><table><i>a<b>b<div>c<a>d</i>e</b>f
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    I
+      "a"
+      B
+        "b"
+    B
+    DIV
+      B
+        I
+          "c"
+          A
+            "d"
+        A
+          "e"
+      A
+        "f"
+    TABLE
+
+#data
+<!doctype html><table><i>a<div>b<tr>c<b>d</i>e
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    I
+      "a"
+      DIV
+        "b"
+    I
+      "c"
+      B
+        "d"
+    B
+      "e"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><table><td><table><i>a<div>b<b>c</i>d
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            I
+              "a"
+            DIV
+              I
+                "b"
+                B
+                  "c"
+              B
+                "d"
+            TABLE
+
+#data
+<!doctype html><body><bgsound>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BGSOUND
+
+#data
+<!doctype html><body><basefont>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    BASEFONT
+
+#data
+<!doctype html><a><b></a><basefont>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    A
+      B
+    BASEFONT
+
+#data
+<!doctype html><a><b></a><bgsound>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    A
+      B
+    BGSOUND
+
+#data
+<!doctype html><figcaption><article></figcaption>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FIGCAPTION
+      ARTICLE
+    "a"
+
+#data
+<!doctype html><summary><article></summary>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SUMMARY
+      ARTICLE
+    "a"
+
+#data
+<!doctype html><p><a><plaintext>b
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      A
+    PLAINTEXT
+      "b"
+
+#data
+<!DOCTYPE html><div>a<a></div>b<p>c</p>d
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+      "a"
+      A
+    A
+      "b"
+      P
+        "c"
+      "d"
+

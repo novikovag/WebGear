@@ -1,0 +1,138 @@
+@===============================================================================
+@           Interface CharacterData
+@===============================================================================
+
+#data
+    var t = document.createTextNode("Текстовый узел");
+
+    console.log(t.data);
+    console.log(t.length);
+    
+    t.data = "Привет!";
+    
+    console.log(t.data);
+    console.log(t.length);
+#document
+Текстовый узел
+14
+Привет!
+7
+
+@---
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+
+    console.log(t.substringData(6, 5));
+    console.log(t.substringData(6, 9));
+    console.log(t.substringData(6, 50));
+    console.log("_" + t.substringData(20, 50));
+
+    try {
+        t.substringData(25, 50)
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        t.substringData()
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+Текст
+Текстовый
+Текстовый узел
+_
+e: IndexSizeError
+e: TooFewArguments
+
+@---
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+    
+    t.appendData(" ");
+    t.appendData(t);
+    console.log(t.data);
+#document
+DATA: Текстовый узел [object Text]
+
+@---
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+    
+    t.insertData(6, "Привет ");
+    console.log(t.data);
+    
+    try {
+        t.insertData(-5, "")
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+DATA: Привет Текстовый узел
+e: IndexSizeError
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+    
+    try {
+        t.insertData(21, "!")
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    t.insertData(20, "!");
+    console.log(t.data);
+    
+    t.insertData(0, "!");
+    console.log(t.data);
+#document
+e: IndexSizeError
+DATA: Текстовый узел!
+!DATA: Текстовый узел!
+
+@---
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+    
+    t.deleteData(10, 0);
+    console.log(t.data);
+    
+    t.deleteData(6, 10);
+    console.log(t.data);
+    
+    t.deleteData(4, 50);
+    console.log(t.data);
+#document
+DATA: Текстовый узел
+DATA: узел
+DATA
+
+@---
+
+#data
+    var t = document.createTextNode("DATA: Текстовый узел");
+    
+    t.replaceData(0, 0, "+");
+    console.log(t.data);
+    
+    t.replaceData(5, 0, "+");
+    console.log(t.data);
+    
+    t.replaceData(17, 1, "+");
+    console.log(t.data);
+    
+    t.replaceData(17, 20, "!!!");
+    console.log(t.data);
+#document
++DATA: Текстовый узел
++DATA+: Текстовый узел
++DATA+: Текстовый+узел
++DATA+: Текстовый!!!
+
+@---
+

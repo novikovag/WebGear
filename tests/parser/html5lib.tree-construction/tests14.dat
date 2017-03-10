@@ -1,0 +1,60 @@
+#data
+<!DOCTYPE html><html><body><xyz:abc></xyz:abc>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    XYZ:ABC
+
+#data
+<!DOCTYPE html><html><body><xyz:abc></xyz:abc><span></span>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    XYZ:ABC
+    SPAN
+
+#data
+<!DOCTYPE html><html><html abc:def=gh><xyz:abc></xyz:abc>
+#document
+!HTML
+HTML, abc:def='gh'
+  HEAD
+  BODY
+    XYZ:ABC
+
+#data
+<!DOCTYPE html><html xml:lang=bar><html xml:lang=foo>
+#document
+!HTML
+HTML, xml:lang='bar'
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><html 123=456>
+#document
+!HTML
+HTML, 123='456'
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><html 123=456><html 789=012>
+#document
+!HTML
+HTML, 123='456', 789='012'
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><html><body 789=012>
+#document
+!HTML
+HTML
+  HEAD
+  BODY, 789='012'
+

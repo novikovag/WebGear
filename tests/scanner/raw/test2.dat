@@ -1,0 +1,19 @@
+@===============================================================================
+@           RAWTEXT
+@===============================================================================
+
+#data, style
+text1 text2 text3</style>
+#document
+|T| text1 text2 text3
+|>| STYLE
+|*| .
+
+#data, style
+&amp; text1 &amp; text2 &amp; text3</style>
+#document
+|T| &amp; text1 &amp; text2 &amp; text3
+|>| STYLE
+|*| .
+
+

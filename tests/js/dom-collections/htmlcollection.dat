@@ -1,0 +1,173 @@
+@===============================================================================
+@           Interface HTMLCollection
+@===============================================================================
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");    
+    var e3 = document.createElement("c");  
+    var e4 = document.createElement("d");
+    var e5 = document.createElement("e");
+    var e6 = document.createElement("e");       
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc1 = e1.getElementsByTagName("c");  
+    console.log(hc1.length);
+#document
+1
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");    
+    var e3 = document.createElement("c");  
+    var e4 = document.createElement("d");
+    var e5 = document.createElement("e");
+    var e6 = document.createElement("e");       
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc1 = e1.getElementsByTagName("c");
+    var hc2 = e1.getElementsByTagName("e");
+    var hc3 = e1.getElementsByTagName("*");
+    var hc4 = e1.getElementsByTagName("abc");
+    var hc5 = e1.getElementsByTagName("a");
+    
+    console.log(hc1.length);
+    console.log(hc2.length);
+    console.log(hc3.length);
+    console.log(hc4.length);
+    console.log(hc5.length);
+#document
+1
+2
+5
+0
+0
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");    
+    var e3 = document.createElement("c");  
+    var e4 = document.createElement("d");
+    var e5 = document.createElement("e");
+    var e6 = document.createElement("e");       
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc = e1.getElementsByTagName("*");
+
+    console.log(hc[-1]);
+    console.log(hc[2].tagName);
+    console.log(hc[4].tagName);
+    console.log(hc[5]);
+    console.log("---");
+    console.log(hc.item(0).tagName);
+    console.log(hc.item(3).tagName);
+    
+    try {
+        hc.item();
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        hc.item("abc");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+
+#document
+null
+D
+E
+null
+---
+B
+E
+e: TooFewArguments
+e: IllegalArgument
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+        e1.setAttribute("id", "id1");
+        e1.setAttribute("a", "name");
+    var e2 = document.createElement("b");  
+        e2.setAttribute("id", "id2");
+        e2.setAttribute("name", "name2");
+    var e3 = document.createElement("c");  
+        e3.setAttribute("id", "id3");
+        e3.setAttribute("name", "name3");
+    var e4 = document.createElement("d");
+        e4.setAttribute("id", "id4");
+        e4.setAttribute("name", "name4");
+    var e5 = document.createElement("e");
+        e5.setAttribute("id", "id5");
+        e5.setAttribute("name", "name5");
+    var e6 = document.createElement("form");       
+        e6.setAttribute("id", "id6");
+        e6.setAttribute("name", "name6");
+        
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+    e4.appendChild(e5);
+    e5.appendChild(e6);
+    
+    var hc = e1.getElementsByTagName("*");
+
+    console.log(hc["name"]);
+    console.log(hc["name3"].tagName);
+    console.log(hc.name6.tagName);
+    console.log("---");
+    console.log(hc.namedItem("id"));
+    console.log(hc.namedItem("name4").tagName);
+    console.log(hc.namedItem("id5").tagName);
+#document
+null
+C
+FORM
+---
+null
+D
+E
+
+@---
+
+#data
+    var e1 = document.createElement("a");
+    var e2 = document.createElement("b");
+    var e3 = document.createElement("c");
+    
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    
+    var l = e1.childNodes;
+    
+    console.log(l);
+    console.log(l[0].nodeName);
+    console.log(e1.childNodes[1].nodeName);
+#document
+[object NodeList]
+B
+C
+
+@---

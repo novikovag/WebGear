@@ -1,0 +1,256 @@
+#data
+<a><p></a></p>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    P
+      A
+
+#data
+<a>1<p>2</a>3</p>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+    P
+      A
+        "2"
+      "3"
+
+#data
+<a>1<button>2</a>3</button>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+    BUTTON
+      A
+        "2"
+      "3"
+
+#data
+<a>1<b>2</a>3</b>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+      B
+        "2"
+    B
+      "3"
+
+#data
+<a>1<div>2<div>3</a>4</div>5</div>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+    DIV
+      A
+        "2"
+      DIV
+        A
+          "3"
+        "4"
+      "5"
+
+#data
+<table><a>1<p>2</a>3</p>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+    P
+      A
+        "2"
+      "3"
+    TABLE
+
+#data
+<b><b><a><p></a>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      B
+        A
+        P
+          A
+
+#data
+<b><a><b><p></a>
+#document
+HTML
+  HEAD
+  BODY
+    B
+      A
+        B
+      B
+        P
+          A
+
+#data
+<a><b><b><p></a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      B
+        B
+    B
+      B
+        P
+          A
+
+#data
+<p>1<s id="A">2<b id="B">3</p>4</s>5</b>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      "1"
+      S, id='A'
+        "2"
+        B, id='B'
+          "3"
+    S, id='A'
+      B, id='B'
+        "4"
+    B, id='B'
+      "5"
+
+#data
+<table><a>1<td>2</td>3</table>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "1"
+    A
+      "3"
+    TABLE
+      TBODY
+        TR
+          TD
+            "2"
+
+#data
+<table>A<td>B</td>C</table>
+#document
+HTML
+  HEAD
+  BODY
+    "A"
+    "C"
+    TABLE
+      TBODY
+        TR
+          TD
+            "B"
+
+#data
+<div><a><b><div><div><div><div><div><div><div><div><div><div></a>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      A
+        B
+      B
+        DIV
+          A
+          DIV
+            A
+            DIV
+              A
+              DIV
+                A
+                DIV
+                  A
+                  DIV
+                    A
+                    DIV
+                      A
+                      DIV
+                        A
+                          DIV
+                            DIV
+
+#data
+<div><a><b><u><i><code><div></a>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      A
+        B
+          U
+            I
+              CODE
+      U
+        I
+          CODE
+            DIV
+              A
+
+#data
+<b><b><b><b>x</b></b></b></b>y
+#document
+HTML
+  HEAD
+  BODY
+    B
+      B
+        B
+          B
+            "x"
+    "y"
+
+#data
+<p><b><b><b><b><p>x
+#document
+HTML
+  HEAD
+  BODY
+    P
+      B
+        B
+          B
+            B
+    P
+      B
+        B
+          B
+            "x"
+
+#data, fragment div
+<b><em><foo><foob><fooc><aside></b></em>
+#document
+HTML
+  DIV
+    B
+      EM
+        FOO
+          FOOB
+            FOOC
+    ASIDE
+      B

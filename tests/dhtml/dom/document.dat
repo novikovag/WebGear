@@ -1,0 +1,106 @@
+@===============================================================================
+@           Document
+@===============================================================================
+
+#data
+<!-- комментарий 1 -->
+<!DOCTYPE html>
+<!-- комментарий 2 -->
+<html>
+<head></head>
+<body>
+    <script>
+        console.log(document.doctype);
+        console.log(document.documentElement.tagName);
+    </script>
+</body>
+</html>
+#document
+[object DocumentType]
+HTML
+---
+! комментарий 1 !
+!HTML
+! комментарий 2 !
+HTML
+  HEAD
+  ""
+  BODY
+    " "
+    SCRIPT
+      " console.log(document.doctype); console.log(document.documentElement.tagName); "
+    ""
+    ""
+
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <div></div>
+    <div></div>
+    <script>
+        console.log(document.getElementsByTagName("html").length);
+        console.log(document.getElementsByTagName("div").length);
+        console.log(document.getElementsByTagName("a").length);
+    </script>
+    <a></a>
+</body>
+</html>
+#document
+1
+2
+0
+---
+HTML
+  HEAD
+  ""
+  BODY
+    " "
+    DIV
+    " "
+    DIV
+    " "
+    SCRIPT
+      " console.log(document.getElementsByTagName("html").length); console.log(document.getElementsByTagName("div").length); console.log(document.getElementsByTagName("a").length); "
+    " "
+    A
+    ""
+    ""
+
+@---
+
+#data
+<html id="a">
+<head></head>
+<body>
+    <div id="b"></div>
+    <script>
+        console.log(document.getElementById("a").tagName);
+        console.log(document.getElementById("b").tagName);
+        console.log(document.getElementById("c"));
+    </script>
+    <div id="c"></div>
+</body>
+</html>
+#document
+HTML
+DIV
+null
+---
+HTML, id='a'
+  HEAD
+  ""
+  BODY
+    " "
+    DIV, id='b'
+    " "
+    SCRIPT
+      " console.log(document.getElementById("a").tagName); console.log(document.getElementById("b").tagName); console.log(document.getElementById("c")); "
+    " "
+    DIV, id='c'
+    ""
+    ""
+
+@---

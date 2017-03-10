@@ -1,0 +1,23 @@
+@===============================================================================
+@           Interface Comment
+@===============================================================================
+
+#data
+    try {
+        var c1  = new Comment();
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    var c2  = new Comment(c1);
+    var c3  = new Comment("Комментарий");
+    
+    console.log(c2.data);
+    console.log(c3.data);
+#document
+e: TooFewArguments
+undefined
+Комментарий
+
+@---
+

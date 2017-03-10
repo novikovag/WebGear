@@ -1,0 +1,126 @@
+@===============================================================================
+@           Interface Text
+@===============================================================================
+
+#data
+    try {
+        var t1  = new Text();
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    var t2  = new Text(t1);
+    var t3  = new Text("Текстовый узел");
+
+    console.log(t2.data);
+    console.log(t3.data);
+#document
+e: TooFewArguments
+undefined
+Текстовый узел
+
+@---
+
+#data
+    var e  = document.createElement('div');
+    var t1 = document.createTextNode("");
+    var t2 = document.createTextNode("Текстовый узел 1");
+    var t3 = document.createTextNode(" ");
+    var t4 = document.createTextNode("Text node 2");
+    var t5 = document.createTextNode("");
+    var t6 = document.createTextNode("Текстовый узел 3");
+    
+    e.appendChild(t1);
+    e.appendChild(t2);
+    e.appendChild(t3);
+    e.appendChild(t4);
+    e.appendChild(t5);
+    e.appendChild(t6);
+   
+    console.log(t1.wholeText);
+    console.log(t2.wholeText);
+    console.log(t6.wholeText);
+#document
+Текстовый узел 1 Text node 2Текстовый узел 3
+Текстовый узел 1 Text node 2Текстовый узел 3
+Текстовый узел 1 Text node 2Текстовый узел 3
+
+@---
+
+#data
+    var e1 = document.createElement('div');
+    var e2 = document.createElement('div');
+    var t1 = document.createTextNode("Текстовый узел 1");
+    var t2 = document.createTextNode("Text node 2");
+    var t3 = document.createTextNode("Текстовый узел 3");
+    
+    e1.appendChild(t1);
+    e1.appendChild(e2);
+    e1.appendChild(t2);
+    e1.appendChild(t3);
+ 
+    console.log(t1.wholeText);
+    console.log(t3.wholeText);
+#document
+Текстовый узел 1
+Text node 2Текстовый узел 3
+
+@---
+
+#data
+    var e  = document.createElement('div');
+    var t1 = document.createTextNode("Текстовый узел 1Текстовый узел 2");
+    
+    e.appendChild(t1);
+
+    t2 = t1.splitText(16);
+    
+    console.log(t1.data);
+    console.log(t2.data);
+    console.log("---");
+    console.tree(e);
+#document
+Текстовый узел 1
+Текстовый узел 2
+---
+DIV
+  "Текстовый узел 1"
+  "Текстовый узел 2"
+  
+@---
+
+#data
+    var e  = document.createElement('div');
+    var t1 = document.createTextNode("Текстовый узел 1Текстовый узел 2");
+    
+    e.appendChild(t1);
+
+    var t2 = t1.splitText(0);
+    
+    console.log(t2.data);
+    console.log("---");
+    console.tree(e);
+#document
+Текстовый узел 1Текстовый узел 2
+---
+DIV
+  ""
+  "Текстовый узел 1Текстовый узел 2"
+  
+@---  
+  
+#data
+    var e  = document.createElement('div');
+    var t1 = document.createTextNode("Текстовый узел 1Текстовый узел 2");
+    
+    e.appendChild(t1);
+
+    var t2 = t1.splitText(32);
+    console.tree(e);  
+#document
+DIV
+  "Текстовый узел 1Текстовый узел 2"
+  ""
+@---  
+  
+  

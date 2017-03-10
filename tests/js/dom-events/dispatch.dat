@@ -1,0 +1,271 @@
+@===============================================================================
+@           Interface EventTarget
+@===============================================================================
+
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");    
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    e3.appendChild(e4);
+
+    var callback = function (event) {
+        console.log(this.tagName);
+        console.log(event.type);            
+        console.log(event.target.tagName);        
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);    
+        console.log(event.bubbles);        
+        console.log(event.cancelable);      
+        console.log(event.defaultPrevented);
+        //console.log(event.composed);       
+        //console.log(event.isTrusted);       
+    }; 
+    
+    e1.addEventListener("click", callback);
+    e2.addEventListener("click", callback);
+    e3.addEventListener("click", callback);
+    e4.addEventListener("click", callback);
+
+    var v = new Event("click");  
+    e4.dispatchEvent(v);
+#document
+DIV4
+click
+DIV4
+DIV4
+2
+false
+false
+false
+
+@---
+
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");  
+    var e3 = document.createElement("div3");        
+
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+
+    var callback1 = function (event) {
+        console.log("callback1");              
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);            
+    }; 
+    
+    var callback2 = function (event) {
+        console.log("callback2");                 
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);                
+    }; 
+    
+    var callback3 = function (event) {
+        console.log("callback3");              
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);            
+    }; 
+    
+    var callback4 = function (event) {
+        console.log("callback4");                 
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);                
+    }; 
+
+    e1.addEventListener("click", callback1, true);
+    e1.addEventListener("click", callback2, true);
+    e1.addEventListener("click", callback3, true);
+    e1.addEventListener("click", callback4, true);
+
+    e2.addEventListener("click", callback1, true);
+    e2.addEventListener("click", callback2, true);
+    e2.addEventListener("click", callback3, true);
+    e2.addEventListener("click", callback4, true);
+    
+    e3.addEventListener("click", callback1, true);
+    e3.addEventListener("click", callback2, true);
+    e3.addEventListener("click", callback3, true);
+    e3.addEventListener("click", callback4, true);
+    
+    var v = new Event("click");  
+
+    e3.dispatchEvent(v);
+#document
+callback1
+DIV1
+1
+callback2
+DIV1
+1
+callback3
+DIV1
+1
+callback4
+DIV1
+1
+callback1
+DIV2
+1
+callback2
+DIV2
+1
+callback3
+DIV2
+1
+callback4
+DIV2
+1
+callback1
+DIV3
+2
+callback2
+DIV3
+2
+callback3
+DIV3
+2
+callback4
+DIV3
+2
+
+@---
+
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");    
+    var e3 = document.createElement("div3");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+
+    var callback1 = function (event) {
+        console.log("callback1");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);        
+    }; 
+    
+    var callback2 = function (event) {
+        console.log("callback2");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);    
+    }; 
+    
+    e1.addEventListener("click", callback1);
+    e2.addEventListener("click", callback1);
+    e3.addEventListener("click", callback1);
+
+    e1.addEventListener("click", callback2, true);
+    e2.addEventListener("click", callback2, true);
+    e3.addEventListener("click", callback2, true);
+
+    var v = new Event("click", {bubbles: 1});  
+    e3.dispatchEvent(v);
+#document
+callback2
+DIV1
+1
+callback2
+DIV2
+1
+callback1
+DIV3
+2
+callback2
+DIV3
+2
+callback1
+DIV2
+3
+callback1
+DIV1
+3
+
+@---
+
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");    
+    var e3 = document.createElement("div3");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+
+    var callback1 = function (event) {
+        console.log("callback1");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);        
+    }; 
+    
+    var callback2 = function (event) {
+        console.log("callback2");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);    
+    }; 
+  
+    e1.addEventListener("click", callback1);
+    e2.addEventListener("click", callback1);
+    e3.addEventListener("click", callback1);
+
+    e1.addEventListener("click", callback2, true);
+    e2.addEventListener("click", callback2, true);
+    e3.addEventListener("click", callback2, true);
+
+    var v = new Event("click", {bubbles: false});  
+    e3.dispatchEvent(v);
+#document
+callback2
+DIV1
+1
+callback2
+DIV2
+1
+callback1
+DIV3
+2
+callback2
+DIV3
+2
+
+@---
+
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");    
+    var e3 = document.createElement("div3");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+
+    var callback1 = function (event) {
+        console.log("callback1");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);        
+    }; 
+    
+    var callback2 = function (event) {
+        console.log("callback2");
+        console.log(event.currentTarget.tagName);
+        console.log(event.eventPhase);  
+    }; 
+    
+    e1.addEventListener("click", callback1);
+    e2.addEventListener("click", callback1);
+
+    e1.addEventListener("click", callback2, true);
+    e2.addEventListener("click", callback2, true);
+
+    var v = new Event("click", {bubbles: 0});  
+    e3.dispatchEvent(v);
+#document
+callback2
+DIV1
+1
+callback2
+DIV2
+1
+
+@---

@@ -1,0 +1,79 @@
+@===============================================================================
+@           COMMENT
+@===============================================================================
+
+@ Простой комментарий.
+#data
+<!--This is a comment-->
+#document
+|!| This is a comment
+|*| .
+
+@ Комментарий.
+#data
+<!--function displayMsg() { alert("Hello World!") } //-->
+#document
+|!| function displayMsg() { alert("Hello World!") } //
+|*| .
+
+@ Пустой комментарий.
+#data
+<!---->
+#document
+|*| .
+
+@ Пустой комментарий.
+#data
+<!----->
+#document
+|!| -
+|*| .
+
+@ Комментарий.
+#data
+<!------>
+#document
+|!| --
+|*| .
+
+@ Комментарий.
+#data
+<!-- --comment -->
+#document
+|!|  --comment 
+|*| .
+
+@ Комментарий.
+#data
+<!--comment--->
+#document
+|!| comment-
+|*| .
+
+@ Комментарий.
+#data
+<!--comment--*-->
+#document
+|!| comment--*
+|*| .
+
+@ Комментарий.
+#data
+<!--comment--*---->
+#document
+|!| comment--*--
+|*| .
+
+@ Альтернативное завершение комментария.
+#data
+<!--comment--!>
+#document
+|!| comment
+|*| .
+
+@ Комментарий.
+#data
+<!--comment--!*-->
+#document
+|!| comment--!*
+|*| .

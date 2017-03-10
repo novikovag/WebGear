@@ -1,0 +1,197 @@
+#data
+<menuitem>
+#document
+HTML
+  HEAD
+  BODY
+    MENUITEM
+
+#data
+</menuitem>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><body><menuitem>A
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      "A"
+
+#data
+<!DOCTYPE html><body><menuitem>A<menuitem>B
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      "A"
+    MENUITEM
+      "B"
+
+#data
+<!DOCTYPE html><body><menuitem>A<menu>B</menu>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      "A"
+    MENU
+      "B"
+
+#data
+<!DOCTYPE html><body><menuitem>A<hr>B
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      "A"
+    HR
+    "B"
+
+#data
+<!DOCTYPE html><li><menuitem><li>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    LI
+      MENUITEM
+    LI
+
+#data
+<!DOCTYPE html><menuitem><p></menuitem>x
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      P
+        "x"
+
+#data
+<!DOCTYPE html><p><b></p><menuitem>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      B
+    B
+      MENUITEM
+
+#data
+<!DOCTYPE html><menuitem><asdf></menuitem>x
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      ASDF
+    "x"
+
+#data
+<!DOCTYPE html></menuitem>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><html></menuitem>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><head></menuitem>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><select><menuitem></select>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!DOCTYPE html><option><menuitem>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    OPTION
+      MENUITEM
+
+#data
+<!DOCTYPE html><menuitem><option>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      OPTION
+
+#data
+<!DOCTYPE html><menuitem></body>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+
+#data
+<!DOCTYPE html><menuitem></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+
+#data
+<!DOCTYPE html><menuitem><p>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      P
+
+#data
+<!DOCTYPE html><menuitem><li>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MENUITEM
+      LI
+

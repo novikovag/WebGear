@@ -1,0 +1,1922 @@
+#data
+<!doctype html><script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<!doctype html><script>a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "a"
+  BODY
+
+#data
+<!doctype html><script><
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<"
+  BODY
+
+#data
+<!doctype html><script></
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</"
+  BODY
+
+#data
+<!doctype html><script></S
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</S"
+  BODY
+
+#data
+<!doctype html><script></SC
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</SC"
+  BODY
+
+#data
+<!doctype html><script></SCR
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</SCR"
+  BODY
+
+#data
+<!doctype html><script></SCRI
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</SCRI"
+  BODY
+
+#data
+<!doctype html><script></SCRIP
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</SCRIP"
+  BODY
+
+#data
+<!doctype html><script></SCRIPT
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</SCRIPT"
+  BODY
+
+#data
+<!doctype html><script></SCRIPT 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<!doctype html><script></s
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</s"
+  BODY
+
+#data
+<!doctype html><script></sc
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</sc"
+  BODY
+
+#data
+<!doctype html><script></scr
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</scr"
+  BODY
+
+#data
+<!doctype html><script></scri
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</scri"
+  BODY
+
+#data
+<!doctype html><script></scrip
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</scrip"
+  BODY
+
+#data
+<!doctype html><script></script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "</script"
+  BODY
+
+#data
+<!doctype html><script></script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<!doctype html><script><!
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!"
+  BODY
+
+#data
+<!doctype html><script><!a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!a"
+  BODY
+
+#data
+<!doctype html><script><!-
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!-"
+  BODY
+
+#data
+<!doctype html><script><!-a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!-a"
+  BODY
+
+#data
+<!doctype html><script><!--
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--"
+  BODY
+
+#data
+<!doctype html><script><!--a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--a"
+  BODY
+
+#data
+<!doctype html><script><!--<
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<"
+  BODY
+
+#data
+<!doctype html><script><!--<a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<a"
+  BODY
+
+#data
+<!doctype html><script><!--</
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--</"
+  BODY
+
+#data
+<!doctype html><script><!--</script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--</script"
+  BODY
+
+#data
+<!doctype html><script><!--</script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--"
+  BODY
+
+#data
+<!doctype html><script><!--<s
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<s"
+  BODY
+
+#data
+<!doctype html><script><!--<script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script"
+  BODY
+
+#data
+<!doctype html><script><!--<script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script "
+  BODY
+
+#data
+<!doctype html><script><!--<script <
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script <"
+  BODY
+
+#data
+<!doctype html><script><!--<script <a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script <a"
+  BODY
+
+#data
+<!doctype html><script><!--<script </
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </"
+  BODY
+
+#data
+<!doctype html><script><!--<script </s
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </s"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script"
+  BODY
+
+#data
+<!doctype html><script><!--<script </scripta
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </scripta"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<!doctype html><script><!--<script </script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script>"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script/
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script/"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script <
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script <"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script <a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script <a"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script </
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script </"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script </script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script </script"
+  BODY
+
+#data
+<!doctype html><script><!--<script </script </script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<!doctype html><script><!--<script </script </script/
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<!doctype html><script><!--<script </script </script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<!doctype html><script><!--<script -
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -"
+  BODY
+
+#data
+<!doctype html><script><!--<script -a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -a"
+  BODY
+
+#data
+<!doctype html><script><!--<script -<
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -<"
+  BODY
+
+#data
+<!doctype html><script><!--<script --
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --"
+  BODY
+
+#data
+<!doctype html><script><!--<script --a
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --a"
+  BODY
+
+#data
+<!doctype html><script><!--<script --<
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --<"
+  BODY
+
+#data
+<!doctype html><script><!--<script -->
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<!doctype html><script><!--<script --><
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --><"
+  BODY
+
+#data
+<!doctype html><script><!--<script --></
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --></"
+  BODY
+
+#data
+<!doctype html><script><!--<script --></script
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --></script"
+  BODY
+
+#data
+<!doctype html><script><!--<script --></script 
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<!doctype html><script><!--<script --></script/
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<!doctype html><script><!--<script --></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<!doctype html><script><!--<script><\/script>--></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script><\/script>-->"
+  BODY
+
+#data
+<!doctype html><script><!--<script></scr'+'ipt>--></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></scr'+'ipt>-->"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script>--><!--</script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>--><!--"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script>-- ></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>-- >"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script>- -></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>- ->"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script>- - ></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>- - >"
+  BODY
+
+#data
+<!doctype html><script><!--<script></script><script></script>-></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>->"
+  BODY
+
+#data
+<!doctype html><script><!--<script>--!></script>X
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script>--!></script>X"
+  BODY
+
+#data
+<!doctype html><script><!--<scr'+'ipt></script>--></script>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<scr'+'ipt>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><script><!--<script></scr'+'ipt></script>X
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></scr'+'ipt></script>X"
+  BODY
+
+#data
+<!doctype html><style><!--<style></style>--></style>
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--<style>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><style><!--</style>X
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--"
+  BODY
+    "X"
+
+#data
+<!doctype html><style><!--...</style>...--></style>
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--..."
+  BODY
+    "...-->"
+
+#data
+<!doctype html><style><!--<br><html xmlns:v="urn:schemas-microsoft-com:vml"><!--[if !mso]><style></style>X
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--<br><html xmlns:v="urn:schemas-microsoft-com:vml"><!--[if !mso]><style>"
+  BODY
+    "X"
+
+#data
+<!doctype html><style><!--...<style><!--...--!></style>--></style>
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--...<style><!--...--!>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><style><!--...</style><!-- --><style>@import ...</style>
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "<!--..."
+    ! !
+    STYLE
+      "@import ..."
+  BODY
+
+#data
+<!doctype html><style>...<style><!--...</style><!-- --></style>
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "...<style><!--..."
+    ! !
+  BODY
+
+#data
+<!doctype html><style>...<!--[if IE]><style>...</style>X
+#document
+!HTML
+HTML
+  HEAD
+    STYLE
+      "...<!--[if IE]><style>..."
+  BODY
+    "X"
+
+#data
+<!doctype html><title><!--<title></title>--></title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "<!--<title>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><title>&lt;/title></title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "</title>"
+  BODY
+
+#data
+<!doctype html><title>foo/title><link></head><body>X
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "foo/title><link></head><body>X"
+  BODY
+
+#data, script on
+<!doctype html><noscript><!--<noscript></noscript>--></noscript>
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--<noscript>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><noscript><!--<noscript></noscript>--></noscript>
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      !<noscript></noscript>!
+  BODY
+
+#data, script on
+<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "X"
+    NOSCRIPT
+      "-->"
+
+#data
+<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      !</noscript>X<noscript>!
+  BODY
+
+#data, script on
+<!doctype html><noscript><iframe></noscript>X
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<iframe>"
+  BODY
+    "X"
+
+#data
+<!doctype html><noscript><iframe></noscript>X
+#document
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+    IFRAME
+      "</noscript>X"
+
+#data
+<!doctype html><noframes><!--<noframes></noframes>--></noframes>
+#document
+!HTML
+HTML
+  HEAD
+    NOFRAMES
+      "<!--<noframes>"
+  BODY
+    "-->"
+
+#data
+<!doctype html><noframes><body><script><!--...</script></body></noframes></html>
+#document
+!HTML
+HTML
+  HEAD
+    NOFRAMES
+      "<body><script><!--...</script></body>"
+  BODY
+
+#data
+<!doctype html><textarea><!--<textarea></textarea>--></textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<!--<textarea>"
+    "-->"
+
+#data
+<!doctype html><textarea>&lt;/textarea></textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "</textarea>"
+
+#data
+<!doctype html><textarea>&lt;</textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<"
+
+#data
+<!doctype html><textarea>a&lt;b</textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "a<b"
+
+#data
+<!doctype html><iframe><!--<iframe></iframe>--></iframe>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IFRAME
+      "<!--<iframe>"
+    "-->"
+
+#data
+<!doctype html><iframe>...<!--X->...<!--/X->...</iframe>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    IFRAME
+      "...<!--X->...<!--/X->..."
+
+#data
+<!doctype html><xmp><!--<xmp></xmp>--></xmp>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    XMP
+      "<!--<xmp>"
+    "-->"
+
+#data
+<!doctype html><noembed><!--<noembed></noembed>--></noembed>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    NOEMBED
+      "<!--<noembed>"
+    "-->"
+
+#data
+<script>
+#document
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<script>a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "a"
+  BODY
+
+#data
+<script><
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<"
+  BODY
+
+#data
+<script></
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</"
+  BODY
+
+#data
+<script></S
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</S"
+  BODY
+
+#data
+<script></SC
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</SC"
+  BODY
+
+#data
+<script></SCR
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</SCR"
+  BODY
+
+#data
+<script></SCRI
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</SCRI"
+  BODY
+
+#data
+<script></SCRIP
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</SCRIP"
+  BODY
+
+#data
+<script></SCRIPT
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</SCRIPT"
+  BODY
+
+#data
+<script></SCRIPT 
+#document
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<script></s
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</s"
+  BODY
+
+#data
+<script></sc
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</sc"
+  BODY
+
+#data
+<script></scr
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</scr"
+  BODY
+
+#data
+<script></scri
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</scri"
+  BODY
+
+#data
+<script></scrip
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</scrip"
+  BODY
+
+#data
+<script></script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</script"
+  BODY
+
+#data
+<script></script 
+#document
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<script><!
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!"
+  BODY
+
+#data
+<script><!a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!a"
+  BODY
+
+#data
+<script><!-
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!-"
+  BODY
+
+#data
+<script><!-a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!-a"
+  BODY
+
+#data
+<script><!--
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--"
+  BODY
+
+#data
+<script><!--a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--a"
+  BODY
+
+#data
+<script><!--<
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<"
+  BODY
+
+#data
+<script><!--<a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<a"
+  BODY
+
+#data
+<script><!--</
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--</"
+  BODY
+
+#data
+<script><!--</script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--</script"
+  BODY
+
+#data
+<script><!--</script 
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--"
+  BODY
+
+#data
+<script><!--<s
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<s"
+  BODY
+
+#data
+<script><!--<script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script"
+  BODY
+
+#data
+<script><!--<script 
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script "
+  BODY
+
+#data
+<script><!--<script <
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script <"
+  BODY
+
+#data
+<script><!--<script <a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script <a"
+  BODY
+
+#data
+<script><!--<script </
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </"
+  BODY
+
+#data
+<script><!--<script </s
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </s"
+  BODY
+
+#data
+<script><!--<script </script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script"
+  BODY
+
+#data
+<script><!--<script </scripta
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </scripta"
+  BODY
+
+#data
+<script><!--<script </script 
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<script><!--<script </script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script>"
+  BODY
+
+#data
+<script><!--<script </script/
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script/"
+  BODY
+
+#data
+<script><!--<script </script <
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script <"
+  BODY
+
+#data
+<script><!--<script </script <a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script <a"
+  BODY
+
+#data
+<script><!--<script </script </
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script </"
+  BODY
+
+#data
+<script><!--<script </script </script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script </script"
+  BODY
+
+#data
+<script><!--<script </script </script 
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<script><!--<script </script </script/
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<script><!--<script </script </script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script </script "
+  BODY
+
+#data
+<script><!--<script -
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -"
+  BODY
+
+#data
+<script><!--<script -a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -a"
+  BODY
+
+#data
+<script><!--<script --
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --"
+  BODY
+
+#data
+<script><!--<script --a
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --a"
+  BODY
+
+#data
+<script><!--<script -->
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<script><!--<script --><
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --><"
+  BODY
+
+#data
+<script><!--<script --></
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --></"
+  BODY
+
+#data
+<script><!--<script --></script
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script --></script"
+  BODY
+
+#data
+<script><!--<script --></script 
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<script><!--<script --></script/
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<script><!--<script --></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script -->"
+  BODY
+
+#data
+<script><!--<script><\/script>--></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script><\/script>-->"
+  BODY
+
+#data
+<script><!--<script></scr'+'ipt>--></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></scr'+'ipt>-->"
+  BODY
+
+#data
+<script><!--<script></script><script></script></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>"
+  BODY
+
+#data
+<script><!--<script></script><script></script>--><!--</script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>--><!--"
+  BODY
+
+#data
+<script><!--<script></script><script></script>-- ></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>-- >"
+  BODY
+
+#data
+<script><!--<script></script><script></script>- -></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>- ->"
+  BODY
+
+#data
+<script><!--<script></script><script></script>- - ></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>- - >"
+  BODY
+
+#data
+<script><!--<script></script><script></script>-></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></script><script></script>->"
+  BODY
+
+#data
+<script><!--<script>--!></script>X
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script>--!></script>X"
+  BODY
+
+#data
+<script><!--<scr'+'ipt></script>--></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<scr'+'ipt>"
+  BODY
+    "-->"
+
+#data
+<script><!--<script></scr'+'ipt></script>X
+#document
+HTML
+  HEAD
+    SCRIPT
+      "<!--<script></scr'+'ipt></script>X"
+  BODY
+
+#data
+<style><!--<style></style>--></style>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--<style>"
+  BODY
+    "-->"
+
+#data
+<style><!--</style>X
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--"
+  BODY
+    "X"
+
+#data
+<style><!--...</style>...--></style>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--..."
+  BODY
+    "...-->"
+
+#data
+<style><!--<br><html xmlns:v="urn:schemas-microsoft-com:vml"><!--[if !mso]><style></style>X
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--<br><html xmlns:v="urn:schemas-microsoft-com:vml"><!--[if !mso]><style>"
+  BODY
+    "X"
+
+#data
+<style><!--...<style><!--...--!></style>--></style>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--...<style><!--...--!>"
+  BODY
+    "-->"
+
+#data
+<style><!--...</style><!-- --><style>@import ...</style>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--..."
+    ! !
+    STYLE
+      "@import ..."
+  BODY
+
+#data
+<style>...<style><!--...</style><!-- --></style>
+#document
+HTML
+  HEAD
+    STYLE
+      "...<style><!--..."
+    ! !
+  BODY
+
+#data
+<style>...<!--[if IE]><style>...</style>X
+#document
+HTML
+  HEAD
+    STYLE
+      "...<!--[if IE]><style>..."
+  BODY
+    "X"
+
+#data
+<title><!--<title></title>--></title>
+#document
+HTML
+  HEAD
+    TITLE
+      "<!--<title>"
+  BODY
+    "-->"
+
+#data
+<title>&lt;/title></title>
+#document
+HTML
+  HEAD
+    TITLE
+      "</title>"
+  BODY
+
+#data
+<title>foo/title><link></head><body>X
+#document
+HTML
+  HEAD
+    TITLE
+      "foo/title><link></head><body>X"
+  BODY
+
+#data, script on
+<noscript><!--<noscript></noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--<noscript>"
+  BODY
+    "-->"
+
+#data
+<noscript><!--<noscript></noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !<noscript></noscript>!
+  BODY
+
+#data, script on
+<noscript><!--</noscript>X<noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "X"
+    NOSCRIPT
+      "-->"
+
+#data
+<noscript><!--</noscript>X<noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !</noscript>X<noscript>!
+  BODY
+
+#data, script on
+<noscript><iframe></noscript>X
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      "<iframe>"
+  BODY
+    "X"
+
+#data
+<noscript><iframe></noscript>X
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+    IFRAME
+      "</noscript>X"
+
+#data
+<noframes><!--<noframes></noframes>--></noframes>
+#document
+HTML
+  HEAD
+    NOFRAMES
+      "<!--<noframes>"
+  BODY
+    "-->"
+
+#data
+<noframes><body><script><!--...</script></body></noframes></html>
+#document
+HTML
+  HEAD
+    NOFRAMES
+      "<body><script><!--...</script></body>"
+  BODY
+
+#data
+<textarea><!--<textarea></textarea>--></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<!--<textarea>"
+    "-->"
+
+#data
+<textarea>&lt;/textarea></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "</textarea>"
+
+#data
+<iframe><!--<iframe></iframe>--></iframe>
+#document
+HTML
+  HEAD
+  BODY
+    IFRAME
+      "<!--<iframe>"
+    "-->"
+
+#data
+<iframe>...<!--X->...<!--/X->...</iframe>
+#document
+HTML
+  HEAD
+  BODY
+    IFRAME
+      "...<!--X->...<!--/X->..."
+
+#data
+<xmp><!--<xmp></xmp>--></xmp>
+#document
+HTML
+  HEAD
+  BODY
+    XMP
+      "<!--<xmp>"
+    "-->"
+
+#data
+<noembed><!--<noembed></noembed>--></noembed>
+#document
+HTML
+  HEAD
+  BODY
+    NOEMBED
+      "<!--<noembed>"
+    "-->"
+
+#data
+<!doctype html><table> 
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      " "
+
+#data
+<!doctype html><table><td><span><font></span><span>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            SPAN
+              FONT
+            FONT
+              SPAN
+
+#data
+<!doctype html><form><table></form><form></table></form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FORM
+      TABLE
+        FORM
+

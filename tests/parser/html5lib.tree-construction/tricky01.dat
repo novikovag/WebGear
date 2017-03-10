@@ -1,0 +1,246 @@
+#data
+<b><p>Bold </b> Not bold</p>
+Also not bold.
+#document
+HTML
+  HEAD
+  BODY
+    B
+    P
+      B
+        "Bold "
+      " Not bold"
+    "
+Also not bold."
+
+#data
+<html>
+<font color=red><i>Italic and Red<p>Italic and Red </font> Just italic.</p> Italic only.</i> Plain
+<p>I should not be red. <font color=red>Red. <i>Italic and red.</p>
+<p>Italic and red. </i> Red.</font> I should not be red.</p>
+<b>Bold <i>Bold and italic</b> Only Italic </i> Plain
+#document
+HTML
+  HEAD
+  BODY
+    FONT, color='red'
+      I
+        "Italic and Red"
+    I
+      P
+        FONT, color='red'
+          "Italic and Red "
+        " Just italic."
+      " Italic only."
+    " Plain
+"
+    P
+      "I should not be red. "
+      FONT, color='red'
+        "Red. "
+        I
+          "Italic and red."
+    FONT, color='red'
+      I
+        "
+"
+    P
+      FONT, color='red'
+        I
+          "Italic and red. "
+        " Red."
+      " I should not be red."
+    "
+"
+    B
+      "Bold "
+      I
+        "Bold and italic"
+    I
+      " Only Italic "
+    " Plain"
+
+#data
+<html><body>
+<p><font size="7">First paragraph.</p>
+<p>Second paragraph.</p></font>
+<b><p><i>Bold and Italic</b> Italic</p>
+#document
+HTML
+  HEAD
+  BODY
+    "
+"
+    P
+      FONT, size='7'
+        "First paragraph."
+    FONT, size='7'
+      "
+"
+      P
+        "Second paragraph."
+    "
+"
+    B
+    P
+      B
+        I
+          "Bold and Italic"
+      I
+        " Italic"
+
+#data
+<html>
+<dl>
+<dt><b>Boo
+<dd>Goo?
+</dl>
+</html>
+#document
+HTML
+  HEAD
+  BODY
+    DL
+      "
+"
+      DT
+        B
+          "Boo
+"
+      DD
+        B
+          "Goo?
+"
+    B
+      "
+"
+      
+#data
+<html><body>
+<label><a><div>Hello<div>World</div></a></label>  
+</body></html>
+#document
+HTML
+  HEAD
+  BODY
+    "
+"
+    LABEL
+      A
+      DIV
+        A
+          "Hello"
+          DIV
+            "World"
+        "  
+"
+
+#data
+<table><center> <font>a</center> <img> <tr><td> </td> </tr> </table>
+#document
+HTML
+  HEAD
+  BODY
+    CENTER
+      " "
+      FONT
+        "a"
+    FONT
+      IMG
+      " "
+    TABLE
+      " "
+      TBODY
+        TR
+          TD
+            " "
+          " "
+        " "
+
+#data
+<table><tr><p><a><p>You should see this text.
+#document
+HTML
+  HEAD
+  BODY
+    P
+      A
+    P
+      A
+        "You should see this text."
+    TABLE
+      TBODY
+        TR
+
+#data
+<TABLE>
+<TR>
+<CENTER><CENTER><TD></TD></TR><TR>
+<FONT>
+<TABLE><tr></tr></TABLE>
+</P>
+<a></font><font></a>
+This page contains an insanely badly-nested tag sequence.
+#document
+HTML
+  HEAD
+  BODY
+    CENTER
+      CENTER
+    FONT
+      "
+"
+    TABLE
+      "
+"
+      TBODY
+        TR
+          "
+"
+          TD
+        TR
+          "
+"
+    TABLE
+      TBODY
+        TR
+    FONT
+      "
+"
+      P
+      "
+"
+      A
+    A
+      FONT
+    FONT
+      "
+This page contains an insanely badly-nested tag sequence."
+
+#data
+<html>
+<body>
+<b><nobr><div>This text is in a div inside a nobr</nobr>More text that should not be in the nobr, i.e., the
+nobr should have closed the div inside it implicitly. </b><pre>A pre tag outside everything else.</pre>
+</body>
+</html>
+#document
+HTML
+  HEAD
+  BODY
+    "
+"
+    B
+      NOBR
+    DIV
+      B
+        NOBR
+          "This text is in a div inside a nobr"
+        "More text that should not be in the nobr, i.e., the
+nobr should have closed the div inside it implicitly. "
+      PRE
+        "A pre tag outside everything else."
+      "
+"
+      "
+"

@@ -1,0 +1,232 @@
+#data
+<head></head><style></style>
+#document
+HTML
+  HEAD
+    STYLE
+  BODY
+
+#data
+<head></head><script></script>
+#document
+HTML
+  HEAD
+    SCRIPT
+  BODY
+
+#data
+<head></head><!-- --><style></style><!-- --><script></script>
+#document
+HTML
+  HEAD
+    STYLE
+    SCRIPT
+  ! !
+  ! !
+  BODY
+
+#data
+<head></head><!-- -->x<style></style><!-- --><script></script>
+#document
+HTML
+  HEAD
+  ! !
+  BODY
+    "x"
+    STYLE
+    ! !
+    SCRIPT
+
+#data
+<!DOCTYPE html><html><head></head><body><pre> </pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      " "
+
+#data
+<!DOCTYPE html><html><head></head><body><pre> foo</pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      " foo"
+
+#data
+<!DOCTYPE html><html><head></head><body><pre>  foo</pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      "  foo"
+
+#data
+<!DOCTYPE html><html><head></head><body><pre> foo </pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      " foo "
+
+#data
+<!DOCTYPE html><html><head></head><body><pre>x</pre><span> </span></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      "x"
+    SPAN
+      " "
+
+#data
+<!DOCTYPE html><html><head></head><body><pre>x y</pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      "x y"
+
+#data
+<!DOCTYPE html><html><head></head><body><pre>x<div> y</pre></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    PRE
+      "x"
+      DIV
+        " y"
+
+#data
+<!DOCTYPE html><HTML><META><HEAD></HEAD></HTML>
+#document
+!HTML
+HTML
+  HEAD
+    META
+  BODY
+
+#data
+<!DOCTYPE html><HTML><HEAD><head></HEAD></HTML>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<textarea>foo<span>bar</span><i>baz
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "foo<span>bar</span><i>baz"
+
+#data
+<title>foo<span>bar</em><i>baz
+#document
+HTML
+  HEAD
+    TITLE
+      "foo<span>bar</em><i>baz"
+  BODY
+
+#data
+<!DOCTYPE html><textarea> </textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      " "
+
+#data
+<!DOCTYPE html><textarea> foo</textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      " foo"
+
+#data
+<!DOCTYPE html><textarea>  foo</textarea>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "  foo"
+
+#data
+<!DOCTYPE html><html><head></head><body><ul><li><div><p><li></ul></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    UL
+      LI
+        DIV
+          P
+      LI
+
+#data
+<!doctype html><nobr><nobr><nobr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    NOBR
+    NOBR
+    NOBR
+
+#data
+<!doctype html><nobr><nobr></nobr><nobr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    NOBR
+    NOBR
+    NOBR
+
+#data
+<!doctype html><html><body><p><table></table></body></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    TABLE
+
+#data
+<p><table></table>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      TABLE
+

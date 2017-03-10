@@ -1,0 +1,62 @@
+@===============================================================================
+@           Именованные символьные ссылки.
+@===============================================================================
+
+#data
+abc &Aacute 123
+#document
+|T| abc Á 123
+|*| .
+
+#data
+abc &Aacute123
+#document
+|T| abc Á123
+|*| .
+
+#data
+abc&Aacute123
+#document
+|T| abcÁ123
+|*| .
+
+#data
+abc&Aacute;123
+#document
+|T| abcÁ123
+|*| .
+
+@ Обязательный ';'.
+#data
+abc &Abreve; 123
+#document
+|T| abc Ă 123
+|*| .
+
+@ Обязательный ';'.
+#data
+abc &Abreve;123
+#document
+|T| abc Ă123
+|*| .
+
+@ Обязательный ';'.
+#data
+abc&Abreve;123
+#document
+|T| abcĂ123
+|*| .
+
+@ Обязательный ';'.
+#data
+abc &Abreve 123
+#document
+|T| abc &Abreve 123
+|*| .
+
+@ Обязательный ';'.
+#data
+abc&Abreve123
+#document
+|T| abc&Abreve123
+|*| .

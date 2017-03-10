@@ -1,0 +1,53 @@
+@===============================================================================
+@           Interface WindowOrWorkerGlobalScope
+@===============================================================================
+
+#data
+    var callback1 = function() { 
+        console.log("Привет1!"); 
+    }
+    
+    var callback2 = function() { 
+        console.log("Привет2!"); 
+    }
+
+    setInterval(callback1, 10);
+    setInterval(callback2, 20);
+
+    var ms = 50 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+Привет1!
+Привет2!
+Привет1!
+Привет1!
+Привет2!
+Привет1!
+Привет1!
+
+@---
+
+#data
+    var callback1 = function() { 
+        console.log("Привет1!"); 
+    }
+    
+    var callback2 = function() { 
+        console.log("Привет2!"); 
+    }
+
+    setInterval(callback1, 10);
+    
+    var id = setInterval(callback2, 20);
+    clearTimeout(id);
+    
+    var ms = 50 + new Date().getTime();
+    while (new Date() < ms) {}
+#document
+Привет1!
+Привет1!
+Привет1!
+Привет1!
+Привет1!
+
+@---

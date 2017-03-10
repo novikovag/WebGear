@@ -1,0 +1,166 @@
+#data
+<!DOCTYPE html><p><b><i><u></p> <p>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      B
+        I
+          U
+    B
+      I
+        U
+          " "
+          P
+            "X"
+
+#data
+<p><b><i><u></p> <p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      B
+        I
+          U
+    B
+      I
+        U
+          " "
+          P
+            "X"
+
+#data
+<!doctype html></html> <head>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " "
+
+#data
+<!doctype html></body><meta>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    META
+
+#data
+<html></html><!-- foo -->
+#document
+HTML
+  HEAD
+  BODY
+! foo !
+
+#data
+<!doctype html></body><title>X</title>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TITLE
+      "X"
+
+#data
+<!doctype html><table> X<meta></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " X"
+    META
+    TABLE
+
+#data
+<!doctype html><table> x</table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " x"
+    TABLE
+
+#data
+<!doctype html><table> x </table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " x "
+    TABLE
+
+#data
+<!doctype html><table><tr> x</table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    " x"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><table>X<style> <tr>x </style> </table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    TABLE
+      STYLE
+        " <tr>x "
+      " "
+
+#data
+<!doctype html><div><table><a>foo</a> <tr><td>bar</td> </tr></table></div>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+      A
+        "foo"
+      TABLE
+        " "
+        TBODY
+          TR
+            TD
+              "bar"
+            " "
+
+#data
+<frame></frame></frame><frameset><frame><frameset><frame></frameset><noframes></frameset><noframes>
+#document
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+    FRAMESET
+      FRAME
+    NOFRAMES
+      "</frameset><noframes>"
+
+#data
+<!DOCTYPE html><object></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    OBJECT
+

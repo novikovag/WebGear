@@ -1,0 +1,56 @@
+@===============================================================================
+@           Теги
+@===============================================================================
+
+#data
+<br/>
+#document
+|<| BR
+|*| .
+
+#data
+<x@AZ[`az{ @AZ[`az{>
+#document
+|<| X@AZ[`AZ{
+|A| @az[`az{
+|*| .
+
+#data
+</br/>
+#document
+|>| BR
+|*| .
+
+#data
+</
+#document
+|T| </
+|*| .
+
+#data
+</>
+#document
+|*| .
+
+#data
+</*>
+#document
+|!| *
+|*| .
+
+#data
+</div></*a></div/></?a?>
+#document
+|>| DIV
+|!| *a
+|>| DIV
+|!| ?a?
+|*| .
+
+#data
+<tagname1=*><tagname2='*'><tagname3="*">
+#document
+|<| TAGNAME1=*
+|<| TAGNAME2='*'
+|<| TAGNAME3="*"
+|*| .

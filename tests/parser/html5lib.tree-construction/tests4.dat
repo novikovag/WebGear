@@ -1,0 +1,50 @@
+#data, fragment div
+direct div content
+#document
+HTML
+  DIV
+    "direct div content"
+
+#data, fragment textarea
+direct textarea content
+#document
+HTML
+  TEXTAREA
+    "direct textarea content"
+
+#data, fragment textarea
+textarea content with <em>pseudo</em> <foo>markup
+#document
+HTML
+  TEXTAREA
+    "textarea content with <em>pseudo</em> <foo>markup"
+
+#data, fragment style
+this is &#x0043;DATA inside a <style> element
+#document
+HTML
+  STYLE
+    "this is &#x0043;DATA inside a <style> element"
+
+#data, fragment plaintext
+</plaintext>
+#document
+HTML
+  PLAINTEXT
+    "</plaintext>"
+
+#data, fragment html
+setting html's innerHTML
+#document
+HTML
+  HEAD
+  BODY
+    "setting html's innerHTML"
+
+#data, fragment head
+<title>setting head's innerHTML</title>
+#document
+HTML
+  TITLE
+    "setting head's innerHTML"
+

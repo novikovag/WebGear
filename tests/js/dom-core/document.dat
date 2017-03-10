@@ -1,0 +1,87 @@
+@===============================================================================
+@           Interface Document
+@===============================================================================
+
+#data
+    var e1 = document.createElement("Div");
+    var e2 = document.createElement("Ё!ТеГ(kaktЭг");
+
+    console.log(e1.tagName);
+    console.log(e2.tagName);
+#document
+DIV
+Ё!ТеГ(KAKTЭг
+
+@---
+
+#data
+    try {
+        var e = document.createElement(123);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        var e = document.createElement("div 1");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: IllegalArgument
+e: InvalidCharacterError
+
+@---
+
+#data
+    var t1 = document.createTextNode("Текстовый узел. Text node.");
+    var t2 = document.createTextNode(123);
+    
+    console.log(t1.data);
+    console.log(t2.data);
+#document
+Текстовый узел. Text node.
+123
+
+@---
+
+#data
+    var c1 = document.createComment("Комментарий.");
+    var c2 = document.createComment(123);
+    
+    console.log(c1.data);
+    console.log(c2.data);
+#document
+Комментарий.
+123
+
+@---
+
+#data
+    try {
+        var c = document.createCDATASection("cdata");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: NotSupportedError
+
+@---
+
+#data
+    var a1 = document.createAttribute("CLASS");
+    var a2 = document.createAttribute("Ё!АТриБуТ!ID");
+
+    console.log(a1.name);
+    console.log(a2.name);
+#document
+class
+Ё!АТриБуТ!id
+
+#data
+    try {
+        var a = document.createCDATASection("id=");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: NotSupportedError

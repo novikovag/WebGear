@@ -1,0 +1,193 @@
+#data
+<div<div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV<DIV
+
+#data
+<div foo<bar=''>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, foo<bar
+
+#data
+<div foo=`bar`>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, foo='`bar`'
+
+#data
+<div \"foo=''>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, \"foo
+
+#data
+<a href='\nbar'></a>
+#document
+HTML
+  HEAD
+  BODY
+    A, href='\nbar'
+
+#data
+<!DOCTYPE html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+&lang;&rang;
+#document
+HTML
+  HEAD
+  BODY
+    "⟨⟩"
+
+#data
+&apos;
+#document
+HTML
+  HEAD
+  BODY
+    "'"
+
+#data
+&ImaginaryI;
+#document
+HTML
+  HEAD
+  BODY
+    "ⅈ"
+
+#data
+&notinva;
+#document
+HTML
+  HEAD
+  BODY
+    "∉"
+
+#data
+<?import namespace="foo" implementation="#bar">
+#document
+!import namespace="foo" implementation="#bar"!
+HTML
+  HEAD
+  BODY
+
+#data
+<!--foo--bar-->
+#document
+!foo--bar!
+HTML
+  HEAD
+  BODY
+
+#data
+<![CDATA[x]]>
+#document
+!x!
+HTML
+  HEAD
+  BODY
+
+#data
+<textarea><!--</textarea>--></textarea>
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<!--"
+    "-->"
+
+#data
+<textarea><!--</textarea>-->
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "<!--"
+    "-->"
+
+#data
+<style><!--</style>--></style>
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--"
+  BODY
+    "-->"
+
+#data
+<style><!--</style>-->
+#document
+HTML
+  HEAD
+    STYLE
+      "<!--"
+  BODY
+    "-->"
+
+#data
+<ul><li>A </li> <li>B</li></ul>
+#document
+HTML
+  HEAD
+  BODY
+    UL
+      LI
+        "A "
+      " "
+      LI
+        "B"
+
+#data
+<table><form><input type=hidden><input></form><div></div></table>
+#document
+HTML
+  HEAD
+  BODY
+    INPUT
+    DIV
+    TABLE
+      FORM
+      INPUT, type='hidden'
+
+#data
+<i>A<b>B<p></i>C</b>D
+#document
+HTML
+  HEAD
+  BODY
+    I
+      "A"
+      B
+        "B"
+    B
+    P
+      B
+        I
+        "C"
+      "D"
+
+#data
+<div></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV

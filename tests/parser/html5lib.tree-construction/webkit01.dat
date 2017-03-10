@@ -1,0 +1,447 @@
+#data
+Test
+#document
+HTML
+  HEAD
+  BODY
+    "Test"
+
+#data
+<div></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+
+#data
+<div>Test</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "Test"
+
+#data
+<di
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<div>Hello</div> <script> console.log("PASS"); </script> <div>Bye</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "Hello"
+    " "
+    SCRIPT
+      " console.log("PASS"); "
+    " "
+    DIV
+      "Bye"
+
+#data
+<div foo="bar">Hello</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, foo='bar'
+      "Hello"
+
+#data
+<div>Hello</div> <script> console.log("FOO<span>BAR</span>BAZ"); </script> <div>Bye</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "Hello"
+    " "
+    SCRIPT
+      " console.log("FOO<span>BAR</span>BAZ"); "
+    " "
+    DIV
+      "Bye"
+
+#data
+<foo bar="baz"></foo><potato quack="duck"></potato>
+#document
+HTML
+  HEAD
+  BODY
+    FOO, bar='baz'
+    POTATO, quack='duck'
+
+#data
+<foo bar="baz"><potato quack="duck"></potato></foo>
+#document
+HTML
+  HEAD
+  BODY
+    FOO, bar='baz'
+      POTATO, quack='duck'
+
+#data
+<foo></foo bar="baz"><potato></potato quack="duck">
+#document
+HTML
+  HEAD
+  BODY
+    FOO
+    POTATO
+
+#data
+</ tttt>
+#document
+! tttt!
+HTML
+  HEAD
+  BODY
+
+#data
+<div FOO ><img><img></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, foo
+      IMG
+      IMG
+
+#data
+<p>Test</p<p>Test2</p>
+#document
+HTML
+  HEAD
+  BODY
+    P
+      "Test"
+      "Test2"
+
+#data
+<rdar://problem/6869687>
+#document
+HTML
+  HEAD
+  BODY
+    RDAR:, 6869687, problem
+
+#data
+<A>test< /A>
+#document
+HTML
+  HEAD
+  BODY
+    A
+      "test< /A>"
+
+#data
+&lt;
+#document
+HTML
+  HEAD
+  BODY
+    "<"
+
+#data
+<body foo='bar'><body foo='baz' yo='mama'>
+#document
+HTML
+  HEAD
+  BODY, foo='bar', yo='mama'
+
+#data
+<body></br foo="bar"></body>
+#document
+HTML
+  HEAD
+  BODY
+    BR
+
+#data
+<bdy><br foo="bar"></body>
+#document
+HTML
+  HEAD
+  BODY
+    BDY
+      BR, foo='bar'
+
+#data
+<body></body></br foo="bar">
+#document
+HTML
+  HEAD
+  BODY
+    BR
+
+#data
+<bdy></body><br foo="bar">
+#document
+HTML
+  HEAD
+  BODY
+    BDY
+      BR, foo='bar'
+
+#data
+<html><body></body></html><!-- Hi there -->
+#document
+HTML
+  HEAD
+  BODY
+! Hi there !
+
+#data
+<html><body></body></html>x<!-- Hi there -->
+#document
+HTML
+  HEAD
+  BODY
+    "x"
+    ! Hi there !
+
+#data
+<html><body></body></html>x<!-- Hi there --></html><!-- Again -->
+#document
+HTML
+  HEAD
+  BODY
+    "x"
+    ! Hi there !
+! Again !
+
+#data
+<html><body></body></html>x<!-- Hi there --></body></html><!-- Again -->
+#document
+HTML
+  HEAD
+  BODY
+    "x"
+    ! Hi there !
+! Again !
+
+#data
+<html><body><ruby><div><rp>xx</rp></div></ruby></body></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        RP
+          "xx"
+
+#data
+<html><body><ruby><div><rt>xx</rt></div></ruby></body></html>
+#document
+HTML
+  HEAD
+  BODY
+    RUBY
+      DIV
+        RT
+          "xx"
+
+#data
+<html><frameset><!--1--><noframes>A</noframes><!--2--></frameset><!--3--><noframes>B</noframes><!--4--></html><!--5--><noframes>C</noframes><!--6-->
+#document
+HTML
+  HEAD
+  FRAMESET
+    !1!
+    NOFRAMES
+      "A"
+    !2!
+  !3!
+  NOFRAMES
+    "B"
+  !4!
+  NOFRAMES
+    "C"
+!5!
+!6!
+
+#data
+<select><option>A<select><option>B<select><option>C<select><option>D<select><option>E<select><option>F<select><option>G<select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+        "A"
+    OPTION
+      "B"
+      SELECT
+        OPTION
+          "C"
+    OPTION
+      "D"
+      SELECT
+        OPTION
+          "E"
+    OPTION
+      "F"
+      SELECT
+        OPTION
+          "G"
+
+#data
+<dd><dd><dt><dt><dd><li><li>
+#document
+HTML
+  HEAD
+  BODY
+    DD
+    DD
+    DT
+    DT
+    DD
+      LI
+      LI
+
+#data
+<div><b></div><div><nobr>a<nobr>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      B
+    DIV
+      B
+        NOBR
+          "a"
+        NOBR
+
+#data
+<head></head> <body></body>
+#document
+HTML
+  HEAD
+  " "
+  BODY
+
+#data
+<head></head> <style></style>ddd
+#document
+HTML
+  HEAD
+    STYLE
+  " "
+  BODY
+    "ddd"
+
+#data
+<kbd><table></kbd><col><select><tr>
+#document
+HTML
+  HEAD
+  BODY
+    KBD
+      SELECT
+      TABLE
+        COLGROUP
+          COL
+        TBODY
+          TR
+
+#data
+<kbd><table></kbd><col><select><tr></table><div>
+#document
+HTML
+  HEAD
+  BODY
+    KBD
+      SELECT
+      TABLE
+        COLGROUP
+          COL
+        TBODY
+          TR
+      DIV
+
+#data
+<a><li><style></style><title></title></a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    LI
+      A
+        STYLE
+        TITLE
+
+#data
+<font></p><p><meta><title></title></font>
+#document
+HTML
+  HEAD
+  BODY
+    FONT
+      P
+    P
+      FONT
+        META
+        TITLE
+
+#data
+<a><center><title></title><a>
+#document
+HTML
+  HEAD
+  BODY
+    A
+    CENTER
+      A
+        TITLE
+      A
+
+#data
+<img <="" FAIL>
+#document
+HTML
+  HEAD
+  BODY
+    IMG, <, fail
+
+#data
+<ul><li><div id='foo'/>A</li><li>B<div>C</div></li></ul>
+#document
+HTML
+  HEAD
+  BODY
+    UL
+      LI
+        DIV, id='foo'
+          "A"
+      LI
+        "B"
+        DIV
+          "C"
+
+#data
+<!doctype html><input type="hidden"><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!doctype html><input type="button"><frameset>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    INPUT, type='button'
+

@@ -1,0 +1,429 @@
+#data
+<!doctype html></head> <head>
+#document
+!HTML
+HTML
+  HEAD
+  " "
+  BODY
+
+#data
+<!doctype html><form><div></form><div>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FORM
+      DIV
+        DIV
+
+#data
+<!doctype html><title>&amp;</title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "&"
+  BODY
+
+#data
+<!doctype html><title><!--&amp;--></title>
+#document
+!HTML
+HTML
+  HEAD
+    TITLE
+      "<!--&-->"
+  BODY
+  
+#data
+<!doctype>
+#document
+!
+HTML
+  HEAD
+  BODY
+
+#data
+<!---x
+#document
+!-x!
+HTML
+  HEAD
+  BODY
+
+#data, fragment div
+<body> <div>
+#document
+HTML
+  DIV
+    " "
+    DIV
+
+#data
+<frameset></frameset> foo
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<frameset></frameset> <noframes>
+#document
+HTML
+  HEAD
+  FRAMESET
+  " "
+  NOFRAMES
+
+#data
+<frameset></frameset> <div>
+#document
+HTML
+  HEAD
+  FRAMESET
+  " "
+
+#data
+<frameset></frameset> </html>
+#document
+HTML
+  HEAD
+  FRAMESET
+  " "
+
+#data
+<frameset></frameset> </div>
+#document
+HTML
+  HEAD
+  FRAMESET
+  " "
+
+#data
+<form><form>
+#document
+HTML
+  HEAD
+  BODY
+    FORM
+
+#data
+<button><button>
+#document
+HTML
+  HEAD
+  BODY
+    BUTTON
+    BUTTON
+
+#data
+<table><tr><td></th>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<table><caption><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+      TBODY
+        TR
+          TD
+
+#data
+<table><caption><div>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        DIV
+
+#data, fragment caption
+</caption><div>
+#document
+HTML
+  DIV
+
+#data
+<table><caption><div></caption>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        DIV
+
+#data
+<table><caption></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+
+#data, fragment caption
+</table><div>
+#document
+HTML
+  DIV
+
+#data
+<table><caption></body></col></colgroup></html></tbody></td></tfoot></th></thead></tr>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+
+#data
+<table><caption><div></div>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        DIV
+
+#data
+<table><tr><td></body></caption></col></colgroup></html>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data, fragment td
+</table></tbody></tfoot></thead></tr><div>
+#document
+HTML
+  DIV
+
+#data
+<table><colgroup>foo
+#document
+HTML
+  HEAD
+  BODY
+    "foo"
+    TABLE
+      COLGROUP
+
+#data, fragment colgroup
+foo<col>
+#document
+HTML
+  COL
+
+#data
+<table><colgroup></col>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+
+#data
+<frameset><div>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data, fragment frameset
+</frameset><frame>
+#document
+HTML
+  FRAMESET
+  FRAME
+
+#data
+<frameset></div>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data, fragment body
+</body><div>
+#document
+HTML
+  DIV
+  
+#data
+<table><tr><div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+    TABLE
+      TBODY
+        TR
+
+#data, fragment tr
+</tr><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+</tbody></tfoot></thead><td>
+#document
+HTML
+  TD
+
+#data
+<table><tr><div><td>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data, fragment tbody
+<caption><col><colgroup><tbody><tfoot><thead><tr>
+#document
+HTML
+  TR
+
+#data
+<table><tbody></thead>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+
+#data, fragment tbody
+</table><tr>
+#document
+HTML
+  TR
+
+#data
+<table><tbody></body></caption></col></colgroup></html></td></th></tr>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+
+#data
+<table><tbody></div>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+
+#data
+<table><table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+    TABLE
+
+#data
+<table></body></caption></col></colgroup></html></tbody></td></tfoot></th></thead></tr>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+
+#data, fragment table
+</table><tr>
+#document
+HTML
+  TBODY
+    TR
+
+#data, fragment html
+<body></body></html>
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<html><frameset></frameset></html> 
+#document
+HTML
+  HEAD
+  FRAMESET
+  " "
+
+#data
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"><html></html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<param><frameset></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<source><frameset></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<track><frameset></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+</html><frameset></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+
+#data
+</body><frameset></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+

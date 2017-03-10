@@ -1,0 +1,127 @@
+@===============================================================================
+@           SCRIPT
+@===============================================================================
+
+#data, script
+document.write("<i>Hello World!</i>");</script>
+#document
+|T| document.write("<i>Hello World!</i>");
+|>| SCRIPT
+|*| .
+
+#data, script
+</script>
+#document
+|>| SCRIPT
+|*| .
+
+#data, script
+<abc</script>
+#document
+|T| <abc
+|>| SCRIPT
+|*| .
+
+#data, script
+<</script>
+#document
+|T| <
+|>| SCRIPT
+|*| .
+
+#data, script
+<!</script>
+#document
+|T| <!
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-- <sCrIpt\</script>
+#document
+|T| <!-- <sCrIpt\
+|>| SCRIPT
+|*| .
+
+#data, script
+'<!-- <sCrIpt/'</script>BAR</script>
+#document
+|T| '<!-- <sCrIpt/'</script>BAR
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--- </script>
+#document
+|T| <!--- 
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-- document.write("<i>Hello World!</i>"); //--></script>
+#document
+|T| <!-- document.write("<i>Hello World!</i>"); //-->
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-- <sCrIpt</script>
+#document
+|T| <!-- <sCrIpt
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-- 'scrypt'</script>
+#document
+|T| <!-- 'scrypt'
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-- <sCrIpt> --></script>
+#document
+|T| <!-- <sCrIpt> -->
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-</script>
+#document
+|T| <!-
+|>| SCRIPT
+|*| .
+
+#data, script
+<!--</script>
+#document
+|T| <!--
+|>| SCRIPT
+|*| .
+
+#data, script
+<script><!--<script </script>
+#document
+|T| <script><!--<script </script>
+|*| .
+
+#data, script
+<!--<script>-></script>--></script>
+#document
+|T| <!--<script>-></script>-->
+|>| SCRIPT
+|*| .
+
+#data, script
+<!-->document.write("<i>Hello World!</i>");</script>
+#document
+|T| <!-->document.write("<i>Hello World!</i>");
+|>| SCRIPT
+|*| .
+
+#data, script
+<!----->document.write("<i>Hello World!</i>");</script>
+#document
+|T| <!----->document.write("<i>Hello World!</i>");
+|>| SCRIPT
+|*| .

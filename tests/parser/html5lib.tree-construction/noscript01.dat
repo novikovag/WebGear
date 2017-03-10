@@ -1,0 +1,169 @@
+#data
+<head><noscript><!doctype html><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript><html class="foo"><!--foo--></noscript>
+#document
+HTML, class='foo'
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+
+#data
+<head><noscript>   </noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      "   "
+  BODY
+
+#data
+<head><noscript><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript><basefont><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      BASEFONT
+      !foo!
+  BODY
+
+#data
+<head><noscript><bgsound><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      BGSOUND
+      !foo!
+  BODY
+
+#data
+<head><noscript><link><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      LINK
+      !foo!
+  BODY
+
+#data
+<head><noscript><meta><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      META
+      !foo!
+  BODY
+
+#data
+<head><noscript><noframes>XXX</noscript></noframes></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      NOFRAMES
+        "XXX</noscript>"
+  BODY
+
+#data
+<head><noscript><style>XXX</style></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      STYLE
+        "XXX"
+  BODY
+
+#data
+<head><noscript></br><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+    BR
+    !foo!
+
+#data
+<head><noscript><head class="foo"><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript><noscript class="foo"><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript></p><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !foo!
+  BODY
+
+#data
+<head><noscript><p><!--foo--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+    P
+      !foo!
+
+#data
+<head><noscript>XXX<!--foo--></noscript></head>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+    "XXX"
+    !foo!
+
+#data
+<head><noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+  BODY
+

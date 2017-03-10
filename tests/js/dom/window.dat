@@ -1,0 +1,16 @@
+@===============================================================================
+@           Interface Window
+@===============================================================================
+
+#data
+    console.log(this);
+    console.log(self);
+    console.log(window);
+    console.log(document);
+#document
+[object Window]
+[object Window]
+[object Window]
+[object Document]
+
+@---

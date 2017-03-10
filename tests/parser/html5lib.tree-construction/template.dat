@@ -1,0 +1,1078 @@
+#data
+<body><template>Hello</template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      "Hello"
+
+#data
+<template>Hello</template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      "Hello"
+  BODY
+
+#data
+<template></template><div></div>
+#document
+HTML
+  HEAD
+    TEMPLATE
+  BODY
+    DIV
+
+#data
+<html><template>Hello</template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      "Hello"
+  BODY
+
+#data
+<head><template><div></div></template></head>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      DIV
+  BODY
+
+#data
+<div><template><div><span></template><b>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      TEMPLATE
+        DIV
+          SPAN
+      B
+
+#data
+<div><template></div>Hello
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      TEMPLATE
+        "Hello"
+
+#data
+<div></template></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+
+#data
+<table><template></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+
+#data
+<table><template></template></div>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+
+#data
+<table><div><template></template></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      TEMPLATE
+    TABLE
+
+#data
+<table><template></template><div></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+    TABLE
+      TEMPLATE
+
+#data
+<table>   <template></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      "   "
+      TEMPLATE
+
+#data
+<table><tbody><template></template></tbody>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TEMPLATE
+
+#data
+<table><tbody><template></tbody></template>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TEMPLATE
+
+#data
+<table><tbody><template></template></tbody></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TEMPLATE
+
+#data
+<table><thead><template></template></thead>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      THEAD
+        TEMPLATE
+
+#data
+<table><tfoot><template></template></tfoot>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TFOOT
+        TEMPLATE
+
+#data
+<select><template></template></select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      TEMPLATE
+
+#data
+<select><template><option></option></template></select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      TEMPLATE
+        OPTION
+
+#data
+<template><option></option></select><option></option></template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      OPTION
+      OPTION
+  BODY
+
+#data
+<select><template></template><option></select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      TEMPLATE
+      OPTION
+
+#data
+<select><option><template></template></select>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+        TEMPLATE
+
+#data
+<select><template>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      TEMPLATE
+
+#data
+<select><option></option><template>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+      TEMPLATE
+
+#data
+<select><option></option><template><option>
+#document
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+      TEMPLATE
+        OPTION
+
+#data
+<table><thead><template><td></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      THEAD
+        TEMPLATE
+          TD
+
+#data
+<table><template><thead></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        THEAD
+
+#data
+<body><table><template><td></tr><div></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        TD
+          DIV
+
+#data
+<table><template><thead></template></thead></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        THEAD
+
+#data
+<table><thead><template><tr></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      THEAD
+        TEMPLATE
+          TR
+
+#data
+<table><template><tr></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        TR
+
+#data
+<table><tr><template><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TEMPLATE
+            TD
+
+#data
+<table><template><tr><template><td></template></tr></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        TR
+          TEMPLATE
+            TD
+
+#data
+<table><template><tr><template><td></td></template></tr></template></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        TR
+          TEMPLATE
+            TD
+
+#data
+<table><template><td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TEMPLATE
+        TD
+
+#data
+<body><template><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+
+#data
+<body><template><template><tr></tr></template><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TEMPLATE
+        TR
+      TD
+
+#data
+<table><colgroup><template><col>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+        TEMPLATE
+          COL
+
+#data
+<frameset><template><frame></frame></template></frameset>
+#document
+HTML
+  HEAD
+  FRAMESET
+    FRAME
+
+#data
+<template><frame></frame></frameset><frame></frame></template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+  BODY
+
+#data
+<template><div><frameset><span></span></div><span></span></template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      DIV
+        SPAN
+      SPAN
+  BODY
+
+#data
+<body><template><div><frameset><span></span></div><span></span></template></body>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      DIV
+        SPAN
+      SPAN
+
+#data
+<body><template><script>var i = 1;</script><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      SCRIPT
+        "var i = 1;"
+      TD
+
+#data
+<body><template><tr><div></div></tr></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      DIV
+
+#data
+<body><template><tr></tr><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      TR
+        TD
+
+#data
+<body><template><td></td></tr><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+      TD
+
+#data
+<body><template><td></td><tbody><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+      TD
+
+#data
+<body><template><td></td><caption></caption><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+      TD
+
+#data
+<body><template><td></td><colgroup></caption><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+      TD
+
+#data
+<body><template><td></td></table><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TD
+      TD
+
+#data
+<body><template><tr></tr><tbody><tr></tr></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      TR
+
+#data
+<body><template><tr></tr><caption><tr></tr></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      TR
+
+#data
+<body><template><tr></tr></table><tr></tr></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      TR
+
+#data
+<body><template><thead></thead><caption></caption><tbody></tbody></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      THEAD
+      CAPTION
+      TBODY
+
+#data
+<body><template><thead></thead></table><tbody></tbody></template></body>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      THEAD
+      TBODY
+
+#data
+<body><template><div><tr></tr></div></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      DIV
+
+#data
+<body><template><em>Hello</em></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      EM
+        "Hello"
+
+#data
+<body><template><!--comment--></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      !comment!
+
+#data
+<body><template><style></style><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      STYLE
+      TD
+
+#data
+<body><template><meta><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      META
+      TD
+
+#data
+<body><template><link><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      LINK
+      TD
+
+#data
+<body><template><template><tr></tr></template><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TEMPLATE
+        TR
+      TD
+
+#data
+<body><table><colgroup><template><col></col></template></colgroup></table></body>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      COLGROUP
+        TEMPLATE
+          COL
+
+#data
+<body a=b><template><div></div><body c=d><div></div></body></template></body>
+#document
+HTML
+  HEAD
+  BODY, a='b'
+    TEMPLATE
+      DIV
+      DIV
+
+#data
+<html a=b><template><div><html b=c><span></template>
+#document
+HTML, a='b'
+  HEAD
+    TEMPLATE
+      DIV
+        SPAN
+  BODY
+
+#data
+<html a=b><template><col></col><html b=c><col></col></template>
+#document
+HTML, a='b'
+  HEAD
+    TEMPLATE
+      COL
+      COL
+  BODY
+
+#data
+<html a=b><template><frame></frame><html b=c><frame></frame></template>
+#document
+HTML, a='b'
+  HEAD
+    TEMPLATE
+  BODY
+
+#data
+<body><template><tr></tr><template></template><td></td></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TR
+      TEMPLATE
+      TR
+        TD
+
+#data
+<body><template><thead></thead><template><tr></tr></template><tr></tr><tfoot></tfoot></template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      THEAD
+      TEMPLATE
+        TR
+      TBODY
+        TR
+      TFOOT
+
+#data
+<body><template><template><b><template></template></template>text</template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      TEMPLATE
+        B
+          TEMPLATE
+      "text"
+
+#data
+<body><template><col><colgroup>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><col></colgroup>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><col><colgroup></template></body>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><col><div>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><col></div>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><col>Hello
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      COL
+
+#data
+<body><template><i><menu>Foo</i>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      I
+      MENU
+        I
+          "Foo"
+
+#data
+<body><template></div><div>Foo</div><template></template><tr></tr>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+      DIV
+        "Foo"
+      TEMPLATE
+
+#data
+<body><div><template></div><tr><td>Foo</td></tr></template>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      TEMPLATE
+        TR
+          TD
+            "Foo"
+
+#data
+<template></figcaption><sub><table></table>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      SUB
+        TABLE
+  BODY
+
+#data
+<template><template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+  BODY
+
+#data
+<template><div>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      DIV
+  BODY
+
+#data
+<template><template><div>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        DIV
+  BODY
+
+#data
+<template><template><table>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        TABLE
+  BODY
+
+#data
+<template><template><tbody>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        TBODY
+  BODY
+
+#data
+<template><template><tr>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        TR
+  BODY
+
+#data
+<template><template><td>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        TD
+  BODY
+
+#data
+<template><template><caption>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        CAPTION
+  BODY
+
+#data
+<template><template><colgroup>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        COLGROUP
+  BODY
+
+#data
+<template><template><col>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        COL
+  BODY
+
+#data
+<template><template><tbody><select>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        TBODY
+        SELECT
+  BODY
+
+#data
+<template><template><table>Foo
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        "Foo"
+        TABLE
+  BODY
+
+#data
+<template><template><frame>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+  BODY
+
+#data
+<template><template><script>var i
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        SCRIPT
+          "var i"
+  BODY
+
+#data
+<template><template><style>var i
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TEMPLATE
+        STYLE
+          "var i"
+  BODY
+
+#data
+<template><table></template><body><span>Foo
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TABLE
+  BODY
+    SPAN
+      "Foo"
+
+#data
+<template><td></template><body><span>Foo
+#document
+HTML
+  HEAD
+    TEMPLATE
+      TD
+  BODY
+    SPAN
+      "Foo"
+
+#data
+<template><object></template><body><span>Foo
+#document
+HTML
+  HEAD
+    TEMPLATE
+      OBJECT
+  BODY
+    SPAN
+      "Foo"
+
+#data
+<dummy><template><span></dummy>
+#document
+HTML
+  HEAD
+  BODY
+    DUMMY
+      TEMPLATE
+        SPAN
+
+#data
+<body><table><tr><td><select><template>Foo</template><caption>A</table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            SELECT
+              TEMPLATE
+                "Foo"
+      CAPTION
+        "A"
+
+#data
+<body></body><template>
+#document
+HTML
+  HEAD
+  BODY
+    TEMPLATE
+
+#data
+<head></head><template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+  BODY
+
+#data
+<head></head><template>Foo</template>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      "Foo"
+  BODY
+
+#data
+<!DOCTYPE HTML><dummy><table><template><table><template><table><script>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DUMMY
+      TABLE
+        TEMPLATE
+          TABLE
+            TEMPLATE
+              TABLE
+                SCRIPT
+
+#data
+<template><a><table><a>
+#document
+HTML
+  HEAD
+    TEMPLATE
+      A
+        A
+        TABLE
+  BODY

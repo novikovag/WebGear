@@ -1,0 +1,603 @@
+#data
+<!DOCTYPE html>Test
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "Test"
+
+#data
+<textarea>test</div>test
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      "test</div>test"
+
+#data
+<table><td>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<table><td>test</tbody></table>
+#document
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            "test"
+
+#data
+<frame>test
+#document
+HTML
+  HEAD
+  BODY
+    "test"
+
+#data
+<!DOCTYPE html><frameset>test
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!DOCTYPE html><frameset> te st
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!DOCTYPE html><frameset></frameset> te st
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!DOCTYPE html><frameset><!DOCTYPE html>
+#document
+!HTML
+HTML
+  HEAD
+  FRAMESET
+
+#data
+<!DOCTYPE html><font><p><b>test</font>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FONT
+    P
+      FONT
+        B
+          "test"
+
+#data
+<!DOCTYPE html><dt><div><dd>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DT
+      DIV
+    DD
+
+#data
+<script></x
+#document
+HTML
+  HEAD
+    SCRIPT
+      "</x"
+  BODY
+
+#data
+<table><plaintext><td>
+#document
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "<td>"
+    TABLE
+
+#data
+<plaintext></plaintext>
+#document
+HTML
+  HEAD
+  BODY
+    PLAINTEXT
+      "</plaintext>"
+
+#data
+<!DOCTYPE html><table><tr>TEST
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "TEST"
+    TABLE
+      TBODY
+        TR
+
+#data
+<!DOCTYPE html><body t1=1><body t2=2><body t3=3 t4=4>
+#document
+!HTML
+HTML
+  HEAD
+  BODY, t1='1', t2='2', t3='3', t4='4'
+
+#data
+</b test
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html></b test<b &=&amp>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+
+#data
+<!doctypehtml><scrIPt type=text/x-foobar;baz>X</SCRipt
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT, type='text/x-foobar;baz'
+      "X</SCRipt"
+  BODY
+
+#data
+&
+#document
+HTML
+  HEAD
+  BODY
+    "&"
+
+#data
+&#
+#document
+HTML
+  HEAD
+  BODY
+    "&#"
+
+#data
+&#X
+#document
+HTML
+  HEAD
+  BODY
+    "&#X"
+
+#data
+&#x
+#document
+HTML
+  HEAD
+  BODY
+    "&#x"
+
+#data
+&#45
+#document
+HTML
+  HEAD
+  BODY
+    "-"
+
+#data
+&x-test
+#document
+HTML
+  HEAD
+  BODY
+    "&x-test"
+
+#data
+<!doctypehtml><p><li>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    LI
+
+#data
+<!doctypehtml><p><dt>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    DT
+
+#data
+<!doctypehtml><p><dd>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    DD
+
+#data
+<!doctypehtml><p><form>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    FORM
+
+#data
+<!DOCTYPE html><p></P>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+    "X"
+
+#data
+&AMP
+#document
+HTML
+  HEAD
+  BODY
+    "&"
+
+#data
+&AMp;
+#document
+HTML
+  HEAD
+  BODY
+    "&AMp;"
+
+#data
+<!DOCTYPE html><html><head></head><body><thisISasillyTESTelementNameToMakeSureCrazyTagNamesArePARSEDcorrectLY>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    THISISASILLYTESTELEMENTNAMETOMAKESURECRAZYTAGNAMESAREPARSEDCORRECTLY
+
+#data
+<!DOCTYPE html>X</body>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    "X"
+
+#data
+<!DOCTYPE html><!-- X
+#document
+!HTML
+! X!
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><table><caption>test TEST</caption><td>test
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        "test TEST"
+      TBODY
+        TR
+          TD
+            "test"
+
+#data
+<!DOCTYPE html><select><option><optgroup>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTION
+      OPTGROUP
+
+#data
+<!DOCTYPE html><select><optgroup><option></optgroup><option><select><option>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTGROUP
+        OPTION
+      OPTION
+    OPTION
+
+#data
+<!DOCTYPE html><select><optgroup><option><optgroup>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTGROUP
+        OPTION
+      OPTGROUP
+
+#data
+<!DOCTYPE html><datalist><option>foo</datalist>bar
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DATALIST
+      OPTION
+        "foo"
+    "bar"
+
+#data
+<!DOCTYPE html><font><input><input></font>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    FONT
+      INPUT
+      INPUT
+
+#data
+<!DOCTYPE html><!-- XXX - XXX -->
+#document
+!HTML
+! XXX - XXX !
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><!-- XXX - XXX
+#document
+!HTML
+! XXX - XXX!
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><!-- XXX - XXX - XXX -->
+#document
+!HTML
+! XXX - XXX - XXX !
+HTML
+  HEAD
+  BODY
+
+#data
+test test
+#document
+HTML
+  HEAD
+  BODY
+    "test test"
+
+#data
+<!DOCTYPE html><body><title>test</body></title>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TITLE
+      "test</body>"
+
+#data
+<!DOCTYPE html><body><title>X</title><meta name=z><link rel=foo><style> x { content:"</style" } </style>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TITLE
+      "X"
+    META, name='z'
+    LINK, rel='foo'
+    STYLE
+      " x { content:"</style" } "
+
+#data
+<!DOCTYPE html><select><optgroup></optgroup></select>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+      OPTGROUP
+
+#data
+   
+#document
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html>  <html>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><script> </script>  <title>x</title>  </head>
+#document
+!HTML
+HTML
+  HEAD
+    SCRIPT
+      " "
+    "  "
+    TITLE
+      "x"
+    "  "
+  BODY
+
+#data
+<!DOCTYPE html><html><body><html id=x>
+#document
+!HTML
+HTML, id='x'
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html>X</body><html id="x">
+#document
+!HTML
+HTML, id='x'
+  HEAD
+  BODY
+    "X"
+
+#data
+<!DOCTYPE html><head><html id=x>
+#document
+!HTML
+HTML, id='x'
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html>X</html>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    "X"
+
+#data
+<!DOCTYPE html>X</html> 
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    " "
+
+#data
+<!DOCTYPE html>X</html><p>X
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    P
+      "X"
+
+#data
+<!DOCTYPE html>X<p/x/y/z>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    "X"
+    P, x, y, z
+
+#data
+<!DOCTYPE html><!--x--
+#document
+!HTML
+!x--!
+HTML
+  HEAD
+  BODY
+
+#data
+<!DOCTYPE html><table><tr><td></p></table>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            P
+
+#data
+<!DOCTYPE <!DOCTYPE HTML>><!--<!--x-->-->
+#document
+!<!DOCTYPE
+HTML
+  HEAD
+  BODY
+    ">"
+    !<!--x!
+    "-->"
+
+#data
+<!doctype html><div><form></form><div></div></div>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    DIV
+      FORM
+      DIV
+

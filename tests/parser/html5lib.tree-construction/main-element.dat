@@ -1,0 +1,25 @@
+#data
+<!doctype html><p>foo<main>bar<p>baz
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    P
+      "foo"
+    MAIN
+      "bar"
+      P
+        "baz"
+
+#data
+<!doctype html><main><p>foo</main>bar
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    MAIN
+      P
+        "foo"
+    "bar"

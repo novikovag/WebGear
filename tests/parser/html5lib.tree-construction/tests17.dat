@@ -1,0 +1,141 @@
+#data
+<!doctype html><table><tbody><select><tr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+    TABLE
+      TBODY
+        TR
+
+#data
+<!doctype html><table><tr><select><td>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+    TABLE
+      TBODY
+        TR
+          TD
+
+#data
+<!doctype html><table><tr><td><select><td>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TD
+            SELECT
+          TD
+
+#data
+<!doctype html><table><tr><th><select><td>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+          TH
+            SELECT
+          TD
+
+#data
+<!doctype html><table><caption><select><tr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      CAPTION
+        SELECT
+      TBODY
+        TR
+
+#data
+<!doctype html><select><tr>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><td>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><th>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><tbody>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><thead>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><tfoot>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><select><caption>
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    SELECT
+
+#data
+<!doctype html><table><tr></table>a
+#document
+!HTML
+HTML
+  HEAD
+  BODY
+    TABLE
+      TBODY
+        TR
+    "a"
+

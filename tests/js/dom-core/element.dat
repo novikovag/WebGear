@@ -1,0 +1,208 @@
+@===============================================================================
+@           Interface Element  
+@===============================================================================
+
+#data
+    var e1 = document.createElement("div");
+    var e2 = document.createElement("ЭлЕмЕнТ");
+    
+    console.log(e1.tagName);
+    console.log(e2.tagName);
+#document
+DIV
+ЭлЕмЕнТ
+
+@---
+
+#data
+    var e = document.createElement("div");
+
+    e.setAttribute("a1", "v1");
+    e.setAttribute("A2", "v2");
+    e.setAttribute("АтРиБуТ", "v3");
+    e.setAttribute("a1", "new");
+    
+    console.log(e.getAttribute("A1"));
+    console.log(e.getAttribute("a2"));
+    console.log(e.getAttribute("a3"));
+    console.log(e.getAttribute("АтРиБуТ"));
+
+    try {
+        console.log(e.getAttribute(e));
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+new
+v2
+null
+v3
+e: IllegalArgument
+
+@---
+
+#data
+    var e = document.createElement("div");
+
+    try {
+        e.setAttribute(123, "v");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e.setAttribute("a 1", "v");
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: IllegalArgument
+e: InvalidCharacterError
+
+@---
+
+#data
+    var e = document.createElement("div");
+
+    e.setAttribute("a1", "v1");
+    e.setAttribute("a2", "v2");
+    
+    e.removeAttribute("A1");
+    e.removeAttribute("a 2");
+    
+    console.log(e.getAttribute("a1"));
+    console.log(e.getAttribute("a2"));
+#document
+null
+v2
+
+@---
+
+#data
+    var e = document.createElement("div");
+
+    e.setAttribute("a1", "v1");
+    e.setAttribute("a2", "v2");
+    
+    console.log(e.getAttributeNode("a1").name);
+    console.log(e.getAttributeNode("a2").name);
+
+    try {
+        console.log(e.getAttributeNode(123));
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+a1
+a2
+e: IllegalArgument
+
+@---
+
+#data
+    var e1 = document.createElement("div");
+    e1.setAttribute("a1", "v1");
+    e1.setAttribute("a2", "v2");
+    
+    var a1 = e1.getAttributeNode("a1");
+    var a2 = e1.getAttributeNode("a2");
+    
+    console.log(a1.name);
+    console.log(a2.name);
+    
+    var e2 = document.createElement("div");
+    e2.setAttribute("a3", "v3");
+    e2.setAttribute("a4", "v4");
+    
+    var a3 = e2.getAttributeNode("a3");
+    var a4 = e2.getAttributeNode("a4");
+    
+    console.log(a3.name);
+    console.log(a4.name);
+    
+    try {
+        console.log(e2.setAttributeNode(e1));
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    e2.setAttributeNode(a4);
+#document
+a1
+a2
+a3
+a4
+e: InvalidNodeTypeError
+
+@---
+
+#data
+    var e = document.createElement("div");
+    e.setAttribute("a1", "v1");
+    e.setAttribute("a2", "v2");
+    
+    var a1 = document.createAttribute("a1");
+    a1.value = "new";
+    
+    var a2 = e.setAttributeNode(a1);
+
+    console.log(e.getAttribute("a1"));
+    console.log(a2.value);
+    
+    a1 = e.setAttributeNode(a2);
+    
+    console.log(e.getAttribute("a1"));
+    console.log(a1.value);
+#document
+new
+v1
+v1
+new
+
+@---
+
+#data
+    var e = document.createElement('div');
+    e.setAttribute("a1", "v1");
+    e.setAttribute("a2", "v2");
+    
+    var a = e.getAttributeNode("a1");
+
+    console.log(a.name);
+    e.removeAttributeNode(a);
+    console.log(a.name);
+    console.log(e.getAttribute("a1"));
+#document
+a1
+a1
+null
+
+@---
+
+#data
+    var e1 = document.createElement('div');
+    e1.setAttribute("a1", "v1");
+
+    var a1 = e1.getAttributeNode("a1");
+
+    var e2 = document.createElement('div');
+    e2.setAttribute("a2", "v2");
+
+    var a2 = e2.getAttributeNode("a2");
+    
+    e1.removeAttributeNode(a1);
+    
+    try {
+        e1.removeAttributeNode(a1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e2.removeAttributeNode(a1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: NotFoundError
+e: NotFoundError

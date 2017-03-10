@@ -1,0 +1,24 @@
+@===============================================================================
+@           Interface Attr
+@===============================================================================
+
+#data
+    var e = document.createElement('div');
+
+    e.setAttribute('a1', 'v1');
+    
+    var a = e.getAttributeNode('a1');
+    
+    console.log(a.name);
+    console.log(a.value);
+    console.log(a.ownerElement.tagName);
+    
+    a.value = e;
+    console.log(a.value);
+#document
+a1
+v1
+DIV
+[object Element]
+
+@---

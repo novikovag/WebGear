@@ -1,0 +1,99 @@
+#data
+<p><font size=4><font color=red><font size=4><font size=4><font size=4><font size=4><font size=4><font color=red><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, size='4'
+        FONT, color='red'
+          FONT, size='4'
+            FONT, size='4'
+              FONT, size='4'
+                FONT, size='4'
+                  FONT, size='4'
+                    FONT, color='red'
+    P
+      FONT, color='red'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='4'
+              FONT, color='red'
+                "X"
+
+#data
+<p><font size=4><font size=4><font size=4><font size=4><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='4'
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            "X"
+
+#data
+<p><font size=4><font size=4><font size=4><font size='5'><font size=4><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='4'
+            FONT, size='5'
+              FONT, size='4'
+    P
+      FONT, size='4'
+        FONT, size='4'
+          FONT, size='5'
+            FONT, size='4'
+              "X"
+
+#data
+<p><font size=4 id=a><font size=4 id=b><font size=4><font size=4><p>X
+#document
+HTML
+  HEAD
+  BODY
+    P
+      FONT, id='a', size='4'
+        FONT, id='b', size='4'
+          FONT, size='4'
+            FONT, size='4'
+    P
+      FONT, id='a', size='4'
+        FONT, id='b', size='4'
+          FONT, size='4'
+            FONT, size='4'
+              "X"
+
+#data
+<p><b id=a><b id=a><b id=a><b><object><b id=a><b id=a>X</object><p>Y
+#document
+HTML
+  HEAD
+  BODY
+    P
+      B, id='a'
+        B, id='a'
+          B, id='a'
+            B
+              OBJECT
+                B, id='a'
+                  B, id='a'
+                    "X"
+    P
+      B, id='a'
+        B, id='a'
+          B, id='a'
+            B
+              "Y"
+

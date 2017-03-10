@@ -1,0 +1,59 @@
+@===============================================================================
+@           Атрибуты.
+@===============================================================================
+
+#data
+<div text="&amp;">
+#document
+|<| DIV
+|A| text
+|V| &
+|*| .
+
+#data
+<div text="123&amp;">
+#document
+|<| DIV
+|A| text
+|V| 123&
+|*| .
+
+#data
+<div text="123&amp;456">
+#document
+|<| DIV
+|A| text
+|V| 123&456
+|*| .
+
+#data
+<div text=123&amp;456>
+#document
+|<| DIV
+|A| text
+|V| 123&456
+|*| .
+
+#data
+<div text="123&amp;456&AMP789">
+#document
+|<| DIV
+|A| text
+|V| 123&456&789
+|*| .
+
+#data
+<div text="ab&sum;&#8721;&amp;&#x2211;cd">
+#document
+|<| DIV
+|A| text
+|V| ab∑∑&∑cd
+|*| .
+
+#data
+<div text="&amp;;;;ab&#8721;;;;cd">
+#document
+|<| DIV
+|A| text
+|V| &;;;ab∑;;;cd
+|*| .

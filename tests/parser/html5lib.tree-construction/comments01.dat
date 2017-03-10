@@ -1,0 +1,130 @@
+#data
+FOO<!-- BAR -->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR !
+    "BAZ"
+
+#data
+FOO<!-- BAR --!>BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR !
+    "BAZ"
+
+#data
+FOO<!-- BAR --   >BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR --   >BAZ!
+
+#data
+FOO<!-- BAR -- <QUX> -- MUX -->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR -- <QUX> -- MUX !
+    "BAZ"
+
+#data
+FOO<!-- BAR -- <QUX> -- MUX --!>BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR -- <QUX> -- MUX !
+    "BAZ"
+
+#data
+FOO<!-- BAR -- <QUX> -- MUX -- >BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    ! BAR -- <QUX> -- MUX -- >BAZ!
+
+#data
+FOO<!---->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    "BAZ"
+
+#data
+FOO<!--->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    "BAZ"
+
+#data
+FOO<!-->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    "BAZ"
+
+#data
+<?xml version="1.0">Hi
+#document
+!xml version="1.0"!
+HTML
+  HEAD
+  BODY
+    "Hi"
+
+#data
+<?xml version="1.0">
+#document
+!xml version="1.0"!
+HTML
+  HEAD
+  BODY
+
+#data
+<?xml version
+#document
+!xml version!
+HTML
+  HEAD
+  BODY
+
+#data
+FOO<!----->BAZ
+#document
+HTML
+  HEAD
+  BODY
+    "FOO"
+    !-!
+    "BAZ"
+
+#data
+<html><!-- comment --><title>Comment before head</title>
+#document
+HTML
+  ! comment !
+  HEAD
+    TITLE
+      "Comment before head"
+  BODY
+

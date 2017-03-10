@@ -1,0 +1,514 @@
+@===============================================================================
+@           Interface Node 
+@===============================================================================
+
+#data
+    var e1 = document.createElement("div");
+    var t1 = document.createTextNode("Text1");
+    var t2 = document.createTextNode("");
+    var t3 = document.createTextNode("Text3");
+   
+    var e2 = document.createElement("div");
+    var t4 = document.createTextNode("Текст четыре");
+    var t5 = document.createTextNode("Текст 5");
+    
+    e1.appendChild(t1);
+    e1.appendChild(t2);
+    e1.appendChild(t3);
+    
+    e2.appendChild(t4);
+    e2.appendChild(t5);
+
+    e1.appendChild(e2);
+    
+    e1.normalize();
+    console.tree(e1);
+#document
+DIV
+  "Text1Text3"
+  DIV
+    "Текст четыреТекст 5"
+
+@---    
+    
+#data
+    var div = document.createElement("div");
+    div.setAttribute("a1", "v1");
+
+    var a1 = div.getAttributeNode("a1");
+    console.log(a1.name);
+    console.log(a1.ownerElement.tagName);
+    
+    var a2 = a1.cloneNode();
+    
+    console.log(a2.name);
+    console.log(a2.ownerElement);    
+#document
+a1
+DIV
+a1
+null
+    
+@---
+
+#data    
+    var e1 = document.createElement("div");
+    var t1 = document.createTextNode("Text");
+    var c1 = document.createComment("Comment");
+
+    e2 = e1.cloneNode();
+    t2 = t1.cloneNode();
+    c2 = c1.cloneNode(); 
+    
+    console.tree(e2);
+    console.tree(t2);
+    console.tree(c2);    
+#document
+DIV
+"Text"
+!Comment!
+
+@---
+
+#data
+    var e1 = document.createElement("div");
+    var e2 = document.createElement("a");
+    var e3 = document.createElement("b");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    
+    var e4 = e1.cloneNode(1);
+    var e5 = e1.cloneNode(false);
+    
+    console.tree(e4);
+    console.log("---");
+    console.tree(e5);
+#document
+DIV
+  A
+    B
+---
+DIV
+
+@---
+
+#data
+    var e1 = document.createElement("div");
+    var e2 = document.createElement("div");
+    e2.setAttribute("a1", "v1");
+    e2.setAttribute("a2", "v2");
+    
+    var e3 = document.createElement("div");
+    e3.setAttribute("a3", "v3");
+    e3.setAttribute("a4", "v4");
+    
+    var e4 = document.createElement("div");
+    e4.setAttribute("a5", "v5");
+    e4.setAttribute("a6", "v6");
+
+    var t1 = document.createTextNode("Text1");
+    var t2 = document.createTextNode("Text2");
+    var t3 = document.createTextNode("Text3");
+    var t4 = document.createTextNode("Text4");
+    
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+    
+    e1.appendChild(t1);
+    e2.appendChild(t2);
+    e3.appendChild(t3);
+    e4.appendChild(t4);
+
+    var e5 = e1.cloneNode(1);
+    
+    console.tree(e5);
+#document
+DIV
+  DIV, a1='v1', a2='v2'
+    "Text2"
+  DIV, a3='v3', a4='v4'
+    DIV, a5='v5', a6='v6'
+      "Text4"
+    "Text3"
+  "Text1"
+  
+@---
+
+#data
+    var e1 = document.createElement("div");
+    var e2 = document.createElement("div");
+    var e3 = document.createElement("e");
+    
+    e1.setAttribute("a1", "v1");
+    e2.setAttribute("a2", "v2");
+    e3.setAttribute("a3", "v3");
+    
+    e1.appendChild(e2);
+    e2.appendChild(e3);
+    
+    var e5 = e1.cloneNode();
+    var e6 = e1.cloneNode(true);
+    
+    console.tree(e5);
+    console.log("---")
+    console.tree(e6);
+#document
+DIV, a1='v1'
+---
+DIV, a1='v1'
+  DIV, a2='v2'
+    E, a3='v3'
+
+@---
+
+#data 
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+    var e5 = document.createElement("div5");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    e1.insertBefore(e3, e2);
+    e1.insertBefore(e5);
+    
+    console.tree(e1);  
+#document
+DIV1
+  DIV3
+    DIV4
+  DIV2
+  DIV5
+  
+@---
+
+#data   
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+    
+    e1.insertBefore(e2);
+    
+    console.tree(e1);  
+#document  
+DIV1
+  DIV3
+    DIV4
+  DIV2
+  
+@---  
+  
+#data 
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    try {
+        e1.insertBefore(e2, e4);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e1.insertBefore(e3, e4);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e4.insertBefore(e1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e1.insertBefore();
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e1.insertBefore(e2, 1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document
+e: NotFoundError
+e: NotFoundError
+e: HierarchyRequestError
+e: TooFewArguments
+e: IllegalArgument
+
+@---  
+  
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    try {
+        e4.appendChild(e1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }  
+    
+    try {
+        e4.appendChild(1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }  
+#document
+e: HierarchyRequestError
+e: IllegalArgument
+
+@---  
+  
+#data
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+    e1.appendChild(e4);
+    e1.appendChild(e2);
+    
+    console.tree(e1);
+#document
+DIV1
+  DIV3
+  DIV4
+  DIV2
+
+@---  
+  
+#data  
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+    e1.replaceChild(e4, e3);
+    
+    var e5 = e1.replaceChild(e2, e4);
+
+    console.log(e5.tagName);
+    console.log("---");
+    console.tree(e1);
+#document
+DIV4
+---
+DIV1
+  DIV2
+  
+@---  
+  
+#data   
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    try {
+        e1.replaceChild(e3, e1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e1.replaceChild(e3, e4);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e4.replaceChild(e3, e1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document   
+e: NotFoundError
+e: NotFoundError
+e: NotFoundError
+  
+@---  
+  
+#data 
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    e1.removeChild(e3);
+    
+    console.tree(e1);
+#document  
+DIV1
+  DIV2
+  
+@---  
+  
+#data 
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    try {
+        e1.removeChild(e4);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+    
+    try {
+        e2.removeChild(e1);
+    } catch (e) {
+        console.log("e: " + e.name);
+    }
+#document  
+e: NotFoundError
+e: NotFoundError
+
+@---  
+  
+#data 
+    var e1 = document.createElement("div1");
+    var e2 = document.createElement("div2");
+    var e3 = document.createElement("div3");
+    var e4 = document.createElement("div4");
+
+    e1.appendChild(e2);
+    e1.appendChild(e3);
+    e3.appendChild(e4);
+
+    console.log(e1.nodeType);
+    console.log(e1.tagName);
+    console.log(e4.parentNode.tagName);
+    console.log(e1.firstChild.tagName);
+    console.log(e1.lastChild.tagName);
+    console.log(e2.previousSibling);
+    console.log(e2.nextSibling.tagName);
+    console.log(e3.previousSibling.tagName);
+    console.log(e3.nextSibling);
+#document  
+1
+DIV1
+DIV3
+DIV2
+DIV3
+null
+DIV3
+DIV2
+null
+
+@---  
+  
+#data 
+    var e = document.createElement("div");
+    e.setAttribute("a1", "v1");
+    
+    console.log(e.getAttributeNode("a1").nodeValue);
+    console.log(e.nodeValue);
+    
+    var t = document.createTextNode("Текст четыре");
+    
+    console.log(t.nodeValue);
+#document 
+v1
+null
+Текст четыре
+
+@---  
+  
+#data 
+    var e = document.createElement("div");
+    e.setAttribute("a", "Value");
+    var a = e.getAttributeNode("a");
+    
+    var t = document.createTextNode("Text");
+    var c = document.createComment("Comment");
+    
+    a.nodeValue = "Vlaue2";
+    t.nodeValue = "Text2";
+    c.nodeValue = "Comment2";
+    
+    console.log(a.nodeValue);
+    console.log(t.nodeValue);
+    console.log(c.nodeValue);
+    console.log("---");
+    
+    a.nodeValue = "Vlaue3";
+    t.nodeValue = 1;
+    c.nodeValue = c;
+    
+    console.log(a.nodeValue);
+    console.log(t.nodeValue);
+    console.log(c.nodeValue);
+#document 
+Vlaue2
+Text2
+Comment2
+---
+Vlaue3
+1
+[object Comment]
+
+@---  
+  
+#data
+    var e = document.createElement("div");
+    e.setAttribute("a", "v");
+    var a = e.getAttributeNode("a");
+    
+    var t = document.createTextNode("Text");
+    var c = document.createComment("Comment");
+    
+    console.log(e.nodeName);
+    console.log(a.nodeName);
+    console.log("-> " + t.nodeName);
+    console.log("-> " + c.nodeName);
+#document 
+DIV
+a
+-> #text
+-> #comment
+
+@---  
+

@@ -1,0 +1,170 @@
+#data
+<style> <!-- </style>x
+#document
+HTML
+  HEAD
+    STYLE
+      " <!-- "
+  BODY
+    "x"
+
+#data
+<style> <!-- </style> --> </style>x
+#document
+HTML
+  HEAD
+    STYLE
+      " <!-- "
+  BODY
+    " --> "
+    "x"
+
+#data
+<style> <!--> </style>x
+#document
+HTML
+  HEAD
+    STYLE
+      " <!--> "
+  BODY
+    "x"
+
+#data
+<style> <!---> </style>x
+#document
+HTML
+  HEAD
+    STYLE
+      " <!---> "
+  BODY
+    "x"
+
+#data
+<iframe> <!---> </iframe>x
+#document
+HTML
+  HEAD
+  BODY
+    IFRAME
+      " <!---> "
+    "x"
+
+#data
+<iframe> <!--- </iframe>->x</iframe> --> </iframe>x
+#document
+HTML
+  HEAD
+  BODY
+    IFRAME
+      " <!--- "
+    "->x"
+    " --> "
+    "x"
+
+#data
+<script> <!-- </script> --> </script>x
+#document
+HTML
+  HEAD
+    SCRIPT
+      " <!-- "
+  BODY
+    " --> "
+    "x"
+
+#data
+<title> <!-- </title> --> </title>x
+#document
+HTML
+  HEAD
+    TITLE
+      " <!-- "
+  BODY
+    " --> "
+    "x"
+
+#data
+<textarea> <!--- </textarea>->x</textarea> --> </textarea>x
+#document
+HTML
+  HEAD
+  BODY
+    TEXTAREA
+      " <!--- "
+    "->x"
+    " --> "
+    "x"
+
+#data
+<style> <!</-- </style>x
+#document
+HTML
+  HEAD
+    STYLE
+      " <!</-- "
+  BODY
+    "x"
+
+#data
+<p><xmp></xmp>
+#document
+HTML
+  HEAD
+  BODY
+    P
+    XMP
+
+#data
+<xmp> <!-- > --> </xmp>
+#document
+HTML
+  HEAD
+  BODY
+    XMP
+      " <!-- > --> "
+
+#data
+<title>&amp;</title>
+#document
+HTML
+  HEAD
+    TITLE
+      "&"
+  BODY
+
+#data
+<title><!--&amp;--></title>
+#document
+HTML
+  HEAD
+    TITLE
+      "<!--&-->"
+  BODY
+
+#data
+<title><!--</title>
+#document
+HTML
+  HEAD
+    TITLE
+      "<!--"
+  BODY
+
+#data, script on
+<noscript><!--</noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "-->"
+
+#data
+<noscript><!--</noscript>--></noscript>
+#document
+HTML
+  HEAD
+    NOSCRIPT
+      !</noscript>!
+  BODY

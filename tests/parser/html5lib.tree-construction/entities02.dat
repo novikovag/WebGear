@@ -1,0 +1,215 @@
+#data
+<div bar="ZZ&gt;YY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>YY'
+
+#data
+<div bar="ZZ&"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&'
+
+#data
+<div bar='ZZ&'></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&'
+
+#data
+<div bar=ZZ&></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&'
+
+#data
+<div bar="ZZ&gt=YY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>=YY'
+
+#data
+<div bar="ZZ&gt0YY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>0YY'
+
+#data
+<div bar="ZZ&gt9YY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>9YY'
+
+#data
+<div bar="ZZ&gtaYY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>aYY'
+
+#data
+<div bar="ZZ&gtZYY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>ZYY'
+
+#data
+<div bar="ZZ&gt YY"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ> YY'
+
+#data
+<div bar="ZZ&gt"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>'
+
+#data
+<div bar='ZZ&gt'></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>'
+
+#data
+<div bar=ZZ&gt></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ>'
+
+#data
+<div bar="ZZ&amp=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&=23'
+
+#data
+<div bar="ZZ&amp_id=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&_id=23'
+
+#data
+<div bar="ZZ&amp;_id=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&_id=23'
+
+#data
+<div bar="ZZ&amp;_id=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&_id=23'
+
+#data
+<div bar="ZZ&amp=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&=23'
+
+#data
+<div bar="ZZ&prod=23"></div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV, bar='ZZ&prod=23'
+
+#data
+<div>ZZ&pound_id=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ£_id=23"
+
+#data
+<div>ZZ&prod_id=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ&prod_id=23"
+
+#data
+<div>ZZ&pound;_id=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ£_id=23"
+
+#data
+<div>ZZ&prod;_id=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ∏_id=23"
+
+#data
+<div>ZZ&pound=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ£=23"
+
+#data
+<div>ZZ&prod=23</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZ&prod=23"
+
+#data
+<div>ZZ&AElig=</div>
+#document
+HTML
+  HEAD
+  BODY
+    DIV
+      "ZZÆ="
+
