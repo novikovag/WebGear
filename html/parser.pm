@@ -355,7 +355,7 @@ sub parser_state_before_html
     my ($element);
 
     if ($context->{'node'}{'type'}  == $NODE_TYPE_DOCUMENT_TYPE ||
-       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT         &&
+       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT          &&
         $context->{'node'}{'flags'}  & $NODE_FLAG_WHITESPACE)) {
         return;
     }
@@ -2541,8 +2541,8 @@ sub parser_state_after_after_body
 
     if ($context->{'node'}{'type'}  == $NODE_TYPE_DOCUMENT_TYPE ||
        ($context->{'node'}{'type'}  == $NODE_TYPE_START_TAG     &&
-        $context->{'node'}{'id'}    == $ELEMENT_HTML)          ||
-       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT         &&
+        $context->{'node'}{'id'}    == $ELEMENT_HTML)           ||
+       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT          &&
         $context->{'node'}{'flags'}  & $NODE_FLAG_WHITESPACE)) {
         parser_state_in_body($context);
         return;
@@ -2571,7 +2571,7 @@ sub parser_state_after_after_frameset
     }
 
     if ($context->{'node'}{'type'}  == $NODE_TYPE_DOCUMENT_TYPE ||
-       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT         &&
+       ($context->{'node'}{'type'}  == $NODE_TYPE_TEXT          &&
         $context->{'node'}{'flags'}  & $NODE_FLAG_WHITESPACE)) {
         parser_state_in_body($context);
         return;
