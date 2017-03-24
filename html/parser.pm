@@ -24,22 +24,19 @@ use WebGear::HTML::Utilities;
 
 sub parser_initialize_context
 {
-    my ($document, $context);
-
-    $document = node_create_document();
+    my ($inbuffer, $document, $jscontext) = @_;
+    my ($context);
 
     $context = {
         'flags'        => $PARSER_FLAG_FRAMESET_OK,
 
-        'data'         => $NULL,
-        'datalength'   => 0,
-        'index'        => 0,
+        'inbuffer'     => $inbuffer,
 
         'scannerstate' => $NULL,
         'parserstate'  => $NULL,
 
-        'nodeready'    => 0,
         'node'         => $NULL,
+        'nodeready'    => 0,
 
         'rawswitch'    => $NULL,
 
@@ -52,9 +49,8 @@ sub parser_initialize_context
         # Вставляем корневой элемент в SOE напрямую.
         'soe'          => $document,
         'sti'          => [],
-
-        'jscontext'    => $NULL,
-        'jscallback'   => $NULL
+  
+        'jscontext'    => $jscontext
     };
 
     return $context;
@@ -62,14 +58,10 @@ sub parser_initialize_context
 
 sub parser_parse
 {
-    my ($context, $data, $datalength, $jscontext, $jscallback) = @_;
+    my ($context) = @_;
     
-    $context->{'data'}         = $data;
-    $context->{'datalength'}   = $datalength;
     $context->{'scannerstate'} = \&scanner_state_text;
     $context->{'parserstate'}  = \&parser_state_initial;
-    $context->{'jscontext'}    = $jscontext;
-    $context->{'jscallback'}   = $jscallback;
 
     parser_process($context);
 }
@@ -80,52 +72,53 @@ sub parser_parse
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sub parser_fragment
 {
-    my ($context, $data, $datalength, $contextelementid, $contextelementname, $contextelementnamelength) = @_;
-    my ($element);
-
-    $context->{'data'}       = $data;
-    $context->{'datalength'} = $datalength;
-
-    if ($contextelementid == $ELEMENT_IFRAME) {
+    my ($context, $element) = @_;
+    # Узел контекстного элемента не изменяется.
+    $context->{'context'} = $element;
+    # Считается текущим элементом, в явной установке нет необходимости.
+    # $context->{'nodeready'} = $FALSE;
+    # $context->{'node'}      = $element;
+    
+    if ($element->{'id'} == $ELEMENT_IFRAME) {
         $context->{'rawswitch'}    = $raw[0];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_MATH) { 
+    } elsif ($element->{'id'} == $ELEMENT_MATH) { 
         $context->{'rawswitch'}    = $raw[1];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_NOEMBED) {
+    } elsif ($element->{'id'} == $ELEMENT_NOEMBED) {
         $context->{'rawswitch'}    = $raw[2];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_NOFRAMES) { 
+    } elsif ($element->{'id'} == $ELEMENT_NOFRAMES) { 
         $context->{'rawswitch'}    = $raw[3];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_NOSCRIPT) { 
+    } elsif ($element->{'id'} == $ELEMENT_NOSCRIPT) { 
         $context->{'rawswitch'}    = $raw[4];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_PLAINTEXT) {
+    } elsif ($element->{'id'} == $ELEMENT_PLAINTEXT) {
         $context->{'rawswitch'}    = $raw[5];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_SCRIPT && $context->{'jscontext'} && $context->{'jscallback'}) { 
+    } elsif ($element->{'id'} == $ELEMENT_SCRIPT && $context->{'jscontext'}) { 
         $context->{'rawswitch'}    = $raw[6];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_STYLE) {
+    } elsif ($element->{'id'} == $ELEMENT_STYLE) {
         $context->{'rawswitch'}    = $raw[7];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_SVG) {
+    } elsif ($element->{'id'} == $ELEMENT_SVG) {
         $context->{'rawswitch'}    = $raw[8];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_TEXTAREA) {
+    } elsif ($element->{'id'} == $ELEMENT_TEXTAREA) {
         $context->{'rawswitch'}    = $raw[9];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_TITLE) {
+    } elsif ($element->{'id'} == $ELEMENT_TITLE) {
         $context->{'rawswitch'}    = $raw[10];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
-    } elsif ($contextelementid == $ELEMENT_XMP) {
+    } elsif ($element->{'id'} == $ELEMENT_XMP) {
         $context->{'rawswitch'}    = $raw[11];
         $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
     } else {
         $context->{'scannerstate'} = \&scanner_state_text;
 
-        if ($contextelementid == $ELEMENT_TEMPLATE) {
+        if ($element->{'id'} == $ELEMENT_TEMPLATE) {
             sti_push($context, \&parser_state_in_template);
         }
     }
@@ -135,14 +128,8 @@ sub parser_fragment
     
     node_append($context->{'document'}, $element);
     soe_push($context, $element);
-
-    $element = node_create_element(0, $contextelementid, $contextelementname, $contextelementnamelength);
-    $context->{'context'} = $element;
-
+    
     parser_reset_insertion_mode($context);
-    # Устанавливаем элемент текущим узлом сканера.
-    $context->{'nodeready'} = $TRUE;
-    $context->{'node'}      = $element;
 
     parser_process($context);
 }
@@ -161,7 +148,7 @@ sub parser_process
             }
 
             $context->{'scannerstate'}($context);
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         }
 
         $context->{'nodeready'} = $FALSE;
@@ -514,7 +501,7 @@ sub parser_state_in_head
         if ($context->{'node'}{'id'} == $ELEMENT_NOSCRIPT) {
             node_insert($context, $context->{'soe'}, $context->{'node'});
 
-            if ($context->{'jscontext'} && $context->{'jscallback'}) {
+            if ($context->{'jscontext'}) {
                 element_append_rawdata($context, $context->{'node'});
             } else {
                 soe_push($context, $context->{'node'});
@@ -535,10 +522,10 @@ sub parser_state_in_head
             $element = $context->{'node'};
         
             node_insert($context, $context->{'soe'}, $context->{'node'});
-            element_append_rawdata($context, $context->{'node'});
+            element_append_rawdata($context, $context->{'node'});  
               
-            if ($context->{'jscontext'} && $context->{'jscallback'}) {
-                $context->{'jscallback'}($context->{'jscontext'}, $element->{'firstchild'}{'data'}, $element->{'firstchild'}{'datalength'});
+            if ($context->{'jscontext'}) {
+                WebGear::SpiderMonkey::js_evaluate($context->{'jscontext'}, $element->{'firstchild'}{'data'}, $element->{'firstchild'}{'datalength'});
             }
             
             return;
@@ -1208,7 +1195,7 @@ sub parser_state_in_body
 
         if ($context->{'node'}{'id'} == $ELEMENT_NOEMBED  ||
            ($context->{'node'}{'id'} == $ELEMENT_NOSCRIPT &&
-            $context->{'jscontext'}  && $context->{'jscallback'})) {
+            $context->{'jscontext'})) {
             node_insert($context, $context->{'soe'}, $context->{'node'});
             element_append_rawdata($context, $context->{'node'});
             return;

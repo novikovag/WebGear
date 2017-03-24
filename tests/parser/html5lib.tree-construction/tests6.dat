@@ -54,14 +54,6 @@ HTML
   HEAD
   BODY
 
-#data, fragment div
-<body> <div>
-#document
-HTML
-  DIV
-    " "
-    DIV
-
 #data
 <frameset></frameset> foo
 #document
@@ -152,12 +144,6 @@ HTML
       CAPTION
         DIV
 
-#data, fragment caption
-</caption><div>
-#document
-HTML
-  DIV
-
 #data
 <table><caption><div></caption>
 #document
@@ -176,12 +162,6 @@ HTML
   BODY
     TABLE
       CAPTION
-
-#data, fragment caption
-</table><div>
-#document
-HTML
-  DIV
 
 #data
 <table><caption></body></col></colgroup></html></tbody></td></tfoot></th></thead></tr>
@@ -213,12 +193,6 @@ HTML
         TR
           TD
 
-#data, fragment td
-</table></tbody></tfoot></thead></tr><div>
-#document
-HTML
-  DIV
-
 #data
 <table><colgroup>foo
 #document
@@ -228,12 +202,6 @@ HTML
     "foo"
     TABLE
       COLGROUP
-
-#data, fragment colgroup
-foo<col>
-#document
-HTML
-  COL
 
 #data
 <table><colgroup></col>
@@ -251,13 +219,6 @@ HTML
   HEAD
   FRAMESET
 
-#data, fragment frameset
-</frameset><frame>
-#document
-HTML
-  FRAMESET
-  FRAME
-
 #data
 <frameset></div>
 #document
@@ -265,12 +226,6 @@ HTML
   HEAD
   FRAMESET
 
-#data, fragment body
-</body><div>
-#document
-HTML
-  DIV
-  
 #data
 <table><tr><div>
 #document
@@ -281,18 +236,6 @@ HTML
     TABLE
       TBODY
         TR
-
-#data, fragment tr
-</tr><td>
-#document
-HTML
-  TD
-
-#data, fragment tr
-</tbody></tfoot></thead><td>
-#document
-HTML
-  TD
 
 #data
 <table><tr><div><td>
@@ -306,12 +249,6 @@ HTML
         TR
           TD
 
-#data, fragment tbody
-<caption><col><colgroup><tbody><tfoot><thead><tr>
-#document
-HTML
-  TR
-
 #data
 <table><tbody></thead>
 #document
@@ -320,12 +257,6 @@ HTML
   BODY
     TABLE
       TBODY
-
-#data, fragment tbody
-</table><tr>
-#document
-HTML
-  TR
 
 #data
 <table><tbody></body></caption></col></colgroup></html></td></th></tr>
@@ -361,20 +292,6 @@ HTML
   HEAD
   BODY
     TABLE
-
-#data, fragment table
-</table><tr>
-#document
-HTML
-  TBODY
-    TR
-
-#data, fragment html
-<body></body></html>
-#document
-HTML
-  HEAD
-  BODY
 
 #data
 <html><frameset></frameset></html> 

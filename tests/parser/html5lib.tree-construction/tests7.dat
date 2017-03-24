@@ -254,14 +254,6 @@ HTML
   HEAD
   BODY
 
-#data, fragment html
-<body>X</body></body>
-#document
-HTML
-  HEAD
-  BODY
-    "X"
-
 #data
 <div><p>a</x> b
 #document

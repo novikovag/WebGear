@@ -1,0 +1,339 @@
+@===============================================================================
+@           Document.insertAdjacentHTML
+@===============================================================================
+
+#data
+<html id="id1">
+<head></head>
+<body>
+    <p id="id2"></p>
+    <script>
+        var e1 = document.getElementById("id1");
+        var e2 = document.getElementById("id2");
+           
+        try {
+            e1.insertAdjacentHTML("afterend", "<div></div><p></p>");
+        } catch (e) {
+            console.log("e: " + e.name);
+        }
+
+        try {
+            e2.insertAdjacentHTML("before", "<div></div><p></p>");
+        } catch (e) {
+            console.log("e: " + e.name);
+        }
+    </script>
+</body>
+</html>
+#document
+e: NoModificationAllowedError
+e: SyntaxError
+---
+HTML, id='id1'
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id2'
+    "\n "
+    SCRIPT
+      "\n var e1 = document.getElementById("id1");\n var e2 = document.getElementById("id2");\n \n try {\n e1.insertAdjacentHTML("afterend", "<div></div><p></p>");\n } catch (e) {\n console.log("e: " + e.name);\n }\n\n try {\n e2.insertAdjacentHTML("before", "<div></div><p></p>");\n } catch (e) {\n console.log("e: " + e.name);\n }\n "
+    "\n"
+    "\n"
+
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("beforebegin", "a<div>b</div>c<p>d<a>e</a></p>f");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    "a"
+    DIV
+      "b"
+    "c"
+    P
+      "d"
+      A
+        "e"
+    "f"
+    P, id='id'
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("beforebegin", "a<div>b</div>c<p>d<a>e</a></p>f");\n "
+    "\n"
+    "\n"
+
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id1"></p>
+    <script>
+        var e1 = document.getElementById("id1");
+           
+        e1.insertAdjacentHTML("beforebegin", "<div id='id2'></div><a id='id3'></a>");
+        
+        var e2 = document.getElementById("id2");
+        var e3 = document.getElementById("id2");
+        
+        console.log(e2.parentNode.nodeName);
+        console.log(e3.parentNode.nodeName);
+    </script>
+</body>
+</html>
+#document
+BODY
+BODY
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    DIV, id='id2'
+    A, id='id3'
+    P, id='id1'
+    "\n "
+    SCRIPT
+      "\n var e1 = document.getElementById("id1");\n \n e1.insertAdjacentHTML("beforebegin", "<div id='id2'></div><a id='id3'></a>");\n \n var e2 = document.getElementById("id2");\n var e3 = document.getElementById("id2");\n \n console.log(e2.parentNode.nodeName);\n console.log(e3.parentNode.nodeName);\n "
+    "\n"
+    "\n"
+    
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("afterend", "a<div>b</div>c<a>d</a>e");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id'
+    "a"
+    DIV
+      "b"
+    "c"
+    A
+      "d"
+    "e"
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("afterend", "a<div>b</div>c<a>d</a>e");\n "
+    "\n"
+    "\n"
+    
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("afterbegin", "a<div>b</div>c<a>d</a>e");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id'
+      "a"
+      DIV
+        "b"
+      "c"
+      A
+        "d"
+      "e"
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("afterbegin", "a<div>b</div>c<a>d</a>e");\n "
+    "\n"
+    "\n"
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"><a></a></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("afterbegin", "<div></div>");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id'
+      DIV
+      A
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("afterbegin", "<div></div>");\n "
+    "\n"
+    "\n"
+    
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"><a></a></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("beforeend", "<div></div>");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id'
+      A
+      DIV
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("beforeend", "<div></div>");\n "
+    "\n"
+    "\n"
+    
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <p id="id"></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        e.insertAdjacentHTML("beforeend", "<div></div>");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P, id='id'
+      DIV
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n e.insertAdjacentHTML("beforeend", "<div></div>");\n "
+    "\n"
+    "\n"
+    
+@---
+
+#data
+<html id="id">
+<head></head>
+<body>
+    <p><a></a></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        var d = e.insertAdjacentHTML("beforeend", "<div></div>");
+        console.tree(d);
+    </script>
+</body>
+</html>
+#document
+---
+HTML, id='id'
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    P
+      A
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n var d = e.insertAdjacentHTML("beforeend", "<div></div>");\n console.tree(d);\n "
+    "\n"
+    "\n"
+  DIV
+    
+@---    
+
+#data
+<html>
+<head id="id"></head>
+<body>
+    <p><a></a></p>
+    <script>
+        var e = document.getElementById("id");
+           
+        var d = e.insertAdjacentHTML("beforeend", "<div></div>");
+        console.tree(d);
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD, id='id'
+    DIV
+  "\n"
+  BODY
+    "\n "
+    P
+      A
+    "\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n \n var d = e.insertAdjacentHTML("beforeend", "<div></div>");\n console.tree(d);\n "
+    "\n"
+    "\n"
+    
+@--- 

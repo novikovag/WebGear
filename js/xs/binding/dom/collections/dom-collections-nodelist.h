@@ -43,7 +43,7 @@ webgear_js_dom_collections_nodelist_item(JSContext *cx, JSObject *obj, uintN arg
         return JS_TRUE;
     }
 
-    xsnode = webgear_xs_av_fetch_rv(nodelist->xsarray, index);
+    xsnode = webgear_xs_av_get_rv(nodelist->xsarray, index);
     jsnode = webgear_xs_hv_get_iv(xsnode, LITERAL("object"));
 
     if (!jsnode) {

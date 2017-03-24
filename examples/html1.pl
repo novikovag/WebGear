@@ -3,7 +3,7 @@ use strict;
 use WebGear::HTML::Console; 
 use WebGear::HTML::Parser;
 
-my ($html, @data, $context);
+my ($html, @data, $inbuffer, $context);
 
 $html = <<'HTML';
 <!DOCTYPE html>
@@ -18,10 +18,16 @@ $html = <<'HTML';
 </html>
 HTML
 
-@data    = unpack "C*", $html;
+@data     = unpack "C*", $html;
 
-$context = parser_initialize_context();
-parser_parse($context, \@data, scalar @data);
+$inbuffer = {
+    'data'       => \@data,
+    'datalength' => scalar @data,
+    'index'      => 0
+};
+
+$context = parser_initialize_context($inbuffer);
+parser_parse($context);
 
 # console_print_tree($context->{'document'});
 console_print_tree($context->{'document'}, "s");

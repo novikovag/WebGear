@@ -16,7 +16,6 @@ webgear_js_reporter(JSContext *jscontext, const char *message, JSErrorReport *js
     XPUSHs(sv_2mortal(newSVpv(jserrorreport->linebuf, 0)));
     XPUSHs(sv_2mortal(newSViv(jserrorreport->tokenptr - jserrorreport->linebuf + 1)));
     PUTBACK;
-
     call_pv("js_callback", G_DISCARD);
 }
 
@@ -104,16 +103,28 @@ webgear_xs_memcpy(void *destination, void *source, int count)
 
 /*----- Хэши и массивы Perl ----------------------------------------------------
  Префиксы:
-  _av - массив
-  _hv - хэш
+ 
+ _av - массив
+ _hv - хэш
+  
  Постфиксы: 
-  _iv - целое значение
-  _pv - указатель на строку
-  _rv - ссылка на скаляр (HV*, AV*)
+ 
+ _iv - целое значение
+ _pv - указатель на строку
+ _rv - ссылка на скаляр (HV*, AV*)
 ------------------------------------------------------------------------------*/
 
+inline __attribute__((always_inline)) int
+webgear_xs_av_get_iv(AV *array, int index)
+{
+    SV **value;
+
+    value = av_fetch(array, index, 0);
+    return value ? SvIV(*value) : 0;
+}
+
 inline __attribute__((always_inline)) SV *
-webgear_xs_av_fetch_rv(AV *array, int index)
+webgear_xs_av_get_rv(AV *array, int index)
 {
     SV **value;
 
@@ -122,9 +133,15 @@ webgear_xs_av_fetch_rv(AV *array, int index)
 }
 
 inline __attribute__((always_inline)) void
+webgear_xs_av_set_iv(AV *array, int index, int value)
+{
+    av_store(array, index, newSViv(value));
+}
+
+inline __attribute__((always_inline)) void
 webgear_xs_av_push_rv(AV *array, SV *value)
 {
-    av_push(array, value ? newRV(value) : &PL_sv_undef);
+    av_push(array, value ? newRV(value) : newSViv(0));
 }
 
 inline __attribute__((always_inline)) int
@@ -169,7 +186,7 @@ webgear_xs_hv_set_pv(HV *hash, char *key, int keylength, char *data, int datalen
 inline __attribute__((always_inline)) void
 webgear_xs_hv_set_rv(HV *hash, char *key, int keylength, SV *value)
 {
-    hv_store(hash, key, keylength, value ? newRV(value) : &PL_sv_undef, 0);
+    hv_store(hash, key, keylength, value ? newRV(value) : newSViv(0), 0);
 }
 
 /*----- Текст ------------------------------------------------------------------
@@ -225,6 +242,56 @@ webgear_utf8_offset_to_index(char *data, int datalength, int offset)
     return -1;
 }
 
+inline __attribute__((always_inline)) bool
+webgear_data_are_equal(char *referencedata, int referencedatalength, char *data, int datalength)
+{
+    if (!referencedatalength || referencedatalength != datalength) {
+        return false;
+    }
+    
+    while (referencedatalength && datalength) {
+        
+        if (referencedata[--referencedatalength] != data[--datalength]) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+/*----- Входной буфер ----------------------------------------------------------
+------------------------------------------------------------------------------*/
+
+inline __attribute__((always_inline)) HV *
+webgear_inbuffer_create(char *data, int datalength)
+{    
+    HV   *inbuffer;
+    AV   *xsdata;
+    char *pattern;
+    int   index;
+    char  value;
+    
+    pattern  = "C*";
+    
+    inbuffer = newHV();
+    xsdata   = newAV();
+     
+    dSP;
+    PUTBACK;
+    index = unpackstring(pattern, pattern + 2, data, data + datalength, 0);
+    SPAGAIN;
+
+    while (--index >= 0) {
+        value = POPi;
+        av_store(xsdata, index, newSViv(value));
+    } 
+
+    webgear_xs_hv_set_rv(inbuffer, LITERAL("data"), xsdata);      
+    webgear_xs_hv_set_iv(inbuffer, LITERAL("datalength"), datalength);  
+    webgear_xs_hv_set_iv(inbuffer, LITERAL("index"), 0);     
+    return inbuffer;
+}
+
 /*----- Узлы DOM ---------------------------------------------------------------
  https://dom.spec.whatwg.org/#node
 ------------------------------------------------------------------------------*/
@@ -252,6 +319,10 @@ webgear_node_create_document(JSObject *jsobject)
     webgear_xs_hv_set_rv(document, LITERAL("nextsibling"),     NULL);
     webgear_xs_hv_set_rv(document, LITERAL("firstchild"),      NULL);
     webgear_xs_hv_set_rv(document, LITERAL("lastchild"),       NULL);
+                                                       
+    webgear_xs_hv_set_iv(document, LITERAL("id"),              -1);
+    webgear_xs_hv_set_pv(document, LITERAL("name"),            LITERAL("DOCUMENT"));
+    webgear_xs_hv_set_iv(document, LITERAL("namelength"),      8);                                                   
                                                        
     webgear_xs_hv_set_rv(document, LITERAL("soeprevious"),     NULL);
     webgear_xs_hv_set_rv(document, LITERAL("soenext"),         NULL);
@@ -536,6 +607,85 @@ webgear_node_insert_after(HV *xsparent, HV *xsreferencenode, HV *xsnode)
     webgear_xs_hv_set_rv(xsnode, LITERAL("parent"),          xsparent);
     webgear_xs_hv_set_rv(xsnode, LITERAL("previoussibling"), xsreferencenode);
     webgear_xs_hv_set_rv(xsnode, LITERAL("nextsibling"),     xsnextsibling);
+}
+
+inline __attribute__((always_inline)) void
+webgear_nodes_replace(HV *xsparent, HV *xsfirstnode, HV *xslastnode)
+{
+    HV *xsnode;
+    
+    webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
+    webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"),  xslastnode);
+    
+    xsnode = xsfirstnode;
+    /* Заменяем родительский узел. */
+    while (xsnode) {
+        webgear_xs_hv_set_rv(xsnode, LITERAL("parent"), xsparent);
+        xsnode = webgear_xs_hv_get_rv(xsnode, LITERAL("nextsibling"));
+    } 
+}
+
+inline __attribute__((always_inline)) void
+webgear_nodes_insert_before(HV *xsparent, HV *xsreferencenode, HV *xsfirstnode, HV *xslastnode)
+{
+    HV *xsprevioussibling, *xsnode;
+
+    if (xsreferencenode) {
+        xsprevioussibling = webgear_xs_hv_get_rv(xsreferencenode, LITERAL("previoussibling"));
+
+        if (xsprevioussibling) {
+            webgear_xs_hv_set_rv(xsprevioussibling, LITERAL("nextsibling"), xsfirstnode);
+        } else { /* первый узел */
+            webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
+        }
+
+        webgear_xs_hv_set_rv(xsreferencenode, LITERAL("previoussibling"), xslastnode);
+        
+        webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), xsprevioussibling);
+        webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     xsreferencenode);
+    } else {
+        webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
+        webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"),  xslastnode);
+    }
+  
+    xsnode = xsfirstnode;
+    /* Заменяем родительский узел. */
+    while (xsnode) {
+        webgear_xs_hv_set_rv(xsnode, LITERAL("parent"), xsparent);
+        xsnode = webgear_xs_hv_get_rv(xsnode, LITERAL("nextsibling"));
+    } 
+}
+
+inline __attribute__((always_inline)) void
+webgear_nodes_insert_after(HV *xsparent, HV *xsreferencenode, HV *xsfirstnode, HV *xslastnode)
+{
+    HV *xsnextsibling, *xsnode;
+
+    if (xsreferencenode) {
+        xsnextsibling = webgear_xs_hv_get_rv(xsreferencenode, LITERAL("nextsibling"));
+
+        if (xsnextsibling) {
+            webgear_xs_hv_set_rv(xsnextsibling, LITERAL("previoussibling"), xslastnode);
+        } else { /* последний узел */
+            webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xslastnode);
+        }
+
+        webgear_xs_hv_set_rv(xsreferencenode, LITERAL("nextsibling"), xsfirstnode);
+        
+        webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), xsreferencenode);
+        webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     xsnextsibling);
+
+    } else {
+        webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
+        webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"),  xslastnode);
+    }
+           
+    xsnode = xsfirstnode;
+    /* Заменяем родительский узел. */
+    while (xsnode) {
+        webgear_xs_hv_set_rv(xsnode, LITERAL("parent"), xsparent);
+        xsnode = webgear_xs_hv_get_rv(xsnode, LITERAL("nextsibling"));
+    }  
 }
 
 /*----- Элементы ---------------------------------------------------------------
@@ -909,8 +1059,10 @@ webgear_htmlcollection_create(JSObject *jsobject, IHTMLCollection *previous, IHT
 inline __attribute__((always_inline)) void
 webgear_htmlcollection_update(IHTMLCollection *htmlcollection)
 {
-    HV  *xsnode, *xsnextnode, *xsattribute;
-
+    HV   *xsnode, *xsnextnode, *xsattribute;
+    char *name;
+    int   namelength;
+    
     if (htmlcollection->modified) {
         av_clear(htmlcollection->xsarray);
 
@@ -937,10 +1089,11 @@ webgear_htmlcollection_update(IHTMLCollection *htmlcollection)
                     webgear_xs_av_push_rv(htmlcollection->xsarray, xsnode);
                 }
                 */
-
-                if (htmlcollection->searchtype == COLLECTION_SEARCH_BY_TAGNAME               &&
-                   (htmlcollection->namelength != webgear_xs_hv_get_iv(xsnode, LITERAL("namelength")) ||
-                    memcmp(htmlcollection->name, webgear_xs_hv_get_pv(xsnode, LITERAL("name")), htmlcollection->namelength))) {
+                name       = webgear_xs_hv_get_pv(xsnode, LITERAL("name"));
+                namelength = webgear_xs_hv_get_iv(xsnode, LITERAL("namelength"));    
+                    
+                if (htmlcollection->searchtype == COLLECTION_SEARCH_BY_TAGNAME &&
+                   !webgear_data_are_equal(htmlcollection->name, htmlcollection->namelength, name, namelength)) {
                     goto L1;
                 }
                 /* Проваливаемся на COLLECTION_SEARCH_ALL.*/
@@ -1394,6 +1547,31 @@ webgear_window_create(JSContext *jscontext, JSObject *jsglobal, JSObject *jswind
     timer_create(CLOCK_REALTIME, &signalevent, &window->timers->timer);
 #endif  
     return window;
+}
+
+
+/*------ Глобальный класс ------------------------------------------------------
+------------------------------------------------------------------------------*/
+
+typedef struct IGlobal {
+    HV        *xsinbuffer;
+
+    JSObject  *jsobject;
+    JSObject  *jswindow;
+    JSObject  *jsdocument;
+} IGlobal;
+
+inline __attribute__((always_inline)) IGlobal *
+webgear_global_create(JSObject *jsobject, HV *xsinbuffer, JSObject *jswindow, JSObject *jsdocument)
+{
+    IGlobal *global;
+    
+    global = webgear_xs_malloc(sizeof(IGlobal));
+    global->xsinbuffer   = xsinbuffer;
+    global->jsobject     = jsobject;
+    global->jswindow     = jswindow;
+    global->jsdocument   = jsdocument;
+    return global;
 }
 
 #endif /* _webgear_js_dom_h */

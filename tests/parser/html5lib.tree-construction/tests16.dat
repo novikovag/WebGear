@@ -837,17 +837,6 @@ HTML
       "foo/title><link></head><body>X"
   BODY
 
-#data, script on
-<!doctype html><noscript><!--<noscript></noscript>--></noscript>
-#document
-!HTML
-HTML
-  HEAD
-    NOSCRIPT
-      "<!--<noscript>"
-  BODY
-    "-->"
-
 #data
 <!doctype html><noscript><!--<noscript></noscript>--></noscript>
 #document
@@ -858,19 +847,6 @@ HTML
       !<noscript></noscript>!
   BODY
 
-#data, script on
-<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>
-#document
-!HTML
-HTML
-  HEAD
-    NOSCRIPT
-      "<!--"
-  BODY
-    "X"
-    NOSCRIPT
-      "-->"
-
 #data
 <!doctype html><noscript><!--</noscript>X<noscript>--></noscript>
 #document
@@ -880,17 +856,6 @@ HTML
     NOSCRIPT
       !</noscript>X<noscript>!
   BODY
-
-#data, script on
-<!doctype html><noscript><iframe></noscript>X
-#document
-!HTML
-HTML
-  HEAD
-    NOSCRIPT
-      "<iframe>"
-  BODY
-    "X"
 
 #data
 <!doctype html><noscript><iframe></noscript>X
@@ -1746,16 +1711,6 @@ HTML
       "foo/title><link></head><body>X"
   BODY
 
-#data, script on
-<noscript><!--<noscript></noscript>--></noscript>
-#document
-HTML
-  HEAD
-    NOSCRIPT
-      "<!--<noscript>"
-  BODY
-    "-->"
-
 #data
 <noscript><!--<noscript></noscript>--></noscript>
 #document
@@ -1765,18 +1720,6 @@ HTML
       !<noscript></noscript>!
   BODY
 
-#data, script on
-<noscript><!--</noscript>X<noscript>--></noscript>
-#document
-HTML
-  HEAD
-    NOSCRIPT
-      "<!--"
-  BODY
-    "X"
-    NOSCRIPT
-      "-->"
-
 #data
 <noscript><!--</noscript>X<noscript>--></noscript>
 #document
@@ -1785,16 +1728,6 @@ HTML
     NOSCRIPT
       !</noscript>X<noscript>!
   BODY
-
-#data, script on
-<noscript><iframe></noscript>X
-#document
-HTML
-  HEAD
-    NOSCRIPT
-      "<iframe>"
-  BODY
-    "X"
 
 #data
 <noscript><iframe></noscript>X

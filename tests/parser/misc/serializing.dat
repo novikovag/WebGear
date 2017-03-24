@@ -1,0 +1,56 @@
+@===============================================================================
+@           Сериализация               
+@===============================================================================
+
+#data serialize
+<p id="id" a1="V1" a2=v2 a3=>
+    <!--- comment --->
+    <a>welcome"</a>
+</p>
+#document
+<document><html><head></head><body><p a1="V1" a2="v2" a3="" id="id">&nbsp;    <!--- comment --->&nbsp;    <a>welcome"</a>&nbsp;</p></body></html></document>
+
+#data serialize
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.01//en" "http://www.w3.org/TR/html4/strict.dtd">
+#document
+<document><!DOCTYPE html><html><head></head><body></body></html></document>
+
+#data serialize
+<p>& &amp; &Aacute;</p>
+#document
+<document><html><head></head><body><p>&amp; &amp; Á</p></body></html></document>
+
+#data serialize
+<p>"<" hello ">"</p>
+#document
+<document><html><head></head><body><p>"&lt;" hello "&gt;"</p></body></html></document>
+
+#data serialize
+<p a1="&" a2="&amp;" a3="&Aacute;"></p>
+#document
+<document><html><head></head><body><p a1="&amp;" a2="&amp;" a3="Á"></p></body></html></document>
+
+#data serialize
+<p a1='"v1"' a2="<" a3=">">hello</p>
+#document
+<document><html><head></head><body><p a1="&quot;v1&quot;" a2="<" a3=">">hello</p></body></html></document>
+
+#data serialize head 0
+<html><head><title>123</title></head><body><p>hello</p></body></html>
+#document
+<head><title>123</title></head>
+
+#data serialize head 1
+<html><head><title>123</title></head><body><p>hello</p></body></html>
+#document
+<title>123</title>
+
+#data serialize body 0
+<body id=1><p>hello</p></body>
+#document
+<body id="1"><p>hello</p></body>
+
+#data serialize body 1
+<body id=1><p>hello</p></body>
+#document
+<p>hello</p>

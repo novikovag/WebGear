@@ -30,19 +30,19 @@ sub trie_search
     
     $value = $UNKNOWN;
     
-    while ($trieindex && $context->{'index'} < $context->{'datalength'}) {
-        $char = $context->{'data'}[$context->{'index'}];
+    while ($trieindex && $context->{'inbuffer'}{'index'} < $context->{'inbuffer'}{'datalength'}) {
+        $char = $context->{'inbuffer'}{'data'}[$context->{'inbuffer'}{'index'}];
     
         if ($char == $trie->[$trieindex][0]) {
         
             if ($trie->[$trieindex][3]) {
                 $value        = $trie->[$trieindex][3];
-                $nameendindex = $context->{'index'};
+                $nameendindex = $context->{'inbuffer'}{'index'};
             }
 
             $trieindex = $trie->[$trieindex][1];
             
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         } elsif ($char > $trie->[$trieindex][0]) { 
             $trieindex = $trie->[$trieindex][2];
         # Ключевые слова отсортированы по возрастанию, поэтому 'lt' ветвь отсутствует.
@@ -53,7 +53,7 @@ sub trie_search
     # При найденном значение, индекс в буфере устанавливается на следующий символ
     # после имени.
     if ($value) {
-        $context->{'index'} = $nameendindex + 1;
+        $context->{'inbuffer'}{'index'} = $nameendindex + 1;
     }
     
     return $value;
@@ -88,19 +88,19 @@ sub trie_search_case_insensitive
     
     $value = $UNKNOWN;
     
-    while ($trieindex && $context->{'index'} < $context->{'datalength'}) {
-        $char = char_to_lower($context->{'data'}[$context->{'index'}]);
+    while ($trieindex && $context->{'inbuffer'}{'index'} < $context->{'inbuffer'}{'datalength'}) {
+        $char = char_to_lower($context->{'inbuffer'}{'data'}[$context->{'inbuffer'}{'index'}]);
 
         if ($char == $trie->[$trieindex][0]) {     # 'key'
         
             if ($trie->[$trieindex][3]) {
                 $value        = $trie->[$trieindex][3];
-                $nameendindex = $context->{'index'};
+                $nameendindex = $context->{'inbuffer'}{'index'};
             }
 
             $trieindex = $trie->[$trieindex][1];   # 'eq'
             
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         } elsif ($char > $trie->[$trieindex][0]) { # 'gt'
             $trieindex = $trie->[$trieindex][2];
         } else {
@@ -109,7 +109,7 @@ sub trie_search_case_insensitive
     }
     
     if ($value) {
-        $context->{'index'} = $nameendindex + 1;
+        $context->{'inbuffer'}{'index'} = $nameendindex + 1;
     }
     
     return $value;
@@ -132,16 +132,16 @@ sub charref_parse
     my ($context) = @_;    
     my ($base, $flag, $total, $namedcharrefid, $utf8); 
     
-    $context->{'index'}++;
+    $context->{'inbuffer'}{'index'}++;
  
     if (c(0) == 0x23) { # '#'        
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
         
         if (char_to_lower(c(0)) == 0x78) {  # 'x'
             $base = 16;
             $flag = 2; # HEX
            
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         } else {
             $base = 10;
             $flag = 1; # DEC
@@ -159,7 +159,7 @@ sub charref_parse
                 ($total *= $base) += char_to_digit(c(0));
             }
             # Первый символ перед циклом.
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
             
             if (!n(0)) {
                 last;
@@ -168,7 +168,7 @@ sub charref_parse
             if (!char_is(c(0), $flag)) { 
             
                 if (c(0) == 0x3b) { # ';'
-                    $context->{'index'}++;
+                    $context->{'inbuffer'}{'index'}++;
                 }
 
                 last;
@@ -216,7 +216,7 @@ sub charref_parse
     }
     # Если текущий символ ';' и имя ссылки не заканчивается на ';'.
     if (n(0) && c(0) == 0x3b && c(-1) != 0x3b) { # ';;'
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
     return $namedcharrefs[$namedcharrefid];

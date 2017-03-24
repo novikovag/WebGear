@@ -41,7 +41,7 @@ webgear_js_dom_collections_htmlcollection_item(JSContext *cx, JSObject *obj, uin
         return JS_TRUE;
     }
 
-    xselement = webgear_xs_av_fetch_rv(htmlcollection->xsarray, index);
+    xselement = webgear_xs_av_get_rv(htmlcollection->xsarray, index);
     jselement = webgear_xs_hv_get_iv(xselement, LITERAL("object"));
 
     if (!jselement) {
@@ -83,15 +83,15 @@ webgear_js_dom_collections_htmlcollection_namedItem(JSContext *cx, JSObject *obj
     webgear_htmlcollection_update(htmlcollection);
     /* Поиск элемента по значению атрибутов. */
     for (index = 0; index <= av_len(htmlcollection->xsarray); index++) {
-        xselement   = webgear_xs_av_fetch_rv(htmlcollection->xsarray, index);
+        xselement   = webgear_xs_av_get_rv(htmlcollection->xsarray, index);
 
         xsattribute = webgear_element_search_attribute(xselement, LITERAL("id"));
 
         if (xsattribute) {    
             value       = webgear_xs_hv_get_pv(xsattribute, LITERAL("value"));
             valuelength = webgear_xs_hv_get_iv(xsattribute, LITERAL("valuelength"));
-            
-            if (datalength == valuelength && !memcmp(data, value, datalength)) {
+
+            if (webgear_data_are_equal(data, datalength, value, valuelength)) {
                 goto L;
             }
         }
@@ -102,7 +102,7 @@ webgear_js_dom_collections_htmlcollection_namedItem(JSContext *cx, JSObject *obj
             value       = webgear_xs_hv_get_pv(xsattribute, LITERAL("value"));
             valuelength = webgear_xs_hv_get_iv(xsattribute, LITERAL("valuelength"));
             
-            if (datalength == valuelength && !memcmp(data, value, datalength)) {
+            if (webgear_data_are_equal(data, datalength, value, valuelength)) {
                 goto L;
             }
         }

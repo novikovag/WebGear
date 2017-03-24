@@ -1,0 +1,117 @@
+@===============================================================================
+@           html5lib.tree-construction script-on
+@===============================================================================
+
+#data
+<noscript><!--</noscript>--></noscript>
+#document
+---
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "-->"
+    
+@---
+
+#data
+<!doctype html><noscript><!--<noscript></noscript>--></noscript>
+#document
+---
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--<noscript>"
+  BODY
+    "-->"
+
+    
+@---
+
+#data
+<!doctype html><noscript><!--</noscript>X<noscript>--></noscript>
+#document
+---
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "X"
+    NOSCRIPT
+      "-->"
+
+@---
+
+#data
+<!doctype html><noscript><iframe></noscript>X
+#document
+---
+!HTML
+HTML
+  HEAD
+    NOSCRIPT
+      "<iframe>"
+  BODY
+    "X"
+
+@---
+
+#data
+<noscript><!--<noscript></noscript>--></noscript>
+#document
+---
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--<noscript>"
+  BODY
+    "-->"
+
+@---    
+    
+#data
+<noscript><!--</noscript>X<noscript>--></noscript>
+#document
+---
+HTML
+  HEAD
+    NOSCRIPT
+      "<!--"
+  BODY
+    "X"
+    NOSCRIPT
+      "-->"
+      
+@---
+
+#data
+<noscript><iframe></noscript>X
+#document
+---
+HTML
+  HEAD
+    NOSCRIPT
+      "<iframe>"
+  BODY
+    "X"
+    
+@---
+
+#data
+<p id="status"><noscript><strong>A</strong></noscript><span>B</span></p>
+#document
+---
+HTML
+  HEAD
+  BODY
+    P, id='status'
+      NOSCRIPT
+        "<strong>A</strong>"
+      SPAN
+        "B"
+
+@---

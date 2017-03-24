@@ -241,16 +241,3 @@ HTML
         B
           B
             "x"
-
-#data, fragment div
-<b><em><foo><foob><fooc><aside></b></em>
-#document
-HTML
-  DIV
-    B
-      EM
-        FOO
-          FOOB
-            FOOC
-    ASIDE
-      B

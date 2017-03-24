@@ -25,14 +25,14 @@ sub scanner_state_text
     my ($context) = @_;
     my ($datastartindex, $charrefstartindex, $spacecount, $charrefutf8, $data, $datalength);
 
-    $datastartindex = $context->{'index'};
+    $datastartindex = $context->{'inbuffer'}{'index'};
     $data           = '';
     $datalength     = 0;
     $spacecount     = 0;
 
     while (n(0) && char_is_space(c(0))) {
         $spacecount++;
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
     while (n(0)) {
@@ -97,7 +97,7 @@ sub scanner_state_text
             }
 
         } elsif (c(0) == 0x26 && n(2)) { # '&'
-            $charrefstartindex = $context->{'index'};
+            $charrefstartindex = $context->{'inbuffer'}{'index'};
             $charrefutf8       = charref_parse($context);
 
             if ($charrefutf8) {
@@ -110,18 +110,18 @@ sub scanner_state_text
                 $datalength += $charrefutf8->[0];
                 $data       .= pack("C$charrefutf8->[0]", @{$charrefutf8->[1]});
 
-                $datastartindex = $context->{'index'};
+                $datastartindex = $context->{'inbuffer'}{'index'};
             }
             # Обработчик ссылки уже увеличил индекс.
             next;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
     # Есть необработанная строка.
-    if ($datastartindex < $context->{'index'}) {
-        $datalength += $context->{'index'} - $datastartindex;
-        $data       .= text($datastartindex, $context->{'index'} - $datastartindex);
+    if ($datastartindex < $context->{'inbuffer'}{'index'}) {
+        $datalength += $context->{'inbuffer'}{'index'} - $datastartindex;
+        $data       .= text($datastartindex, $context->{'inbuffer'}{'index'} - $datastartindex);
     }
 
     if ($datalength) {
@@ -136,14 +136,14 @@ sub scanner_state_element
     my ($isendtag, $namestartindex, $quote, $flags, $id, $name, $namelength);
 
     if (c(0) == 0x2f) { # '/'
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
         $isendtag = $TRUE;
     } else {
         $isendtag = $FALSE;
     }
 
     $flags = 0;
-    $namestartindex = $context->{'index'};
+    $namestartindex = $context->{'inbuffer'}{'index'};
 
     $id = trie_search_case_insensitive($context, \@elementtrienodes, $elementtrieroots[char_to_lower(c(0))]);
 
@@ -162,19 +162,19 @@ sub scanner_state_element
                 $context->{'nodeready'} = $TRUE;
                 $flags |= $NODE_FLAG_SELFCLOSING;
 
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             }
 
         } else {
             $id = $UNKNOWN;
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
             next;
         }
 
         last;
     }
 
-    $namelength = $context->{'index'} - $namestartindex;
+    $namelength = $context->{'inbuffer'}{'index'} - $namestartindex;
     $name       = uc text($namestartindex, $namelength);
 
     if ($isendtag) {
@@ -184,7 +184,7 @@ sub scanner_state_element
             $quote = '';
             # Пропуск возможных атрибутов с учетом кавычек.
             while (1) {
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
 
                 if (!n(0)) {
                     return;
@@ -238,7 +238,7 @@ sub scanner_state_attributes
         }
 
         if (c(0) == 0x2f) { # '/'
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
 
             if (n(0) && c(0) == 0x3e) { # '>'
                 $context->{'node'}{'flags'} |= $NODE_FLAG_SELFCLOSING;
@@ -247,21 +247,21 @@ sub scanner_state_attributes
         }
 
         if (char_is_space(c(0))) {
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
             next;
         }
 
-        $namestartindex = $context->{'index'};
+        $namestartindex = $context->{'inbuffer'}{'index'};
         # Условие из "Before attribute name state" позволяет имени атрибута начинаться
         # с символа '=': https://html.spec.whatwg.org/multipage/syntax.html#before-attribute-name-state
         if (c(0) == 0x3d) { # '='
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
             $id = $UNKNOWN;
         # Все имена с префиксом 'on-' считаются событиями, префикс пропускается.
         } elsif (char_to_lower(c(0)) == 0x6f && n(2) && char_to_lower(c(1)) == 0x6e) { # 'on'
             $isevent = $TRUE;
             $namestartindex     += 2;
-            $context->{'index'} += 2;
+            $context->{'inbuffer'}{'index'} += 2;
             $id = trie_search_case_insensitive($context, \@eventtrienodes, $eventtrieroots[char_to_lower(c(0))]);
         } else {
             $isevent = $FALSE;
@@ -279,10 +279,10 @@ sub scanner_state_attributes
             }
 
             $id = $UNKNOWN;
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         }
 
-        $namelength  = $context->{'index'} - $namestartindex;
+        $namelength  = $context->{'inbuffer'}{'index'} - $namestartindex;
 
         $value       = '';
         $valuelength = 0;
@@ -293,7 +293,7 @@ sub scanner_state_attributes
                 last;
             }
 
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
 
             if (!n(0)) {
                 return;
@@ -303,7 +303,7 @@ sub scanner_state_attributes
         if (c(0) == 0x3d) { # '='
 
             while (1) {
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
 
                 if (!n(0)) {
                     return;
@@ -316,12 +316,12 @@ sub scanner_state_attributes
 
             if (c(0) == 0x22 || c(0) == 0x27) { # '"', '''
                 $quote = c(0);
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             } else {
                 $quote = '';
             }
 
-            $valuestartindex = $context->{'index'};
+            $valuestartindex = $context->{'inbuffer'}{'index'};
 
             while (1) {
 
@@ -340,7 +340,7 @@ sub scanner_state_attributes
                 }
 
                 if (c(0) == 0x26 && n(2)) { # '&'
-                    $charrefstartindex = $context->{'index'};
+                    $charrefstartindex = $context->{'inbuffer'}{'index'};
                     $charrefutf8       = charref_parse($context);
 
                     if ($charrefutf8) {
@@ -353,22 +353,22 @@ sub scanner_state_attributes
                         $valuelength += $charrefutf8->[0];
                         $value       .= pack("C$charrefutf8->[0]", @{$charrefutf8->[1]});
 
-                        $valuestartindex = $context->{'index'};
+                        $valuestartindex = $context->{'inbuffer'}{'index'};
                     }
 
                     next;
                 }
 
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             }
 
-            if ($context->{'index'} > $valuestartindex) {
-                $valuelength += $context->{'index'} - $valuestartindex;
-                $value       .= text($valuestartindex, $context->{'index'} - $valuestartindex);
+            if ($context->{'inbuffer'}{'index'} > $valuestartindex) {
+                $valuelength += $context->{'inbuffer'}{'index'} - $valuestartindex;
+                $value       .= text($valuestartindex, $context->{'inbuffer'}{'index'} - $valuestartindex);
             }
 
             if ($quote) {
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             }
         }
 
@@ -398,7 +398,7 @@ sub scanner_state_documenttype
 
     $context->{'scannerstate'} = \&scanner_state_text;
 
-    $context->{'index'} += 8;
+    $context->{'inbuffer'}{'index'} += 8;
     $flags               = 0;
 
     while (1) {
@@ -416,17 +416,17 @@ sub scanner_state_documenttype
             last;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $namestartindex = $context->{'index'};
+    $namestartindex = $context->{'inbuffer'}{'index'};
 
     if (n(3) && char_to_lower(c(0)) == 0x68 && # 'h'
                 char_to_lower(c(1)) == 0x74 && # 't'
                 char_to_lower(c(2)) == 0x6d && # 'm'
                 char_to_lower(c(3)) == 0x6c) { # 'l'
         $id = $DOCUMENTTYPE_HTML;
-        $context->{'index'} += 4;
+        $context->{'inbuffer'}{'index'} += 4;
     } else {
         $id = $UNKNOWN;
     }
@@ -442,10 +442,10 @@ sub scanner_state_documenttype
         }
 
         $id = $UNKNOWN;
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $namelength   = $context->{'index'} - $namestartindex;
+    $namelength   = $context->{'inbuffer'}{'index'} - $namestartindex;
     $name         = lc text($namestartindex, $namelength);
 
     $publicid     = $UNKNOWN;
@@ -469,7 +469,7 @@ sub scanner_state_documenttype
             last;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
     if (n(5)) {
@@ -492,7 +492,7 @@ sub scanner_state_documenttype
             goto L1;
         }
 
-        $context->{'index'} += 6;
+        $context->{'inbuffer'}{'index'} += 6;
 
         while (1) {
 
@@ -504,7 +504,7 @@ sub scanner_state_documenttype
                 last;
             }
 
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
         }
 
         while (1) {
@@ -521,7 +521,7 @@ sub scanner_state_documenttype
 
             $quote = c(0);
 
-            $dtdtartindex = ++$context->{'index'};
+            $dtdtartindex = ++$context->{'inbuffer'}{'index'};
             $dtdid        = trie_search_case_insensitive($context, \@documenttypetrienodes, $documenttypetrieroots[char_to_lower(c(0))]);
 
             while (1) {
@@ -534,20 +534,20 @@ sub scanner_state_documenttype
                     last;
                 }
 
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             }
 
             if ($ispublic) {
                 $publicid     = $dtdid;
-                $publiclength = $context->{'index'} - $dtdtartindex;
+                $publiclength = $context->{'inbuffer'}{'index'} - $dtdtartindex;
                 $public       = text($dtdtartindex, $publiclength);
             } else {
                 $systemid     = $dtdid;
-                $systemlength = $context->{'index'} - $dtdtartindex;
+                $systemlength = $context->{'inbuffer'}{'index'} - $dtdtartindex;
                 $system       = text($dtdtartindex, $systemlength);
             }
             # Пропуск кавычки.
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
 
             while (1) {
 
@@ -563,7 +563,7 @@ sub scanner_state_documenttype
                     last;
                 }
 
-                $context->{'index'}++;
+                $context->{'inbuffer'}{'index'}++;
             }
 
             if (!$ispublic) {
@@ -585,7 +585,7 @@ L1:
             last;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 L2:
     $context->{'node'}      = node_create_documenttype($flags, $id, $name, $namelength, $publicid, $public, $publiclength, $systemid, $system, $systemlength);
@@ -599,13 +599,13 @@ sub scanner_state_bogus_comment
 
     $context->{'scannerstate'} = \&scanner_state_text;
 
-    $datastartindex = ++$context->{'index'};
+    $datastartindex = ++$context->{'inbuffer'}{'index'};
 
     while (n(0) && c(0) != 0x3e) { # '>'
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $datalength = $context->{'index'} - $datastartindex;
+    $datalength = $context->{'inbuffer'}{'index'} - $datastartindex;
 
     if ($datalength) {
         $data                   = text($datastartindex, $datalength);
@@ -621,8 +621,8 @@ sub scanner_state_comment
 
     $context->{'scannerstate'} = \&scanner_state_text;
 
-    $context->{'index'} += 3;
-    $datastartindex      = $context->{'index'};
+    $context->{'inbuffer'}{'index'} += 3;
+    $datastartindex      = $context->{'inbuffer'}{'index'};
     $datalength          = 0;
 
     while (n(0)) {
@@ -640,10 +640,10 @@ sub scanner_state_comment
             }
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $datalength += $context->{'index'} - $datastartindex;
+    $datalength += $context->{'inbuffer'}{'index'} - $datastartindex;
     # Учитывая отрицательную длину.
     if ($datalength > 0) {
         $data                   = text($datastartindex, $datalength);
@@ -659,8 +659,8 @@ sub scanner_state_cdata
 
     $context->{'scannerstate'} = \&scanner_state_text;
 
-    $context->{'index'} += 8;
-    $textdatastartindex  = $context->{'index'};
+    $context->{'inbuffer'}{'index'} += 8;
+    $textdatastartindex  = $context->{'inbuffer'}{'index'};
     $textdatalength      = 0;
 
     while (n(0)) {
@@ -670,10 +670,10 @@ sub scanner_state_cdata
             last;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $textdatalength += $context->{'index'} - $textdatastartindex;
+    $textdatalength += $context->{'inbuffer'}{'index'} - $textdatastartindex;
     # Учитывая отрицательную длину.
     if ($textdatalength > 0) {
         $textdata               = text($textdatastartindex, $textdatalength);
@@ -689,7 +689,7 @@ sub scanner_state_rawdata
 
     $context->{'scannerstate'} = \&scanner_state_rawdata_end;
 
-    $datastartindex = $context->{'index'};
+    $datastartindex = $context->{'inbuffer'}{'index'};
     $datalength     = 0;
 
     while (n(0)) {
@@ -710,12 +710,12 @@ sub scanner_state_rawdata
                 last;
             }
         L:
-            $context->{'index'} += $index + 2;
+            $context->{'inbuffer'}{'index'} += $index + 2;
             next;
         }
 
         if (c(0) == 0x26 && $context->{'rawswitch'}{'chref'} && n(2)) { # '&'
-            $charrefstartindex = $context->{'index'};
+            $charrefstartindex = $context->{'inbuffer'}{'index'};
             $charrefutf8       = charref_parse($context);
 
             if ($charrefutf8) {
@@ -728,18 +728,18 @@ sub scanner_state_rawdata
                 $datalength += $charrefutf8->[0];
                 $data       .= pack("C$charrefutf8->[0]", @{$charrefutf8->[1]});
 
-                $datastartindex = $context->{'index'};
+                $datastartindex = $context->{'inbuffer'}{'index'};
             }
 
             next;
         }
 
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    if ($datastartindex < $context->{'index'}) {
-        $datalength += $context->{'index'} - $datastartindex;
-        $data       .= text($datastartindex, $context->{'index'} - $datastartindex);
+    if ($datastartindex < $context->{'inbuffer'}{'index'}) {
+        $datalength += $context->{'inbuffer'}{'index'} - $datastartindex;
+        $data       .= text($datastartindex, $context->{'inbuffer'}{'index'} - $datastartindex);
     }
 
     if ($datalength) {
@@ -753,14 +753,14 @@ sub scanner_state_plaintext
     my ($context) = @_;
     my ($data, $datalength);
 
-    $datalength = $context->{'datalength'} - $context->{'index'};
+    $datalength = $context->{'inbuffer'}{'datalength'} - $context->{'inbuffer'}{'index'};
 
     if ($datalength) {
-        $data              = text($context->{'index'}, $datalength);
+        $data              = text($context->{'inbuffer'}{'index'}, $datalength);
         $context->{'node'} = node_create_textnode(0, $data, $datalength);
 
         $context->{'nodeready'} = $TRUE;
-        $context->{'index'}    += $datalength;
+        $context->{'inbuffer'}{'index'}    += $datalength;
     }
 }
 
@@ -822,7 +822,7 @@ sub scanner_state_script
 
     $context->{'scannerstate'} = \&scanner_state_rawdata_end;
 
-    $datastartindex = $context->{'index'};
+    $datastartindex = $context->{'inbuffer'}{'index'};
     # с1
     while (n(0)) {
 
@@ -842,10 +842,10 @@ sub scanner_state_script
             }
 
             if (n(3) && c(1) == 0x21 && c(2) == 0x2d && c(3) == 0x2d) { # '!--'
-                $context->{'index'} += 3;
+                $context->{'inbuffer'}{'index'} += 3;
                 # с2
                 while (1) {
-                    $context->{'index'}++;
+                    $context->{'inbuffer'}{'index'}++;
 
                     if (!n(0)) {
                         goto L2;
@@ -879,10 +879,10 @@ sub scanner_state_script
                                    (c(7)                == 0x3e || # '>'
                                     c(7)                == 0x2f || # '/'
                                     char_is_space(c(7)))) {
-                            $context->{'index'} += 7;
+                            $context->{'inbuffer'}{'index'} += 7;
                             # с3
                             while (1) {
-                                $context->{'index'}++;
+                                $context->{'inbuffer'}{'index'}++;
 
                                 if (!n(0)) {
                                     goto L2;
@@ -903,7 +903,7 @@ sub scanner_state_script
                                            (c(8)                == 0x3e || # '>'
                                             c(8)                == 0x2f || # '/'
                                             char_is_space(c(8)))) {
-                                   $context->{'index'} += 8;
+                                   $context->{'inbuffer'}{'index'} += 8;
                                    last; # -> с2
                                 }
                             } # ~ с3
@@ -913,10 +913,10 @@ sub scanner_state_script
             }
         }
     L1:
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     } # ~ с1
 L2:
-    $datalength = $context->{'index'} - $datastartindex;
+    $datalength = $context->{'inbuffer'}{'index'} - $datastartindex;
 
     if ($datalength) {
         $data                   = text($datastartindex, $datalength);
@@ -937,14 +937,14 @@ sub scanner_state_foreigndata
 
     $context->{'scannerstate'} = \&scanner_state_rawdata_end;
 
-    $datastartindex = $context->{'index'};
+    $datastartindex = $context->{'inbuffer'}{'index'};
 
     while (n(0)) {
 
         if (c(0) == 0x3c) { # '<'
 
             if (n(3) && c(1) == 0x21 && c(2) == 0x2d && c(3) == 0x2d) { # '!--'
-                $context->{'index'} += 4;
+                $context->{'inbuffer'}{'index'} += 4;
 
                 while (n(0)) {
 
@@ -952,7 +952,7 @@ sub scanner_state_foreigndata
                         goto L2;
                     }
 
-                    $context->{'index'}++;
+                    $context->{'inbuffer'}{'index'}++;
                 }
                 # EOF.
                 last;
@@ -974,15 +974,15 @@ sub scanner_state_foreigndata
                     last;
                 }
             L1:
-                $context->{'index'} += $index + 2;
+                $context->{'inbuffer'}{'index'} += $index + 2;
                 next;
             }
         }
     L2:
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
 
-    $datalength = $context->{'index'} - $datastartindex;
+    $datalength = $context->{'inbuffer'}{'index'} - $datastartindex;
 
     if ($datalength) {
         $data                   = text($datastartindex, $datalength);
@@ -998,17 +998,17 @@ sub scanner_state_rawdata_end
 
     $context->{'scannerstate'} = \&scanner_state_text;
 
-    $context->{'node'}   = node_create_endtag(0, $context->{'rawswitch'}{'id'}, text($context->{'index'} + 1, $context->{'rawswitch'}{'len'}), $context->{'rawswitch'}{'len'});
-    $context->{'index'} += $context->{'rawswitch'}{'len'};
+    $context->{'node'}   = node_create_endtag(0, $context->{'rawswitch'}{'id'}, text($context->{'inbuffer'}{'index'} + 1, $context->{'rawswitch'}{'len'}), $context->{'rawswitch'}{'len'});
+    $context->{'inbuffer'}{'index'} += $context->{'rawswitch'}{'len'};
 
     $quote = '';
 
     if (c(1) == 0x3e) { # '>'
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     } else {
         # Пропуск возможных атрибутов с учетом кавычек.
         while (1) {
-            $context->{'index'}++;
+            $context->{'inbuffer'}{'index'}++;
 
             if (!n(0)) {
                 return;

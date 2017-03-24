@@ -19,7 +19,7 @@ my (
     @names, $excludenames, $regexp, $force, $split,
     $D, $SD, $IF, $OF, $directoryname, $subdirectoryname, $inputfilename, 
     @entry, @data, 
-    $context, $elementname, $text
+    $inbuffer,  $context, $document, $elementname, $element, $text
 );
 
 $regexp = "^.*\$";
@@ -38,7 +38,7 @@ $directoryname = "parser";
 
 opendir $D, $directoryname || die $!;
 
-printf "%s\n%-20s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
+printf "%s\n%30s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
        
 foreach $subdirectoryname (readdir $D) { 
     # пропуск имен каталогов начинающихся с '_' и '.',
@@ -92,26 +92,30 @@ foreach $subdirectoryname (readdir $D) {
                                 
                 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
                 @data = unpack "C*", $entry[2];
+
+                $inbuffer = {
+                    'data'       => \@data,
+                    'datalength' => scalar @data,
+                    'index'      => 0
+                };
                 
-                # if ($entry[0] =~ /\bfragment\s+(\w+)\b/) {
-                    # $elementname = uc $1;
-                    # $document = parser_fragment(\@data, scalar @data, eval "\$ELEMENT_" . $elementname, length $elementname);
-                # } else {
-                    # # При 'script on' контекст JS движка равен 1 и анонимной подпрограммой обратного вызова.
-                    # $document = parser_parse(\@data, scalar @data, $entry[0] =~ /\bscript\s+on\b/ ? ($TRUE, (sub {})) : ($NULL, $NULL));
-                # }
-                
-                $context = parser_initialize_context();
+                $document = node_create_document();     
+                $context  = parser_initialize_context($inbuffer, $document);
                 
                 if ($entry[0] =~ /\bfragment\s+(\w+)\b/) {
                     $elementname = uc $1;
-                    parser_fragment($context, \@data, scalar @data, eval "\$ELEMENT_" . $elementname, length $elementname);
+                    $element     = node_create_element(0, eval "\$ELEMENT_" . $elementname, $elementname, length $elementname);
+                    parser_fragment($context, $element);
                 } else {
-                    # При 'script on' контекст JS движка равен 1 и анонимной подпрограммой обратного вызова.
-                    parser_parse($context, \@data, scalar @data, $entry[0] =~ /\bscript\s+on\b/ ? ($TRUE, (sub {})) : ($NULL, $NULL));
+                    parser_parse($context, $NULL);
                 }
-                
-                $text = console_print_tree($context->{'document'}{'firstchild'});
+               
+                if ($entry[0] =~ /\bserialize(\s+(\w+)\s+(\d+))?/) {
+                    $text = $1 ? element_serialize($context->{'document'}{$2}, $3) :
+                                 element_serialize($context->{'document'});
+                } else {
+                    $text = console_print_tree($context->{'document'}{'firstchild'});
+                }
                 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
                 
                 $text =~ s/\R$//;
@@ -140,7 +144,7 @@ foreach $subdirectoryname (readdir $D) {
                     $text = "OK";
                 }
 
-                printf "%20s %5s => %s\n", $inputfilename, $entry[1], $text;
+                printf "%30s %5s => %s\n", $inputfilename, $entry[1], $text;
 
                 die if !$force && $text ne "OK";
             }

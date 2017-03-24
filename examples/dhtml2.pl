@@ -2,9 +2,10 @@ use strict;
 
 use WebGear::HTML::Console;
 use WebGear::HTML::Parser;
+use WebGear::HTML::DOM;
 use WebGear::SpiderMonkey;
 
-my ($FH, $filename, $data, $datalength, @data, $plcontext, $jsruntime, $jscontext);
+my ($FH, $filename, $data, $datalength, @data, $inbuffer, $document,$jsruntime, $jscontext,  $plcontext);
 
 $filename = "dhtml2.html";
 
@@ -13,12 +14,20 @@ open $FH, "<:raw", $filename or die $!;
 $datalength = read $FH, $data, -s $filename;
 @data       = unpack "C*", $data;
 
-$plcontext  = parser_initialize_context();
+$inbuffer = {
+    'data'       => \@data,
+    'datalength' => $datalength,
+    'index'      => 0
+};
+   
+$document  = node_create_document();    
+   
+$jsruntime = js_initialize_runtime();
+$jscontext = js_initialize_context($jsruntime, $inbuffer, $document);
+   
+$plcontext = parser_initialize_context($inbuffer, $document, $jscontext);
 
-$jsruntime  = js_initialize_runtime();
-$jscontext  = js_initialize_context($jsruntime, $plcontext->{'document'});
-
-parser_parse($plcontext, \@data, scalar @data, $jscontext, \&js_evaluate);
+parser_parse($plcontext);
 
 console_print_tree($plcontext->{'document'}, "s");
 

@@ -1,6 +1,7 @@
 use strict;
 
 use Getopt::Long;
+
 use WebGear::HTML::Constants;
 use WebGear::HTML::DOM;
 use WebGear::SpiderMonkey;
@@ -16,7 +17,7 @@ my (
     @names, $excludenames, $regexp, $force, $split, 
     $D, $SD, $IF, $OF, $directoryname, $subdirectoryname, $inputfilename, 
     @entry, $text,
-    $jsruntime, $jscontext
+    $document, $jsruntime, $jscontext
 );
 
 $regexp = "^.*\$";
@@ -35,7 +36,7 @@ $directoryname = "js";
 
 opendir $D, $directoryname || die $!;
 
-printf("%s\n%-20s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT");
+printf "%s\n%30s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
        
 $jsruntime = js_initialize_runtime();
     
@@ -93,8 +94,11 @@ foreach $subdirectoryname (readdir $D) {
                 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
                 $text = "";
                 
-                $jscontext = js_initialize_context($jsruntime);
+                $document  = node_create_document(); 
+                $jscontext = js_initialize_context($jsruntime, {}, $document);
+                
                 js_evaluate($jscontext, $entry[2], length $entry[2]);
+                
                 js_destroy_context($jscontext);
     
                 $text =~ s/\R$//;              
@@ -123,7 +127,7 @@ foreach $subdirectoryname (readdir $D) {
                     $text = "OK";
                 }
 
-                printf "%20s %5s => %s\n", $inputfilename, $entry[1], $text;
+                printf "%30s %5s => %s\n", $inputfilename, $entry[1], $text;
 
                 die if !$force && $text ne "OK";
             }

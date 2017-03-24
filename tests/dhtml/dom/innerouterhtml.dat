@@ -1,0 +1,237 @@
+@===============================================================================
+@           Document.innerHTML, Document.outerHTML
+@===============================================================================
+
+#data
+<head>
+</head>
+<body>
+    <p id="id" a1="V1" a2=v2 a3=>
+        <!--- comment --->
+        <a>
+            welcome
+        </a>
+    </p>
+
+    <script>
+        var e = document.getElementById("id");
+        console.log("innerHTML: " + e.innerHTML);
+        console.log("outerHTML: " + e.outerHTML);
+    </script>
+</body>
+#document
+innerHTML: <p a1="V1" a2="v2" a3="" id="id">&nbsp;        <!--- comment --->&nbsp;        <a>&nbsp;            welcome&nbsp;        </a>&nbsp;    </p>
+outerHTML: &nbsp;        <!--- comment --->&nbsp;        <a>&nbsp;            welcome&nbsp;        </a>&nbsp;    
+---
+HTML
+  HEAD
+    "\n"
+  "\n"
+  BODY
+    "\n "
+    P, a1='V1', a2='v2', a3, id='id'
+      "\n "
+      !- comment -!
+      "\n "
+      A
+        "\n welcome\n "
+      "\n "
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n console.log("innerHTML: " + e.innerHTML);\n console.log("outerHTML: " + e.outerHTML);\n "
+    "\n"
+
+@---
+
+#data
+<head id="id">
+</head>
+<body>
+    <p>
+        welcome
+    </p>
+
+    <script>
+        var e = document.getElementById("id");
+        console.log("innerHTML: " + e.innerHTML);
+        console.log("outerHTML: " + e.outerHTML);
+    </script>
+</body>
+#document
+innerHTML: <head id="id">&nbsp;</head>
+outerHTML: &nbsp;
+---
+HTML
+  HEAD, id='id'
+    "\n"
+  "\n"
+  BODY
+    "\n "
+    P
+      "\n welcome\n "
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n console.log("innerHTML: " + e.innerHTML);\n console.log("outerHTML: " + e.outerHTML);\n "
+    "\n"
+
+@---
+
+#data
+<html>
+<head>
+</head>
+<body>
+    <p id="id" a1="V1" a2=v2 a3=>
+        <!--- comment --->
+        <a>
+            welcome
+        </a>
+    </p>
+
+    <script>
+        var e = document.getElementById("id");
+        console.log(e.innerHTML);
+        
+        e.innerHTML = "<div>set</div>";
+    </script>
+</body>
+</html>
+#document
+<p a1="V1" a2="v2" a3="" id="id">&nbsp;        <!--- comment --->&nbsp;        <a>&nbsp;            welcome&nbsp;        </a>&nbsp;    </p>
+---
+HTML
+  HEAD
+    "\n"
+  "\n"
+  BODY
+    "\n "
+    P, a1='V1', a2='v2', a3, id='id'
+      DIV
+        "set"
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n console.log(e.innerHTML);\n \n e.innerHTML = "<div>set</div>";\n "
+    "\n"
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
+        e.innerHTML = "";
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    P, id='id'
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.innerHTML = "";\n "
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
+        e.innerHTML = 1;
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    P, id='id'
+      "1"
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.innerHTML = 1;\n "
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
+        e.outerHTML = "<div>set1</div><i>set2</i><a>set3</a>";
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    DIV
+      "set1"
+    I
+      "set2"
+    A
+      "set3"
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.outerHTML = "<div>set1</div><i>set2</i><a>set3</a>";\n "
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
+        e.outerHTML = "";
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.outerHTML = "";\n "
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
+        e.outerHTML = 1;
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    "1"
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.outerHTML = 1;\n "
+    "\n"
+    
+@---

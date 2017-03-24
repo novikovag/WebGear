@@ -253,9 +253,8 @@ webgear_js_dom_events_eventtarget_dispatchEvent(JSContext *cx, JSObject *obj, ui
         XPUSHs(newRV_noinc(xsself));                                
         XPUSHs(sv_2mortal(newSVpv(event->type, event->typelength)));
         PUTBACK;
-
         call_pv("js_callback", G_DISCARD);
-
+        
         event->eventphase    = EVENT_PAHASE_NONE;
         event->currenttarget = NULL;
         event->flags         = 0;

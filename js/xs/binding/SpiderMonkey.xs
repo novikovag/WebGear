@@ -5,7 +5,7 @@
 # 
 # Иерархия интерфейсов DOM:
 # 
-#    Object
+#    Global
 #    +->DOMException
 #    +->DOMImplementation
 #    +->Event
@@ -41,13 +41,14 @@ OUTPUT:
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SV*
-js_initialize_context(SV *xsjsruntime, HV *xsdocument = NULL)
+js_initialize_context(SV *xsjsruntime, HV* xsinbuffer, HV *xsdocument)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 CODE:
 {
     JSRuntime *jsruntime;
     JSContext *jscontext;
     JSObject  *jsglobal, *jsconsole, *jseventtarget, *jsnode, *jsdocument, *jswindow, *jscharacterdata, *jstext;
+    IWindow   *global;
     IWindow   *window;
     
     jsruntime = SvIV(xsjsruntime);
@@ -82,18 +83,17 @@ CODE:
     jstext = JS_InitClass(jscontext, jsglobal, jscharacterdata, &webgear_js_dom_core_text, &webgear_js_dom_core_text_constructor, 0, webgear_js_dom_core_text_properties, webgear_js_dom_core_text_functions, NULL, NULL);
     JS_InitClass(jscontext, jsglobal, jstext, &webgear_js_dom_cdatasection, NULL, 0, NULL, NULL, NULL, NULL);
     /* Связываем узел документа с объектом. */
-    if (!xsdocument) {
-        xsdocument = webgear_node_create_document(jsdocument);
-    } else {
-        webgear_xs_hv_set_iv(xsdocument, LITERAL("object"), jsdocument);
-    }
-    
+    webgear_xs_hv_set_iv(xsdocument, LITERAL("object"), jsdocument);
     JS_SetPrivate(jscontext, jsdocument, xsdocument);
     
     window = webgear_window_create(jscontext, jsglobal, jswindow, jsdocument);
     JS_SetPrivate(jscontext, jswindow, window);
     /* Делаем объект класса Window == this. */
     JS_SetGlobalObject(jscontext, jswindow);  
+    
+    global = webgear_global_create(jsglobal, xsinbuffer, jswindow, jsdocument);
+    JS_SetPrivate(jscontext, jsglobal, global);
+    JS_SetContextPrivate(jscontext, global);
     
     RETVAL = newSViv(jscontext);
 }

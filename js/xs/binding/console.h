@@ -29,7 +29,6 @@ js_console_log(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rva
     XPUSHs(sv_2mortal(newSVpv("js_console_log", 0)));
     XPUSHs(sv_2mortal(newSVpv(data, 0)));
     PUTBACK;
-
     call_pv("js_callback", G_DISCARD);
     return JS_TRUE;
 }
@@ -52,7 +51,6 @@ js_console_tree(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rv
         XPUSHs(sv_2mortal(newSVpv("js_console_tree", 0)));
         XPUSHs(newRV_noinc(xsnode));
         PUTBACK;
-
         call_pv("js_callback", G_DISCARD);
     }
 

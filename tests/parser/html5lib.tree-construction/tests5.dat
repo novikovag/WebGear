@@ -150,16 +150,6 @@ HTML
       "<!--"
   BODY
 
-#data, script on
-<noscript><!--</noscript>--></noscript>
-#document
-HTML
-  HEAD
-    NOSCRIPT
-      "<!--"
-  BODY
-    "-->"
-
 #data
 <noscript><!--</noscript>--></noscript>
 #document

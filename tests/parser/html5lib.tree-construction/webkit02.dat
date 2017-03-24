@@ -6,18 +6,6 @@ HTML
   BODY
     FOO, bar='qux'
 
-#data, script on
-<p id="status"><noscript><strong>A</strong></noscript><span>B</span></p>
-#document
-HTML
-  HEAD
-  BODY
-    P, id='status'
-      NOSCRIPT
-        "<strong>A</strong>"
-      SPAN
-        "B"
-
 #data
 <p id="status"><noscript><strong>A</strong></noscript><span>B</span></p>
 #document
@@ -170,52 +158,6 @@ HTML
             FOO
     ASIDE
       B
-
-#data, fragment div
-<b><em><foo><foo><foo><foo><foo><foo><foo><foo><foo><foo><aside></b></em>
-#document
-HTML
-  DIV
-    B
-      EM
-        FOO
-          FOO
-            FOO
-              FOO
-                FOO
-                  FOO
-                    FOO
-                      FOO
-                        FOO
-                          FOO
-    ASIDE
-      B
-    
-#data, fragment div
-<b><em><foo><foob><foob><foob><foob><fooc><fooc><fooc><fooc><food><aside></b></em>
-#document
-HTML
-  DIV
-    B
-      EM
-        FOO
-          FOOB
-            FOOB
-              FOOB
-                FOOB
-                  FOOC
-                    FOOC
-                      FOOC
-                        FOOC
-                          FOOD
-    ASIDE
-      B
-
-#data, fragment select
-<option><XH<optgroup></optgroup>
-#document
-HTML
-  OPTION
 
 #data
 </foreignObject><plaintext><div>foo</div>

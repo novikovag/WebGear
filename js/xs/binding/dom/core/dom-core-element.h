@@ -3,6 +3,8 @@
 
  https://dom.spec.whatwg.org/#interface-element
  https://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-745549614
+ 
+ https://w3c.github.io/DOM-Parsing/#extensions-to-the-element-interface
 ==============================================================================*/
 
 #ifndef _webgear_js_dom_core_element_h
@@ -334,7 +336,7 @@ webgear_js_dom_core_element_getElementsByTagName(JSContext *cx, JSObject *obj, u
     while (htmlcollection) {
         
         if (htmlcollection->searchtype != COLLECTION_SEARCH_BY_CLASSNAME &&
-            htmlcollection->namelength  == namelength && !memcmp(htmlcollection->name, name, namelength)) {
+            webgear_data_are_equal(htmlcollection->name, htmlcollection->namelength, name, namelength)) {
             *rval = OBJECT_TO_JSVAL(htmlcollection->jsobject);
             return JS_TRUE;
         }
@@ -365,6 +367,119 @@ webgear_js_dom_core_element_getElementsByTagName(JSContext *cx, JSObject *obj, u
 
 /* webgear_js_dom_core_element_getElementsByTagNameNS
    webgear_js_dom_core_element_getElementsByClassName */
+ 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ Позиции:
+ 
+ <!-- "beforebegin" -->
+   <p>
+     <!-- "afterbegin" -->
+     foo
+     <!-- "beforeend" -->
+   </p>
+ <!-- "afterend" --> 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+static JSBool   
+webgear_js_dom_core_element_insertAdjacentHTML(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval)
+{ 
+    JSString *jsstring;
+    HV       *xsself, *xsparent, *xsinbuffer, *xsdocument, *xsplcontext, *xshtml, *xsfirstchild, *xslastchild;  
+    char     *position, *data, *name;
+    int       positionlength, datalength, namelength, positionid, id;
+    
+    if (argc < 2) {
+        webgear_js_exeption(cx, EXCEPTION_TOO_FEW_ARGUMENTS_ERR);
+        return JS_FALSE;
+    }
+
+    jsstring       = JS_ValueToString(cx, argv[0]); 
+    position       = JS_GetStringBytes(jsstring);
+    positionlength = strlen(position);
+    
+    if (!strcmp("beforebegin", position)) {
+        positionid = 1;
+    } else if (!strcmp("afterend", position)) {
+        positionid = 2;
+    } else if (!strcmp("afterbegin", position)) {
+        positionid = 3;
+    } else if (!strcmp("beforeend", position)) {
+        positionid = 4;
+    } else {
+        webgear_js_exeption(cx, EXCEPTION_SYNTAX_ERR);
+        return JS_FALSE; 
+    }
+    
+    xsself = JS_GetPrivate(cx, obj);
+    /* xsparent является контекстным элементом. */
+    if (positionid <= 2) {
+        xsparent = webgear_xs_hv_get_rv(xsself, LITERAL("parent"));
+        
+        if (!xsparent || webgear_xs_hv_get_iv(xsparent, LITERAL("type")) == NODE_TYPE_DOCUMENT) {
+            webgear_js_exeption(cx, EXCEPTION_NO_MODIFICATION_ALLOWED_ERR);
+            return JS_FALSE;
+        }
+        
+    } else {
+        xsparent = xsself;
+        
+        if (positionid == 3) {
+            xsself = webgear_xs_hv_get_rv(xsself, LITERAL("firstchild"));
+        } else {
+            xsself = webgear_xs_hv_get_rv(xsself, LITERAL("lastchild"));
+        }
+    } 
+        
+    name       = webgear_xs_hv_get_pv(xsparent, LITERAL("name")); 
+    namelength = webgear_xs_hv_get_iv(xsparent, LITERAL("namelength"));
+
+    if (webgear_data_are_equal(LITERAL("HTML"), name, namelength)) {    
+        id       = webgear_element_name_to_id(LITERAL("BODY"));    
+        xsparent = webgear_node_create_element(NULL, 0, id, NULL, 0);
+    } 
+    
+    jsstring   = JS_ValueToString(cx, argv[1]);
+    data       = JS_GetStringBytes(jsstring);
+    datalength = strlen(data);
+    /* Нулевая строка не обрабатывается и не генерирует исключение. */
+    if (!datalength) {
+        return JS_TRUE;
+    }
+    
+    xsinbuffer = webgear_inbuffer_create(data, datalength);
+    xsdocument = webgear_node_create_document(NULL);    
+
+    dSP;
+    PUSHMARK(SP);
+    XPUSHs(newRV_noinc(xsinbuffer));
+    XPUSHs(newRV_noinc(xsdocument));
+    XPUSHs(sv_2mortal(newSViv(0)));
+    PUTBACK;
+    call_pv("parser_initialize_context", G_SCALAR);
+    SPAGAIN;
+
+    xsplcontext = SvRV(POPs);
+
+    PUSHMARK(SP);
+    XPUSHs(newRV_noinc(xsplcontext));
+    XPUSHs(newRV_noinc(xsparent));
+    PUTBACK;
+    call_pv("parser_fragment", G_DISCARD);
+
+    xshtml       = webgear_xs_hv_get_rv(xsdocument, LITERAL("html"));    
+    xsfirstchild = webgear_xs_hv_get_rv(xshtml, LITERAL("firstchild"));
+    xslastchild  = webgear_xs_hv_get_rv(xshtml, LITERAL("lastchild"));
+
+    if (xsfirstchild) {
+    
+        if (positionid == 1 || positionid == 3) { /* "beforebegin", "afterbegin" */
+            webgear_nodes_insert_before(xsparent, xsself, xsfirstchild, xslastchild);
+        } else {                                  /* "afterend", "beforeend" */
+            webgear_nodes_insert_after(xsparent, xsself, xsfirstchild, xslastchild);
+        } 
+    }
+    
+    return JS_TRUE;
+}
 
 static JSFunctionSpec
 webgear_js_dom_core_element_functions[] = {
@@ -389,6 +504,7 @@ webgear_js_dom_core_element_functions[] = {
     {"getElementsByTagName",   webgear_js_dom_core_element_getElementsByTagName,   1},
  /* {"getElementsByTagNameNS", webgear_js_dom_core_element_getElementsByTagNameNS, 2},
     {"getElementsByClassName", webgear_js_dom_core_element_getElementsByClassName, 1}, */
+    {"insertAdjacentHTML",     webgear_js_dom_core_element_insertAdjacentHTML,     2},
     {0}
 };
 
@@ -400,34 +516,133 @@ webgear_js_dom_core_element_getter(JSContext *cx, JSObject *obj, jsval id, jsval
 {
     JSString *jsstring;
     HV       *xsself;
-    char     *name;
-    int       namelength;
-
-    if (JSVAL_TO_INT(id) == 3) {
-        xsself     = JS_GetPrivate(cx, obj);
-        
-        name       = webgear_xs_hv_get_pv(xsself, LITERAL("name"));
-        namelength = webgear_xs_hv_get_iv(xsself, LITERAL("namelength"));
-        jsstring   = JS_NewStringCopyN(cx, name, namelength);
+    char     *name, *data;
+    int       tinyid, namelength;
+    
+    tinyid = JSVAL_TO_INT(id);
+    
+    if (tinyid <= 11) {
+        xsself = JS_GetPrivate(cx, obj);
+            
+        if (tinyid == 3) {
+            name       = webgear_xs_hv_get_pv(xsself, LITERAL("name"));
+            namelength = webgear_xs_hv_get_iv(xsself, LITERAL("namelength"));
+            jsstring   = JS_NewStringCopyN(cx, name, namelength);
+        } else  {
+            /* $element, $outermode */
+            dSP;
+            PUSHMARK(SP);
+            XPUSHs(newRV_noinc(xsself));
+            XPUSHs(sv_2mortal(newSViv(tinyid == 10 ? 0 : 1)));
+            PUTBACK;
+            call_pv("element_serialize", G_SCALAR);
+            SPAGAIN;
+            
+            data     = POPp;
+            jsstring = JS_NewStringCopyZ(cx, data);
+        }
         
         *vp = STRING_TO_JSVAL(jsstring);
     }
-
+    
     return JS_TRUE;
+}
+
+static JSBool
+webgear_js_dom_core_element_setter(JSContext *cx, JSObject *obj, jsval id, jsval *vp)
+{
+    JSString *jsstring;
+    HV       *xsinbuffer, *xsdocument, *xsplcontext, *xsself, *xsparent,
+             *xsprevioussibling, *xshtml, *xsfirstchild, *xslastchild;
+    char     *data;
+    int       tinyid, datalength;
+
+    tinyid = JSVAL_TO_INT(id);
+
+    if (tinyid <= 11) {
+        xsself = JS_GetPrivate(cx, obj);
+
+        if (tinyid == 11) {
+            xsparent = webgear_xs_hv_get_rv(xsself, LITERAL("parent"));
+        
+            if (!xsparent || webgear_xs_hv_get_iv(xsparent, LITERAL("type")) == NODE_TYPE_DOCUMENT) {
+                webgear_js_exeption(cx, EXCEPTION_NO_MODIFICATION_ALLOWED_ERR);
+                return JS_FALSE;
+            }
+            
+            xsprevioussibling = webgear_xs_hv_get_rv(xsself, LITERAL("previoussibling"));
+            /* Узел удаляется в любом случае. */
+            webgear_node_remove(xsparent, xsself);
+        } 
+        
+        jsstring   = JS_ValueToString(cx, *vp);
+        data       = JS_GetStringBytes(jsstring);
+        datalength = strlen(data);
+        
+        if (!datalength) {
+            
+            if (tinyid == 10) {
+                webgear_xs_hv_set_rv(xsself, LITERAL("firstchild"), NULL);
+                webgear_xs_hv_set_rv(xsself, LITERAL("lastchild"), NULL);
+            }
+
+            return JS_TRUE;
+        }
+        
+        xsinbuffer = webgear_inbuffer_create(data, datalength);
+        xsdocument = webgear_node_create_document(NULL);    
+
+        dSP;
+        PUSHMARK(SP);
+        XPUSHs(newRV_noinc(xsinbuffer));
+        XPUSHs(newRV_noinc(xsdocument));
+        XPUSHs(sv_2mortal(newSViv(0)));
+        PUTBACK;
+        call_pv("parser_initialize_context", G_SCALAR);
+        SPAGAIN;
+
+        xsplcontext = SvRV(POPs);
+
+        PUSHMARK(SP);
+        XPUSHs(newRV_noinc(xsplcontext));
+        XPUSHs(newRV_noinc(xsself));
+        PUTBACK;
+        call_pv("parser_fragment", G_DISCARD);
+
+        xshtml       = webgear_xs_hv_get_rv(xsdocument, LITERAL("html"));    
+        xsfirstchild = webgear_xs_hv_get_rv(xshtml, LITERAL("firstchild"));
+        xslastchild  = webgear_xs_hv_get_rv(xshtml, LITERAL("lastchild"));
+
+        if (xsfirstchild) {
+
+            if (tinyid == 11) {
+                webgear_nodes_insert_after(xsparent, xsprevioussibling, xsfirstchild, xslastchild);
+            } else {
+                webgear_nodes_replace(xsself, xsfirstchild, xslastchild);
+            }
+
+        } else if (tinyid == 10) {
+            webgear_nodes_replace(xsself, NULL, NULL);
+        }
+    }
+
+    return JS_TRUE; 
 }
 
 static JSPropertySpec
 webgear_js_dom_core_element_properties[] = {
- /* {"namespaceURI", 0, JSPROP_ENUMERATE | JSPROP_READONLY},
-    {"prefix",       1, JSPROP_ENUMERATE | JSPROP_READONLY},
-    {"localName",    2, JSPROP_ENUMERATE | JSPROP_READONLY}, */
-    {"tagName",      3, JSPROP_ENUMERATE | JSPROP_READONLY},
- /* {"id",           4, JSPROP_ENUMERATE},
-    {"className",    5, JSPROP_ENUMERATE},
-    {"classList",    6, JSPROP_ENUMERATE | JSPROP_READONLY},
-    {"slot",         7, JSPROP_ENUMERATE},
-    {"attributes",   8, JSPROP_ENUMERATE | JSPROP_READONLY},
-    {"shadowRoot",   9, JSPROP_ENUMERATE | JSPROP_READONLY}, */
+ /* {"namespaceURI",  0, JSPROP_ENUMERATE | JSPROP_READONLY},
+    {"prefix",        1, JSPROP_ENUMERATE | JSPROP_READONLY},
+    {"localName",     2, JSPROP_ENUMERATE | JSPROP_READONLY}, */
+    {"tagName",       3, JSPROP_ENUMERATE | JSPROP_READONLY},
+ /* {"id",            4, JSPROP_ENUMERATE},
+    {"className",     5, JSPROP_ENUMERATE},
+    {"classList",     6, JSPROP_ENUMERATE | JSPROP_READONLY},
+    {"slot",          7, JSPROP_ENUMERATE},
+    {"attributes",    8, JSPROP_ENUMERATE | JSPROP_READONLY},
+    {"shadowRoot",    9, JSPROP_ENUMERATE | JSPROP_READONLY}, */
+    {"innerHTML",    10, JSPROP_ENUMERATE},
+    {"outerHTML",    11, JSPROP_ENUMERATE},
     {0}
 };
 
@@ -441,7 +656,7 @@ webgear_js_dom_core_element = {
     JS_PropertyStub,
     JS_PropertyStub,
     webgear_js_dom_core_element_getter,
-    JS_PropertyStub,
+    webgear_js_dom_core_element_setter,
     JS_EnumerateStub,
     JS_ResolveStub,
     JS_ConvertStub,

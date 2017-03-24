@@ -1,3 +1,19 @@
+@===============================================================================
+@           html5lib.tree-construction fragment               
+@===============================================================================
+
+#data, fragment div
+<b><em><foo><foob><fooc><aside></b></em>
+#document
+HTML
+  B
+    EM
+      FOO
+        FOOB
+          FOOC
+  ASIDE
+    B
+      
 #data, fragment body
 <body><span>
 #document
@@ -14,8 +30,7 @@ HTML
 <span><body>
 #document
 HTML
-  DIV
-    SPAN
+  SPAN
 
 #data, fragment html
 <body><span>
@@ -41,8 +56,7 @@ HTML
 <span><frameset>
 #document
 HTML
-  DIV
-    SPAN
+  SPAN
 
 #data, fragment html
 <frameset><span>
@@ -564,7 +578,6 @@ HTML
 </frameset><frame>
 #document
 HTML
-  FRAMESET
   FRAME
 
 #data, fragment html
@@ -574,3 +587,183 @@ HTML
   HEAD
   BODY
 
+#data, fragment div
+direct div content
+#document
+HTML
+  "direct div content"
+
+#data, fragment textarea
+direct textarea content
+#document
+HTML
+  "direct textarea content"
+
+#data, fragment textarea
+textarea content with <em>pseudo</em> <foo>markup
+#document
+HTML
+  "textarea content with <em>pseudo</em> <foo>markup"
+
+#data, fragment style
+this is &#x0043;DATA inside a <style> element
+#document
+HTML
+  "this is &#x0043;DATA inside a <style> element"
+
+#data, fragment plaintext
+</plaintext>
+#document
+HTML
+  "</plaintext>"
+
+#data, fragment html
+setting html's innerHTML
+#document
+HTML
+  HEAD
+  BODY
+    "setting html's innerHTML"
+
+#data, fragment head
+<title>setting head's innerHTML</title>
+#document
+HTML
+  TITLE
+    "setting head's innerHTML"
+
+#data, fragment div
+<body> <div>
+#document
+HTML
+  " "
+  DIV
+
+#data, fragment body
+</body><div>
+#document
+HTML
+  DIV
+  
+
+#data, fragment div
+<b><em><foo><foo><foo><foo><foo><foo><foo><foo><foo><foo><aside></b></em>
+#document
+HTML
+  B
+    EM
+      FOO
+        FOO
+          FOO
+            FOO
+              FOO
+                FOO
+                  FOO
+                    FOO
+                      FOO
+                        FOO
+  ASIDE
+    B
+    
+#data, fragment div
+<b><em><foo><foob><foob><foob><foob><fooc><fooc><fooc><fooc><food><aside></b></em>
+#document
+HTML
+  B
+    EM
+      FOO
+        FOOB
+          FOOB
+            FOOB
+              FOOB
+                FOOC
+                  FOOC
+                    FOOC
+                      FOOC
+                        FOOD
+  ASIDE
+    B
+
+#data, fragment select
+<option><XH<optgroup></optgroup>
+#document
+HTML
+  OPTION
+  
+#data, fragment html
+<body>X</body></body>
+#document
+HTML
+  HEAD
+  BODY
+    "X"
+
+
+#data, fragment table
+</table><tr>
+#document
+HTML
+  TBODY
+    TR
+
+#data, fragment html
+<body></body></html>
+#document
+HTML
+  HEAD
+  BODY
+  
+#data, fragment tbody
+</table><tr>
+#document
+HTML
+  TR
+
+
+#data, fragment tr
+</tr><td>
+#document
+HTML
+  TD
+
+#data, fragment tr
+</tbody></tfoot></thead><td>
+#document
+HTML
+  TD
+
+#data, fragment frameset
+</frameset><frame>
+#document
+HTML
+  FRAME
+
+#data, fragment td
+</table></tbody></tfoot></thead></tr><div>
+#document
+HTML
+  DIV
+
+#data, fragment tbody
+<caption><col><colgroup><tbody><tfoot><thead><tr>
+#document
+HTML
+  TR
+
+#data, fragment colgroup
+foo<col>
+#document
+HTML
+  COL
+
+#data, fragment caption
+</table><div>
+#document
+HTML
+  DIV
+
+#data, fragment caption
+</caption><div>
+#document
+HTML
+  DIV

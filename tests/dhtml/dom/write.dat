@@ -1,0 +1,100 @@
+@===============================================================================
+@           Document.write, Document.writeln
+@===============================================================================
+
+#data
+<html>
+<head></head>
+<body>
+    <script>
+        document.write("<h1>Hello World!</h1><p>Have a nice day!</p>");
+    </script>
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    SCRIPT
+      "\n document.write("<h1>Hello World!</h1><p>Have a nice day!</p>");\n "
+    H1
+      "Hello World!"
+    P
+      "Have a nice day!"
+    "\n"
+    "\n"
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <script>
+        document.write("<h1");
+    </script>
+    >Hello World!
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    SCRIPT
+      "\n document.write("<h1");\n "
+    H1
+      "Hello World!\n"
+      "\n"
+      
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <script>
+        document.write("a");
+    </script>b
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    SCRIPT
+      "\n document.write("a");\n "
+    "ab\n"
+    "\n"
+      
+@---
+
+#data
+<html>
+<head></head>
+<body>
+    <script>
+        document.writeln("a");
+    </script>b
+</body>
+</html>
+#document
+---
+HTML
+  HEAD
+  "\n"
+  BODY
+    "\n "
+    SCRIPT
+      "\n document.writeln("a");\n "
+    "a\nb\n"
+    "\n"
+      
+@---

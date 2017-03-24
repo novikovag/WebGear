@@ -31,7 +31,7 @@ Perl HTML5 парсер с поддержкой JS.
         make
         make install
     ```        
-        
+
 ## Windows (ActivePerl + MinGW-w64)
 
 1. Настроить переменные среды:
@@ -105,12 +105,5 @@ Perl HTML5 парсер с поддержкой JS.
     ```BASH
         perl dtest.pl        
     ```
- 
-# Список изменений
-
-* 13.03.17
-
-  Основная документация переснесена в wiki.
- 
 ---
 _Copyright (C) 2017 Artem Novikov_

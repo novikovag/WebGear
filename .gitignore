@@ -1,3 +1,7 @@
+/_FOSSIL_
+
+/docs/assets/**/highlight*
+
 # Ошибки тестирования
 /tests/**/error(*.txt
 

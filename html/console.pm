@@ -29,12 +29,12 @@ sub console_print_scanner_state
     my ($char);
     # Если не указан выводимый текст, устанавливаме как имя текущего обработчика.
     $name = B::svref_2object($context->{'scannerstate'})->GV->NAME unless $name;
-    $char = $context->{'data'}[$context->{'index'}];
+    $char = $context->{'inbuffer'}{'data'}[$context->{'inbuffer'}{'index'}];
 
     printf "===> sstate: %-49s [%0*d: '%c']\n",
            $name,
-           length $context->{'datalength'},
-           $context->{'index'},
+           length $context->{'inbuffer'}{'datalength'},
+           $context->{'inbuffer'}{'index'},
            $char;
 }
 
@@ -284,10 +284,9 @@ sub console_print_tree
     L:    
         if ($node->{'nextsibling'}) {
             $node = $node->{'nextsibling'};
-            # print "<- sibling: $node\n";
             next;
         }
-        # Выход на нулевой глубине, если начальный узле не корневой.
+        # Выход на нулевой глубине.
         if (!$depth) {
             last;
         }
@@ -419,7 +418,7 @@ sub text_clean
 {
     my ($text) = @_;
     
-    $text =~ s/\R/*NL*/g;
+    $text =~ s/\R/\\n/g;
     
     return $text;
 }

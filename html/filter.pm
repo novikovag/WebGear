@@ -13,13 +13,13 @@ FILTER
     #---------------------------------------------------------------------------
     
     # Граница буфера.
-    s/\bn\(0\)/(\$context->{'index'} < \$context->{'datalength'})/g; # n(0)
-    s/\bn\((.+?)\)/(\$context->{'index'} + $1 < \$context->{'datalength'})/g;
+    s/\bn\(0\)/(\$context->{'inbuffer'}{'index'} < \$context->{'inbuffer'}{'datalength'})/g; # n(0)
+    s/\bn\((.+?)\)/(\$context->{'inbuffer'}{'index'} + $1 < \$context->{'inbuffer'}{'datalength'})/g;
     # Символ по индексу в буфере.
-    s/\bc\(0\)/\$context->{'data'}[\$context->{'index'}]/g; # ch(0)
-    s/\bc\((.+?)\)/\$context->{'data'}[\$context->{'index'} + $1]/g;
+    s/\bc\(0\)/\$context->{'inbuffer'}{'data'}[\$context->{'inbuffer'}{'index'}]/g; # ch(0)
+    s/\bc\((.+?)\)/\$context->{'inbuffer'}{'data'}[\$context->{'inbuffer'}{'index'} + $1]/g;
     
-    s/\btext\((.+?),(.+?)\)/pack("C*", \@{\$context->{'data'}}[$1..($1 + $2 - 1)])/gs; # text(offset, length), только в утилитах.
+    s/\btext\((.+?),(.+?)\)/pack("C*", \@{\$context->{'inbuffer'}{'data'}}[$1..($1 + $2 - 1)])/gs; # text(offset, length), только в утилитах.
     
     s/\bchar_to_lower\((.+?)\)/\$chars[$1][0]/g;
     s/\bchar_to_digit\((.+?)\)/\$chars[$1][1]/g;

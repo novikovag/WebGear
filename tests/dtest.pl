@@ -18,7 +18,7 @@ my (
     @names, $excludenames, $regexp, $force, $split,
     $D, $SD, $IF, $OF, $directoryname, $subdirectoryname, $inputfilename, 
     @entry, @data, $text,
-    $jsruntime, $jscontext, $plcontext
+    $inbuffer, $document, $jsruntime, $jscontext, $plcontext
 );
 
 $regexp = "^.*\$";
@@ -37,7 +37,7 @@ $directoryname = "dhtml";
 
 opendir $D, $directoryname || die $!;
 
-printf "%s\n%-20s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
+printf "%s\n%30s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
        
 $jsruntime = js_initialize_runtime();       
        
@@ -95,17 +95,27 @@ foreach $subdirectoryname (readdir $D) {
                 $text = "";
                 @data = unpack "C*", $entry[2];
                 
-                $plcontext = parser_initialize_context();
+                $inbuffer = {
+                    'data'       => \@data,
+                    'datalength' => scalar @data,
+                    'index'      => 0
+                };
+                   
+                $document  = node_create_document();    
+                   
+                $jsruntime = js_initialize_runtime();
+                $jscontext = js_initialize_context($jsruntime, $inbuffer, $document);
+                   
+                $plcontext = parser_initialize_context($inbuffer, $document, $jscontext);
                 
-                $jscontext = js_initialize_context($jsruntime, $plcontext->{'document'});
-
-                parser_parse($plcontext, \@data, scalar @data, $jscontext, \&js_evaluate);
+                parser_parse($plcontext, $jscontext);
+                
                 js_destroy_context($jscontext);
                 
                 $text .= "---\n";
                 $text .= console_print_tree($plcontext->{'document'}{'firstchild'});
                 
-                $text =~ s/\R$//;            
+                $text  =~ s/\R$//;            
                 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
                 
                 if ($entry[3] ne $text) {
@@ -131,7 +141,7 @@ foreach $subdirectoryname (readdir $D) {
                     $text = "OK";
                 }
 
-                printf "%20s %5s => %s\n", $inputfilename, $entry[1], $text;
+                printf "%30s %5s => %s\n", $inputfilename, $entry[1], $text;
 
                 die if !$force && $text ne "OK";
             }
@@ -214,7 +224,7 @@ sub text_clean
 {
     my ($text) = @_;
     
-    $text =~ s/\R//g;
+    $text =~ s/\R/\\n/g;
     
     1 while $text =~ s/\s{2}/ /g;
 

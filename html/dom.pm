@@ -25,6 +25,7 @@ our @EXPORT = qw(
     element_merge_attributes
     element_compare_attributes
     element_append_rawdata
+    element_serialize
     element_id_to_name
     attribute_id_to_name
     event_id_to_name
@@ -52,6 +53,10 @@ sub node_create_document
         'nextsibling'     => $NULL,
         'firstchild'      => $NULL,
         'lastchild'       => $NULL,
+        
+        'id'              => -1,
+        'name'            => "DOCUMENT",
+        'namelength'      => 8,
         
         'soeprevious'     => $NULL,
         'soenext'         => $NULL,
@@ -478,15 +483,83 @@ sub element_append_rawdata
     $context->{'scannerstate'} = $context->{'rawswitch'}{'state'};
     
     $context->{'scannerstate'}($context);
-    $context->{'index'}++;
+    $context->{'inbuffer'}{'index'}++;
     # В условии игнорируется возможные EOF и не/обнуление указателя узла.
     if ($context->{'node'}{'type'} == $NODE_TYPE_TEXT) {
         node_append($element, $context->{'node'});
         $context->{'scannerstate'}($context);
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
     }
     # Пропускаем закрывающий тег.
     $context->{'nodeready'} = $FALSE;
+}
+
+sub element_serialize
+{
+    my ($element, $outermode) = @_;
+    my ($node, $depth, $text);
+    
+    if ($outermode) {
+        $node  = $element->{'firstchild'};
+        $depth = 1;
+    } else {
+        $node  = $element;
+        $depth = 0;
+    }
+
+    while ($node) {    
+
+        if ($node->{'type'} == $NODE_TYPE_ELEMENT || $node->{'type'} == $NODE_TYPE_DOCUMENT) {
+            $text .= sprintf "<%s", lc ($node->{'id'} ? 
+                                        element_id_to_name($node->{'id'}) : $node->{'name'});
+
+            foreach (sort keys %{$node->{'attributes'}}) {
+                $text .= sprintf " %s=\"%s\"", 
+                                $node->{'attributes'}{$_}{'name'},
+                                text_escape($node->{'attributes'}{$_}{'value'}, $TRUE);
+            }    
+        
+            foreach (sort keys %{$node->{'events'}}) {
+                $text .= sprintf " on%s=\"%s\"",
+                                $node->{'events'}{$_}{'type'},
+                                text_escape($node->{'events'}{$_}{'function'}, $TRUE);
+            }    
+        
+            $text .= sprintf ">";
+        
+            if ($node->{'firstchild'}) {
+                $node = $node->{'firstchild'};
+                $depth++;
+                next;
+            } 
+            # Закрываем пустой тег.
+            $text .= sprintf "</%s>", lc ($node->{'id'} ?
+                                          element_id_to_name($node->{'id'}) : $node->{'name'});
+        } elsif ($node->{'type'} == $NODE_TYPE_TEXT) {  
+            $text .= sprintf "%s", text_escape($node->{'data'});
+        } elsif ($node->{'type'} == $NODE_TYPE_COMMENT) {
+            $text .= sprintf "<!--%s-->", $node->{'data'};
+        } elsif ($node->{'type'} == $NODE_TYPE_DOCUMENT_TYPE) {        
+            $text .= sprintf "<!DOCTYPE %s>", $node->{'name'};
+        } 
+    L:    
+        if ($depth && $node->{'nextsibling'}) {
+            $node = $node->{'nextsibling'};
+            next;
+        }
+        # Обработать нулевой узел только если не outermode.
+        if (!$depth-- || ($outermode && !$depth)) { 
+            last;
+        }
+        # Закрываем родительский тег.
+        if ($node = $node->{'parent'}) {
+            $text .= sprintf "</%s>", lc ($node->{'id'} ? 
+                                          element_id_to_name($node->{'id'}) : $node->{'name'}), $depth; 
+            goto L;
+        }
+   }
+
+   return $text;
 }
 
 sub element_id_to_name
@@ -628,12 +701,9 @@ sub element_id_to_name
     return "VIDEO"      if $_[0] == $ELEMENT_VIDEO;
     return "WBR"        if $_[0] == $ELEMENT_WBR;
     return "XMP"        if $_[0] == $ELEMENT_XMP;
-    #return "ROOT"       if $_[0] == -1;
+    return "DOCUMENT"   if $_[0] == -1;
     return "?";
 }
-
-#----- Атрибуты ----------------------------------------------------------------
-#-------------------------------------------------------------------------------
 
 sub attribute_id_to_name
 {
@@ -759,9 +829,6 @@ sub attribute_id_to_name
     return "?";
 }
 
-#----- События -----------------------------------------------------------------
-#-------------------------------------------------------------------------------
-
 sub event_id_to_name
 {
     return "onabort"              if $_[0] == $EVENT_ONABORT;
@@ -844,9 +911,6 @@ sub event_id_to_name
     return "?";
 }
 
-#----- Типы документа ----------------------------------------------------------
-#-------------------------------------------------------------------------------
-
 sub documenttype_id_to_name
 {
     return "+//silmaril//dtd html pro v0r11 19970101//"                                     if $_[0] == $DOCUMENTTYPE_SILMARILDTDHTMLPROV0R1119970101;
@@ -913,6 +977,23 @@ sub documenttype_id_to_name
     return "html"                                                                           if $_[0] == $DOCUMENTTYPE_HTML;
     return "http://www.ibm.com/data/dtd/v11/ibmxhtml1-transitional.dtd"                     if $_[0] == $DOCUMENTTYPE_HTTPWWWIBMCOMDATADTDV11IBMXHTML1TRANSITIONALDTD;
     return "?";
+}
+
+sub text_escape
+{
+    my ($text, $attributemode) = @_;
+    
+    $text =~ s/\&/&amp;/g;
+    $text =~ s/\n/&nbsp;/g;
+    
+    if ($attributemode) {
+        $text =~ s/"/&quot;/g;
+    } else {
+        $text =~ s/</&lt;/g;
+        $text =~ s/>/&gt;/g;
+    }
+    
+    return $text;
 }
 
 1;

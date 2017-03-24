@@ -600,6 +600,7 @@ webgear_js_dom_core_node_getter(JSContext *cx, JSObject *obj, jsval id, jsval *v
             
             *vp = STRING_TO_JSVAL(jsstring);
         } 
+        /* JSVAL_NULL */
     }
 
     return JS_TRUE; 

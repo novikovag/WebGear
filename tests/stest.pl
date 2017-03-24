@@ -38,7 +38,7 @@ $directoryname = "scanner";
 
 opendir $D, $directoryname || die $!;
 
-printf "%s\n%-20s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
+printf "%s\n%30s %s     %s\n\n", "SUBDIR", "FILE", "LINE", "RESULT";
 
 foreach $subdirectoryname (readdir $D) {
     # Пропуск имен каталогов начинающихся с '_' и '.'.
@@ -121,7 +121,7 @@ foreach $subdirectoryname (readdir $D) {
                     $text = "OK";
                 }
 
-                printf "%20s %5s => %s\n", $inputfilename, $entry[1], $text;
+                printf "%30s %5s => %s\n", $inputfilename, $entry[1], $text;
 
                 die if !$force && $text ne "OK";
             }
@@ -134,16 +134,21 @@ printf("--END--\n");
 sub sconsole_print_nodes
 {
     my ($data, $length, $parameters) = @_;
-    my ($context, $text);
+    my ($inbuffer, $context, $text);
+    
+    $inbuffer = {
+        'data'       => $data,
+        'datalength' => $length,
+        'index'      => 0
+    };
     
     $context = {
-        'data'         => $data,
-        'datalength'   => $length,
-        'index'        => 0,
-
+        'inbuffer'     => $inbuffer,
+        
         'scannerstate' => \&scanner_state_text,  
         'nodeready'    => $FALSE,
         'node'         => $NULL,
+        
         'rawswitch'    => $NULL
     };
 
@@ -172,23 +177,23 @@ sub sconsole_print_nodes
 
     while (1) {
 
-        if ($context->{'index'} >= $context->{'datalength'}) {
+        if ($context->{'inbuffer'}{'index'} >= $context->{'inbuffer'}{'datalength'}) {
             $text .= sprintf "|*| .\n";
             last;
         }
 
         $context->{'scannerstate'}($context);
-        $context->{'index'}++;
+        $context->{'inbuffer'}{'index'}++;
 
         next unless $context->{'nodeready'};
 
         if ($context->{'node'}{'type'} == $NODE_TYPE_START_TAG) {
-            $text .= sprintf "|<| %s\n", $context->{'node'}{'id'}            ? 
+            $text .= sprintf "|<| %s\n", $context->{'node'}{'id'}                     ? 
                                          element_id_to_name($context->{'node'}{'id'}) :
                                          $context->{'node'}{'name'};
 
             foreach (sort keys %{$context->{'node'}{'attributes'}}) {
-                $text .= sprintf "|A| %s\n", $context->{'node'}{'attributes'}{$_}{'id'}            ?
+                $text .= sprintf "|A| %s\n", $context->{'node'}{'attributes'}{$_}{'id'}                       ?
                                              attribute_id_to_name($context->{'node'}{'attributes'}{$_}{'id'}) :
                                              $context->{'node'}{'attributes'}{$_}{'name'};
                 $text .= sprintf "|V| %s\n", $context->{'node'}{'attributes'}{$_}{'value'} if 
@@ -196,7 +201,7 @@ sub sconsole_print_nodes
             }
 
         } elsif ($context->{'node'}{'type'} == $NODE_TYPE_END_TAG) {
-            $text .= sprintf "|>| %s\n", $context->{'node'}{'id'}            ? 
+            $text .= sprintf "|>| %s\n", $context->{'node'}{'id'}                     ? 
                                          element_id_to_name($context->{'node'}{'id'}) :
                                          $context->{'node'}{'name'};
         } elsif ($context->{'node'}{'type'} == $NODE_TYPE_TEXT) {
@@ -204,13 +209,13 @@ sub sconsole_print_nodes
         } elsif ($context->{'node'}{'type'} == $NODE_TYPE_COMMENT) {
             $text .= sprintf "|!| %s\n", $context->{'node'}{'data'};
         } elsif ($context->{'node'}{'type'} == $NODE_TYPE_DOCUMENT_TYPE) {
-            $text .= sprintf "|D| %s, %s, %s\n", $context->{'node'}{'id'}               ?
+            $text .= sprintf "|D| %s, %s, %s\n", $context->{'node'}{'id'}                                ?
                                                  documenttype_id_to_name($context->{'node'}{'id'})       :
                                                  $context->{'node'}{'name'},
-                                                 $context->{'node'}{'publicid'}                   ?
+                                                 $context->{'node'}{'publicid'}                          ?
                                                  documenttype_id_to_name($context->{'node'}{'publicid'}) :
                                                  $context->{'node'}{'public'},
-                                                 $context->{'node'}{'systemid'}                   ?
+                                                 $context->{'node'}{'systemid'}                          ?
                                                  documenttype_id_to_name($context->{'node'}{'systemid'}) :
                                                  $context->{'node'}{'system'};
         } else { die "??? $context->{'node'}{'type'} ???"; }
