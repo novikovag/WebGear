@@ -471,11 +471,14 @@ webgear_js_dom_core_element_insertAdjacentHTML(JSContext *cx, JSObject *obj, uin
 
     if (xsfirstchild) {
     
-        if (positionid == 1 || positionid == 3) { /* "beforebegin", "afterbegin" */
-            webgear_nodes_insert_before(xsparent, xsself, xsfirstchild, xslastchild);
-        } else {                                  /* "afterend", "beforeend" */
+        if (positionid == 1 || (positionid == 3 && xsself)) {
+            webgear_nodes_insert_before(xsparent, xsself, xsfirstchild, xslastchild);          
+        } else if (positionid == 2 || (positionid == 4 && xsself)) {
             webgear_nodes_insert_after(xsparent, xsself, xsfirstchild, xslastchild);
-        } 
+        /* "afterbegin" и "beforeend" без дочерних узлов (xsself == NULL). */
+        } else {
+            webgear_nodes_append(xsparent, xsfirstchild, xslastchild);
+        }
     }
     
     return JS_TRUE;
@@ -561,8 +564,14 @@ webgear_js_dom_core_element_setter(JSContext *cx, JSObject *obj, jsval id, jsval
 
     if (tinyid <= 11) {
         xsself = JS_GetPrivate(cx, obj);
-
-        if (tinyid == 11) {
+        /* Удаляем узел или узлы. */
+        if (tinyid == 10) {
+            xsfirstchild = webgear_xs_hv_get_rv(xsself, LITERAL("firstchild"));
+            xslastchild  = webgear_xs_hv_get_rv(xsself, LITERAL("lastchild"));
+            webgear_nodes_remove(xsself, xsfirstchild, xslastchild);
+            
+            xsparent = xsself;
+        } else {
             xsparent = webgear_xs_hv_get_rv(xsself, LITERAL("parent"));
         
             if (!xsparent || webgear_xs_hv_get_iv(xsparent, LITERAL("type")) == NODE_TYPE_DOCUMENT) {
@@ -571,7 +580,7 @@ webgear_js_dom_core_element_setter(JSContext *cx, JSObject *obj, jsval id, jsval
             }
             
             xsprevioussibling = webgear_xs_hv_get_rv(xsself, LITERAL("previoussibling"));
-            /* Узел удаляется в любом случае. */
+            
             webgear_node_remove(xsparent, xsself);
         } 
         
@@ -580,12 +589,6 @@ webgear_js_dom_core_element_setter(JSContext *cx, JSObject *obj, jsval id, jsval
         datalength = strlen(data);
         
         if (!datalength) {
-            
-            if (tinyid == 10) {
-                webgear_xs_hv_set_rv(xsself, LITERAL("firstchild"), NULL);
-                webgear_xs_hv_set_rv(xsself, LITERAL("lastchild"), NULL);
-            }
-
             return JS_TRUE;
         }
         
@@ -615,15 +618,12 @@ webgear_js_dom_core_element_setter(JSContext *cx, JSObject *obj, jsval id, jsval
 
         if (xsfirstchild) {
 
-            if (tinyid == 11) {
+            if (tinyid == 11 && xsprevioussibling) {
                 webgear_nodes_insert_after(xsparent, xsprevioussibling, xsfirstchild, xslastchild);
             } else {
-                webgear_nodes_replace(xsself, xsfirstchild, xslastchild);
+                webgear_nodes_append(xsparent, xsfirstchild, xslastchild);
             }
-
-        } else if (tinyid == 10) {
-            webgear_nodes_replace(xsself, NULL, NULL);
-        }
+        } 
     }
 
     return JS_TRUE; 

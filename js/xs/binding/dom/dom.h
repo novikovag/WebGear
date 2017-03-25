@@ -168,7 +168,7 @@ webgear_xs_hv_get_rv(HV *hash, char *key, int keylength)
     SV **value;
 
     value = hv_fetch(hash, key, keylength, 0);
-    return value ? SvRV(*value) : NULL;
+    return value ? SvRV(*value) : NULL;  
 }
 
 inline __attribute__((always_inline)) void
@@ -185,7 +185,7 @@ webgear_xs_hv_set_pv(HV *hash, char *key, int keylength, char *data, int datalen
 
 inline __attribute__((always_inline)) void
 webgear_xs_hv_set_rv(HV *hash, char *key, int keylength, SV *value)
-{
+{    
     hv_store(hash, key, keylength, value ? newRV(value) : newSViv(0), 0);
 }
 
@@ -539,7 +539,7 @@ webgear_node_remove(HV *xsparent, HV *xsnode)
     webgear_xs_hv_set_rv(xsnode, LITERAL("previoussibling"), NULL);
     webgear_xs_hv_set_rv(xsnode, LITERAL("nextsibling"),     NULL);
 }
-
+/*
 inline __attribute__((always_inline)) void
 webgear_node_replace(HV *xsparent, HV *xsoldnode, HV *xsnode)
 {
@@ -551,14 +551,14 @@ webgear_node_replace(HV *xsparent, HV *xsoldnode, HV *xsnode)
     if (xsprevioussibling) {
         webgear_xs_hv_set_rv(xsprevioussibling, LITERAL("nextsibling"), xsnode);
         webgear_xs_hv_set_rv(xsnode, LITERAL("previoussibling"), xsprevioussibling);
-    } else { /* первый узел */
+    } else {
         webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsnode);
     }
 
     if (xsnextsibling) {
         webgear_xs_hv_set_rv(xsnextsibling, LITERAL("previoussibling"), xsnode);
         webgear_xs_hv_set_rv(xsnode, LITERAL("nextsibling"), xsnextsibling);
-    } else { /* последний узел */
+    } else {
         webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xsnode);
     }
 
@@ -568,7 +568,7 @@ webgear_node_replace(HV *xsparent, HV *xsoldnode, HV *xsnode)
     webgear_xs_hv_set_rv(xsoldnode, LITERAL("previoussibling"), NULL);
     webgear_xs_hv_set_rv(xsoldnode, LITERAL("nextsibling"),     NULL);
 }
-
+*/
 inline __attribute__((always_inline)) void
 webgear_node_insert_before(HV *xsparent, HV *xsreferencenode, HV *xsnode)
 {
@@ -610,19 +610,60 @@ webgear_node_insert_after(HV *xsparent, HV *xsreferencenode, HV *xsnode)
 }
 
 inline __attribute__((always_inline)) void
-webgear_nodes_replace(HV *xsparent, HV *xsfirstnode, HV *xslastnode)
+webgear_nodes_append(HV *xsparent, HV *xsfirstnode, HV *xslastnode)
 {
-    HV *xsnode;
+    HV *xslastchild,*xsnode;
+
+    xslastchild = webgear_xs_hv_get_rv(xsparent, LITERAL("lastchild"));
+
+    if (xslastchild) {
+        webgear_xs_hv_set_rv(xslastchild, LITERAL("nextsibling"), xsfirstnode);
+    } else { /* первый узел */
+        webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
+    }
+
+    webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xslastnode);
     
-    webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
-    webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"),  xslastnode);
+    webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), xslastchild);
+    webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     NULL);
     
     xsnode = xsfirstnode;
     /* Заменяем родительский узел. */
     while (xsnode) {
         webgear_xs_hv_set_rv(xsnode, LITERAL("parent"), xsparent);
         xsnode = webgear_xs_hv_get_rv(xsnode, LITERAL("nextsibling"));
-    } 
+    }  
+}
+
+inline __attribute__((always_inline)) void
+webgear_nodes_remove(HV *xsparent, HV *xsfirstnode, HV *xslastnode)
+{
+    HV *xsprevioussibling, *xsnextsibling, *xsnode;
+
+    xsprevioussibling = webgear_xs_hv_get_rv(xsfirstnode, LITERAL("previoussibling"));
+    xsnextsibling     = webgear_xs_hv_get_rv(xslastnode,  LITERAL("nextsibling"));
+
+    if (xsprevioussibling) {
+        webgear_xs_hv_set_rv(xsprevioussibling, LITERAL("nextsibling"), xsnextsibling);
+    } else { /* первый узел */
+        webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsnextsibling);
+    }
+
+    if (xsnextsibling) {
+        webgear_xs_hv_set_rv(xsnextsibling, LITERAL("previoussibling"), xsprevioussibling);
+    } else { /* последний узел */
+        webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xsprevioussibling);
+    }
+    /* Ошибка "Out of memory!" при присваивании NULL в webgear_xs_hv_set_rv
+    webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), NULL);
+    webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     NULL);
+    */    
+    xsnode = xsfirstnode;
+    /* Заменяем родительский узел. */
+    while (xsnode) {
+        webgear_xs_hv_set_rv(xsnode, LITERAL("parent"), NULL);
+        xsnode = webgear_xs_hv_get_rv(xsnode, LITERAL("nextsibling"));
+    }
 }
 
 inline __attribute__((always_inline)) void
@@ -661,25 +702,19 @@ webgear_nodes_insert_after(HV *xsparent, HV *xsreferencenode, HV *xsfirstnode, H
 {
     HV *xsnextsibling, *xsnode;
 
-    if (xsreferencenode) {
-        xsnextsibling = webgear_xs_hv_get_rv(xsreferencenode, LITERAL("nextsibling"));
+    xsnextsibling = webgear_xs_hv_get_rv(xsreferencenode, LITERAL("nextsibling"));
 
-        if (xsnextsibling) {
-            webgear_xs_hv_set_rv(xsnextsibling, LITERAL("previoussibling"), xslastnode);
-        } else { /* последний узел */
-            webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xslastnode);
-        }
-
-        webgear_xs_hv_set_rv(xsreferencenode, LITERAL("nextsibling"), xsfirstnode);
-        
-        webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), xsreferencenode);
-        webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     xsnextsibling);
-
-    } else {
-        webgear_xs_hv_set_rv(xsparent, LITERAL("firstchild"), xsfirstnode);
-        webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"),  xslastnode);
+    if (xsnextsibling) {
+        webgear_xs_hv_set_rv(xsnextsibling, LITERAL("previoussibling"), xslastnode);
+    } else { /* последний узел */
+        webgear_xs_hv_set_rv(xsparent, LITERAL("lastchild"), xslastnode);
     }
-           
+
+    webgear_xs_hv_set_rv(xsreferencenode, LITERAL("nextsibling"), xsfirstnode);
+    
+    webgear_xs_hv_set_rv(xsfirstnode, LITERAL("previoussibling"), xsreferencenode);
+    webgear_xs_hv_set_rv(xslastnode,  LITERAL("nextsibling"),     xsnextsibling);
+
     xsnode = xsfirstnode;
     /* Заменяем родительский узел. */
     while (xsnode) {

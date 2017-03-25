@@ -358,7 +358,7 @@ webgear_js_dom_core_node_appendChild(JSContext *cx, JSObject *obj, uintN argc, j
 static JSBool
 webgear_js_dom_core_node_replaceChild(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval)
 {
-    HV *xsself, *xsoldnode, *xsparent, *xsnode;
+    HV *xsself, *xsoldnode, *xsparent, *xsnode, *xsnextsibling;
 
     if (argc < 2) {
         webgear_js_exeption(cx, EXCEPTION_TOO_FEW_ARGUMENTS_ERR);
@@ -403,7 +403,15 @@ webgear_js_dom_core_node_replaceChild(JSContext *cx, JSObject *obj, uintN argc, 
         webgear_collections_reset(xsparent, xsnode);
     }
     
-    webgear_node_replace(xsself, xsoldnode, xsnode);
+    xsnextsibling = webgear_xs_hv_get_rv(xsoldnode, LITERAL("nextsibling"));
+    
+    webgear_node_remove(xsself, xsoldnode);
+    
+    if (xsnextsibling) {
+        webgear_node_insert_before(xsself, xsnextsibling, xsnode);
+    } else {
+        webgear_node_append(xsself, xsnode);
+    }
     
     *rval = argv[1];
     return JS_TRUE;   

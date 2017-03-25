@@ -169,6 +169,29 @@ HTML
 
     <script>
         var e = document.getElementById("id");
+        e.innerHTML = '';
+    </script>
+</body>
+#document
+---
+HTML
+  HEAD
+  BODY
+    "\n "
+    P, id='id'
+    "\n\n "
+    SCRIPT
+      "\n var e = document.getElementById("id");\n e.innerHTML = '';\n "
+    "\n"
+
+@---
+
+#data
+<body>
+    <p id="id"><a>welcome</a></p>
+
+    <script>
+        var e = document.getElementById("id");
         e.outerHTML = "<div>set1</div><i>set2</i><a>set3</a>";
     </script>
 </body>
