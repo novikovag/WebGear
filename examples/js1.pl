@@ -4,20 +4,20 @@ use WebGear::HTML::Console;
 use WebGear::HTML::Parser;
 use WebGear::SpiderMonkey;
 
-my ($script, $jsruntime, $jscontext);
-
-$jsruntime = js_initialize_runtime();
-$jscontext = js_initialize_context($jsruntime);
+my ($script, $jruntime, $jcontext);
 
 $script = <<'SCRIPT';
     console.log("Привет!");
     console.log("Hello!");
 SCRIPT
 
-js_evaluate($jscontext, $script, length $script);
-js_destroy_context($jscontext);
+$jruntime = js_initialize_runtime();
+$jcontext = js_initialize_context($jruntime, {}, {});
 
-js_destroy_runtime($jsruntime);
+js_evaluate($jcontext, $script, length $script);
+js_destroy_context($jcontext);
+
+js_destroy_runtime($jruntime);
 
 sub js_callback 
 {

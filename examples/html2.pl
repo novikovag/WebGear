@@ -1,9 +1,10 @@
 use strict;
 
-use WebGear::HTML::Console; 
+use WebGear::HTML::DOM;
 use WebGear::HTML::Parser;
+use WebGear::HTML::Console;
 
-my ($FH, $filename, $data, $datalength, @data, $inbuffer, $context);
+my ($FH, $filename, $data, $datalength, @data, $inbuffer, $document, $hcontext);
 
 $filename = "html2.html";
 
@@ -18,7 +19,8 @@ $inbuffer   = {
     'index'      => 0
 };
 
-$context = parser_initialize_context($inbuffer);
-parser_parse($context);
+$document = node_create_document();
+$hcontext = parser_initialize_context($inbuffer);
+parser_parse($hcontext);
 
-console_print_json_tree($context->{'document'});
+console_print_json_tree($hcontext->{'document'});

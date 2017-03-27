@@ -1,9 +1,10 @@
 use strict;
 
-use WebGear::HTML::Console; 
+use WebGear::HTML::DOM;
 use WebGear::HTML::Parser;
+use WebGear::HTML::Console; 
 
-my ($html, @data, $inbuffer, $context);
+my ($html, @data, $inbuffer, $document, $hcontext);
 
 $html = <<'HTML';
 <!DOCTYPE html>
@@ -26,8 +27,9 @@ $inbuffer = {
     'index'      => 0
 };
 
-$context = parser_initialize_context($inbuffer);
-parser_parse($context);
+$document = node_create_document();
+$hcontext = parser_initialize_context($inbuffer, $document);
+parser_parse($hcontext);
 
-# console_print_tree($context->{'document'});
-console_print_tree($context->{'document'}, "s");
+# console_print_tree($hcontext->{'document'});
+console_print_tree($hcontext->{'document'}, "s");

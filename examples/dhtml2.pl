@@ -1,11 +1,11 @@
 use strict;
 
-use WebGear::HTML::Console;
 use WebGear::HTML::Parser;
 use WebGear::HTML::DOM;
+use WebGear::HTML::Console;
 use WebGear::SpiderMonkey;
 
-my ($FH, $filename, $data, $datalength, @data, $inbuffer, $document,$jsruntime, $jscontext,  $plcontext);
+my ($FH, $filename, $data, $datalength, @data, $inbuffer, $document,$jruntime, $jcontext,  $plcontext);
 
 $filename = "dhtml2.html";
 
@@ -22,17 +22,17 @@ $inbuffer = {
    
 $document  = node_create_document();    
    
-$jsruntime = js_initialize_runtime();
-$jscontext = js_initialize_context($jsruntime, $inbuffer, $document);
+$jruntime = js_initialize_runtime();
+$jcontext = js_initialize_context($jruntime, $inbuffer, $document);
    
-$plcontext = parser_initialize_context($inbuffer, $document, $jscontext);
+$plcontext = parser_initialize_context($inbuffer, $document, $jcontext);
 
 parser_parse($plcontext);
 
 console_print_tree($plcontext->{'document'}, "s");
 
-js_destroy_context($jscontext);
-js_destroy_runtime($jsruntime);
+js_destroy_context($jcontext);
+js_destroy_runtime($jruntime);
 
 sub WebGear::HTML::Parser::js_callback 
 {
